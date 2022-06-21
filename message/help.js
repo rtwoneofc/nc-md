@@ -56,6 +56,13 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}toimg *ReplyStiker*
   ✾ ${prefix}tovid *ReplyStiker*
 
+  *❒ Sound Menu*
+  ✾ ${prefix}sound1
+  ✾ ${prefix}sound2
+  ✾ ${prefix}sound3
+  ✾ ${prefix}sound4
+  ✾ ${prefix}sound5
+
   *❒ Downloader (MediaFire Dalam Perbaikan)*
   ✾ ${prefix}play *Query*
   ✾ ${prefix}youtube *LinkYT*
@@ -256,13 +263,13 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}topbalance
 
   *❒ Group Menu ❒*
-  ✾ ${prefix}antilink *enable/disable*
-  ✾ ${prefix}antiwame *enable/disable*
+  ✾ ${prefix}antilink
+  ✾ ${prefix}antiwame
   ✾ ${prefix}linkgrup
   ✾ ${prefix}setppgrup
   ✾ ${prefix}setnamegc
   ✾ ${prefix}setdesc
-  ✾ ${prefix}group *Open/Close*
+  ✾ ${prefix}group
   ✾ ${prefix}revoke
   ✾ ${prefix}hidetag *text*
   ✾ ${prefix}kick *@tag*
@@ -291,6 +298,7 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   - @arsrfi.jpg (Arasya)
   - M Hadi Firmansya (Hadi Api)
   - @melcanz_ (Amel)
+  - @${setting.Instagram} (Owner)
   - @chris.tianid (Christian ID)
   - @hardianto.xyz (Anto)`
 }
