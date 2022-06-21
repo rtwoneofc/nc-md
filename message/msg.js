@@ -115,6 +115,10 @@ const exif = new Exif()
 // DB Game
 let tictactoe = [];
 let tebakgambar = []
+let kuiscuy = []
+let tebaktebakan = []
+let tekateki = []
+let tebakkimia = []
 
 // Database
 let pendaftar = JSON.parse(fs.readFileSync('./database/user.json'))
@@ -400,14 +404,73 @@ module.exports = async(conn, msg, m, setting, store) => {
 		cekWaktuGame(conn, tebakgambar)
 		if (isPlayGame(from, tebakgambar) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tebakgambar)) {
+		    var kode = randomNomor(1000000000, 9000000000)
 		    var htgm = randomNomor(500, 550)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar 🎉*\n\nJawaban : ${getJawabanGame(from, tebakgambar)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebakgambar)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var tebakgmbr = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakgambar` } },
 		]
 			 conn.sendMessage(from, { text: texttg, templateButtons: tebakgmbr, footer: 'TEBAK - GAMBAR', mentions: [sender]} )  
 		    tebakgambar.splice(getGamePosi(from, tebakgambar), 1)
+		  }
+		}
+		
+		cekWaktuGame(conn, kuiscuy)
+		if (isPlayGame(from, kuiscuy) && isUser) {
+		  if (chats.toLowerCase() == getJawabanGame(from, kuiscuy)) {
+		    var htgm = randomNomor(500, 550)
+			addBalance(sender, htgm, balance)
+			var kode = randomNomor(1000000000, 9000000000)
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, kuiscuy)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+			var kus = [
+			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakkata` } },
+		]
+			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'TEBAK KATA', mentions: [sender]} )  
+		    kuiscuy.splice(getGamePosi(from, kuiscuy), 1)
+		  }
+		}
+		
+		cekWaktuGame(conn, tekateki)
+		if (isPlayGame(from, tekateki) && isUser) {
+		  if (chats.toLowerCase() == getJawabanGame(from, tekateki)) {
+		    var kode = randomNomor(1000000000, 9000000000)
+		    var htgm = randomNomor(500, 550)
+			addBalance(sender, htgm, balance)
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tekateki)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+			var kus = [
+			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tekateki` } },
+		]
+			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'KUIS V2', mentions: [sender]} )  
+		    tekateki.splice(getGamePosi(from, tekateki), 1)
+		  }
+		}
+		
+		cekWaktuGame(conn, tebakkimia)
+		if (isPlayGame(from, tebakkimia) && isUser) {
+		  if (chats.toLowerCase() == getJawabanGame(from, tebakkimia)) {
+		    var htgm = randomNomor(500, 550)
+			addBalance(sender, htgm, balance)
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebakkimia)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+			var kus = [
+			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakkimia` } },
+		]
+			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'TEBAK KIMIA', mentions: [sender]} )  
+		    tebakkimia.splice(getGamePosi(from, tebakkimia), 1)
+		  }
+		}
+		
+		cekWaktuGame(conn, tebaktebakan)
+		if (isPlayGame(from, tebaktebakan) && isUser) {
+		  if (chats.toLowerCase() == getJawabanGame(from, tebaktebakan)) {
+		    var htgm = randomNomor(500, 550)
+			addBalance(sender, htgm, balance)
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebaktebakan)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+			var kus = [
+			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}kuis` } },
+		]
+			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'Kuis By Izumi MD', mentions: [sender]} )  
+		    tebaktebakan.splice(getGamePosi(from, tebaktebakan), 1)
 		  }
 		}
 if (chats.startsWith("@37258266435")){
@@ -465,6 +528,11 @@ if (chats.startsWith("@37258266435")){
 				/*conn.sendMessage(from, { react: { text: `👋`, key: msg.key }})*/
 conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/Menu.jpg') }, templateButtons: buttonsMenu, footer: '© Izumi - Bot', mentions: [sender] })
 				break
+case prefix+'delete':
+  case prefix+'d':
+    case prefix+'del':
+  conn.sendMessage(from, { delete: { fromMe: true, id: quotedMsg.id, remoteJid: from }})
+  break
 case prefix+'menu':
   var teks = `Hai kak ${pushname}
 saya ${namabot}, bot ini adalah Beta Multi-Device Whatsapp
@@ -845,8 +913,8 @@ case prefix+'githubown':
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('mediafire')) return reply(mess.error.Iv)
 			    reply(mess.wait)
-					var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/download/mediafire?url=${q}/textprome.js/file&apikey=${chrisapi}`)
-					conn.sendMessage(from, { document: { url: data.result.link }, fileName: `${data.result.nama}`, mimetype: 'zip' }, { quoted: msg })
+					var data = await fetchJson(`https://docs-jojo.herokuapp.com/api/mediafire?url=${q}`)
+					conn.sendMessage(from, { document: { url: data.url }, fileName: `${data.filename}`, mimetype: 'zip' }, { quoted: msg })
 					limitAdd(sender, limit)
 					break
             case prefix+'play':
@@ -1591,17 +1659,72 @@ case prefix+'cekbapak': // By Christian ID
 			case prefix+'tebakgambar':
 		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
 			    if (isPlayGame(from, tebakgambar)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tebakgambar[getGamePosi(from, tebakgambar)].msg)
-				kotz.tebakgambar().then( data => {
-				  data = data[0]
+				var tg = JSON.parse(fs.readFileSync('./fitur/tebakgambar.json'))
+				var data = pickRandom(tg)
 				  data.jawaban = data.jawaban.split('Jawaban ').join('')
-				  var teks = `*TEBAK GAMBAR*\n\n`+monospace(`Petunjuk : ${data.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, { image: { url: data.image }, caption: teks }, { quoted: msg })
+				  var teks = `*TEBAK GAMBAR*\n\n`+monospace(`Petunjuk : ${data.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nDeskripsi : ${data.deskripsi}\nWaktu : ${gamewaktu}s`)
+				  conn.sendMessage(from, {caption: teks, image: {url: data.img}}, {quoted: msg})
 				  .then( res => {
 					var jawab = data.jawaban.toLowerCase()
-					addPlayGame(from, 'Tebak Gambar', jawab, gamewaktu, res, tebakgambar)
+					addPlayGame(from, 'TEBAK KATA', jawab, gamewaktu, res, tebakgambar)
 					gameAdd(sender, glimit)
 				  })
-				})
+			    break
+            case prefix+'tebakkata':
+		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
+			    if (isPlayGame(from, kuiscuy)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, kuiscuy[getGamePosi(from, kuiscuy)].msg)
+				var kuisnya = JSON.parse(fs.readFileSync('./fitur/tebakkata.json'))
+				const kukus = pickRandom(kuisnya)
+				  kukus.jawaban = kukus.jawaban.split('Jawaban ').join('')
+				  var teks = `*TEBAK KATA*\n\n`+monospace(`Soal : ${kukus.soal}\nWaktu : ${gamewaktu}s`)
+				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  .then( res => {
+					var jawab = kukus.jawaban.toLowerCase()
+					addPlayGame(from, 'TEBAK KATA', jawab, gamewaktu, res, kuiscuy)
+					gameAdd(sender, glimit)
+				  })
+			    break
+case prefix+'kuis':
+		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
+			    if (isPlayGame(from, tebaktebakan)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tebaktebakan[getGamePosi(from, tebaktebakan)].msg)
+				var tebaknya = JSON.parse(fs.readFileSync('./fitur/tebaktebakan.json'))
+				var hayo = pickRandom(tebaknya)
+				  hayo.jawaban = hayo.jawaban.split('Jawaban ').join('')
+				  var teks = `*KUIS GAME*\n\n`+monospace(`Soal : ${hayo.soal}\nWaktu : ${gamewaktu}s`)
+				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  .then( res => {
+					var jawab = hayo.jawaban.toLowerCase()
+					addPlayGame(from, 'KUIS GAME', jawab, gamewaktu, res, tebaktebakan)
+					gameAdd(sender, glimit)
+				  })
+			    break
+case prefix+'tekateki':
+		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
+			    if (isPlayGame(from, tekateki)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tekateki[getGamePosi(from, tekateki)].msg)
+				var tebaknya = JSON.parse(fs.readFileSync('./fitur/tekateki.json'))
+				var hayo = pickRandom(tebaknya)
+				  hayo.jawaban = hayo.jawaban.split('Jawaban ').join('')
+				  var teks = `*TEKA TEKI*\n\n`+monospace(`Soal : ${hayo.soal}\nWaktu : ${gamewaktu}s`)
+				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  .then( res => {
+					var jawab = hayo.jawaban.toLowerCase()
+					addPlayGame(from, 'KUIS GAME', jawab, gamewaktu, res, tekateki)
+					gameAdd(sender, glimit)
+				  })
+			    break
+case prefix+'tebakkimia':
+		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
+			    if (isPlayGame(from, tebakkimia)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tebakkimia[getGamePosi(from, tebakkimia)].msg)
+				var tebaknya = JSON.parse(fs.readFileSync('./fitur/tebakkimia.json'))
+				var hayo = pickRandom(tebaknya)
+				  hayo.unsur = hayo.unsur.split('Jawaban ').join('')
+				  var teks = `*TEKA TEKI*\n\n`+monospace(`Soal : Apa Kepanjangan Dari Unsur ${hayo.lambang}\nWaktu : ${gamewaktu}s`)
+				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  .then( res => {
+					var jawab = hayo.unsur.toLowerCase()
+					addPlayGame(from, 'TEBAK KIMIA', jawab, gamewaktu, res, tebakkimia)
+					gameAdd(sender, glimit)
+				  })
 			    break
              
 			// Group Menu
@@ -1678,6 +1801,58 @@ case prefix+'cekbapak': // By Christian ID
 		        groupMembers.map( i => mem.push(i.id) )
 				conn.sendMessage(from, { text: q ? q : '', mentions: mem })
 			    break
+case prefix+'tagall':
+      if (!isGroup) return reply(mess.OnlyGrup)
+      if (!isGroupAdmins) return reply(mess.GrupAdmin)
+      if (args.length < 2) return reply(`Kirim perintah ${command} teks`)
+     var mems = []
+      var teks = `*[ TAG ALL ]*\nPesan : ${q}\n\n`
+      for (let i of groupMembers) {
+        teks += ` @${i.id.split("@")[0]}\n`
+        mems.push(i.id)
+      }
+      conn.sendMessage(from, { text: teks, mentions: mems}, { quoted: msg })
+      break
+case prefix+'promote':
+  case prefix+'admin':
+    if (!isGroup) return reply(mess.OnlyGrup)
+    if (!isGroupAdmins) return reply(mess.GrupAdmin)
+    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+    var number;
+    if (mentioned.length !== 0) {
+      number = mentioned[0]
+      conn.groupParticipantsUpdate(from, [number], "promote")
+      .then( res => reply(jsonformat(res)))
+      .catch( err => reply(jsonformat(err)))
+    } else if (isQuotedMsg) {
+      number = quotedMsg.sender
+      conn.groupParticipantsUpdate(from, [number], "promote")
+      .then( res => reply(jsonformat(res)))
+      .catch( err => reply(jsonformat(err)))
+    } else {
+      reply(`Tag atau balas pesan member yang ingin dijadikan admin grup`)
+    }
+    break
+case prefix+'demote':
+  case prefix+'unadmin':
+    if (!isGroup) return reply(mess.OnlyGrup)
+    if (!isGroupAdmins) return reply(mess.GrupAdmin)
+    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+    var number;
+    if (mentioned.length !== 0) {
+      number = mentioned[0]
+      conn.groupParticipantsUpdate(from, [number], "demote")
+      .then( res => reply(jsonformat(res)))
+      .catch( err => reply(jsonformat(err)))
+    } else if (isQuotedMsg) {
+      number = quotedMsg.sender
+      conn.groupParticipantsUpdate(from, [number], "demote")
+      .then( res => reply(jsonformat(res)))
+      .catch( err => reply(jsonformat(err)))
+    } else {
+      reply(`Tag atau balas pesan admin yang ingin diturunkan menjadi member`)
+    }
+    break
 case prefix+'kick':
   if (!isOwner)return reply("_Maaf Fitur Ini Di Nonaktifkan Oleh Owner, Karena menyebabkan nomer bot 3 kali ke banned_")
     if (!isGroup) return reply(mess.OnlyGrup)

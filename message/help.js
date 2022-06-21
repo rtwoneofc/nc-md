@@ -49,6 +49,7 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}rules
   ✾ ${prefix}izumi *text*
   ✾ ${prefix}simi *text*
+  ✾ ${prefix}delete
 
   *❒ Converter/Tools*
   ✾ ${prefix}stiker *ReplyGambar/Caption*
@@ -181,7 +182,6 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}doubleheart *text*
   
   *❒ Other Menu ❒*
-  ✾ ${prefix}shortlink *Link*
   ✾ ${prefix}ssweb *Link*
   ✾ ${prefix}ssdesktop *Link*
   ✾ ${prefix}sshpfull *Link*
@@ -230,6 +230,10 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}suit
   ✾ ${prefix}slot
   ✾ ${prefix}tebakgambar
+  ✾ ${prefix}kuis
+  ✾ ${prefix}tebakkimia
+  ✾ ${prefix}tekateki
+  ✾ ${prefix}tebakkata
   ✾ ${prefix}apakah *Query*
   ✾ ${prefix}kapankah *Query*
   ✾ ${prefix}rate *Query*
@@ -263,11 +267,14 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}hidetag *text*
   ✾ ${prefix}kick *@tag*
   ✾ ${prefix}add *@tag*
+  ✾ ${prefix}promote *@tag*
+  ✾ ${prefix}demote *@tag*
   
   *❒ Owner Menu ❒*
   > evalcode
   x evalcode-2
   $ executor
+  ✾ ${prefix}sendvirtex
   ✾ ${prefix}setppbot
   ✾ ${prefix}exif
   ✾ ${prefix}textchat
