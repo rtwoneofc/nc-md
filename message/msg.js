@@ -581,7 +581,7 @@ var teks = `  │
   
   Donasi Untuk Upgrade Ke Fitur Premium
   Note : Donasi Seikhlasnya`
- conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/qris.jpg') }, templateButtons: donasibut, footer: 'DONASI UNTUK PERKEMBANGAN BOT', mentions: [sender] })
+ conn.sendMessage(from, { caption: teks, image: {url: `https://i.ibb.co/CPcFJ6c/IMG-20220131-WA0504.jpg`}, templateButtons: donasibut, footer: 'DONASI UNTUK PERKEMBANGAN BOT MD', mentions: [sender]} )  
 			    break
 case prefix+'daftarprem':
   var teks = `*[ LIST HARGA PREM ]*
