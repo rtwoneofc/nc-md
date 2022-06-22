@@ -70,13 +70,17 @@ const jojoapi = "Syaa"
 const ikiapi = "FuckBitch"
 const chrisapi = "IzumiBot"
 
-//Setting Info Bot
+// SETTING BOT AND OWNER //
 const nobot = "37259886749" // Ganti No Bot Kalian
 const namabot = "Izumi MD" // Ganti Nama Bot Kalian
 const nameown = "Christian ID" // Ganti Nama Kalian
+const numown = "0859-2116-5857" // Ganti Nomor Kalian
 const nameowner = "Christian" // Ganti Nama Kalian
 const footer = "Izumi MD 2022" // Ganti Nama Bot Kalian
 const capt = "*By Izumi Bot MD*" // Ganti Nama Bot Kalian
+const grup = "https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq" // Ganti Link Group Kalian
+const nomorown = "https://wa.me/6285921165857" // Ganti Nomor Kalian
+const note = "*_Bot Ini Masih Dalam Pengembangan Jika Ada Fitur Yang Eror Silakan Hubungi Owner!!!_*" // Kalau Mau Ganti Aja
 
 // Setting Donasi
 const gopay = "0813-2850-7885" // Ganti Nomor Gopay Mu
@@ -99,6 +103,7 @@ const diamonddua = "70 💎 = 10.000"
 const diamondtiga = "100 💎 = 15.000"
 const diamondempat = "140 💎 = 20.000"
 const diamondlima = "355 💎 = 50.000"
+const diamondenam = "720 💎 = 100.000"
 
 //Setting Rekber // Lu Ubah Aja Soalnya Gw Bukan Anak JB:v //
 const rekbera = "0-49K : 5K"
@@ -111,7 +116,7 @@ const rekberg = "500-699K : 40K"
 const rekberh = "700-1JT : 50K"
 
 // Setting Payment 
-const via = "ShoopePay , Qris, Gopay" // Terserah Mau Payment Apa Aja
+const via = "ShoopePay, Qris, Gopay" // Terserah Mau Payment Apa Aja
 
 // Exif
 const Exif = require("../lib/exif")
@@ -317,35 +322,35 @@ module.exports = async(conn, msg, m, setting, store) => {
 		}
 		//{ callButton: { displayText: `Call Owner!`, phoneNumber: `+${ownerNumber}` } },
 		const buttonsDefault = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `https://wa.me/6285921165857` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `Nomer Owner`, url : `` } },
 			{ quickReplyButton: { displayText: `💰 Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Script`, id: `${prefix}sc` } },
 		]
 		const button5 = [
-			{ callButton: { displayText: `Number Owner`, phoneNumber: `0859-2116-5857` } },
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
+			{ callButton: { displayText: `Number Owner`, phoneNumber: `${numown}` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `Back To Menu 🔙`, id: `${prefix}menu` } },
 		]
 		const buttonsSewa = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `https://wa.me/6285921165857` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Menu`, id: `${prefix}menu` } },
 		]
 		const buttonsMenu = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `https://wa.me/6285921165857` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 			{ quickReplyButton: { displayText: `Premium`, id: `${prefix}daftarprem` } },
 		]
 		const buttonsDiamondFF = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `Format ID`, id: `${prefix}formatid` } },
 		]
 		const buttonsAllmenu = [
-		    { urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
+		    { urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `All Menu`, id: `${prefix}allmenu` } },
 			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 		]
@@ -362,7 +367,7 @@ module.exports = async(conn, msg, m, setting, store) => {
 			{ quickReplyButton: { displayText: `Group Close`, id: `${prefix}groupa close` } },
 		]
 		const buttonsRekber = [
-			{ urlButton: { displayText: `Chat Owner`, url : `https://wa.me/6285921165857` } },
+			{ urlButton: { displayText: `Chat Owner`, url : `${nomorown}` } },
 		]
         
 		const isImage = (type == 'imageMessage')
@@ -486,7 +491,7 @@ module.exports = async(conn, msg, m, setting, store) => {
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}kuis` } },
 		]
-			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'Kuis By Izumi MD', mentions: [sender]} )  
+			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'KUIS', mentions: [sender]} )  
 		    tebaktebakan.splice(getGamePosi(from, tebaktebakan), 1)
 		  }
 		}
@@ -543,7 +548,7 @@ if (chats.startsWith("@37258266435")){
 			    var teks = allmenu(sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount)
 			    
 				/*conn.sendMessage(from, { react: { text: `👋`, key: msg.key }})*/
-conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/Menu.jpg') }, templateButtons: buttonsMenu, footer: `${footer}`, mentions: [sender] })
+conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsMenu, footer: `${footer}`, mentions: [sender] })
 				break
 case prefix+'delete':
   case prefix+'d':
@@ -554,8 +559,8 @@ case prefix+'menu':
   var teks = `Hai kak ${pushname}
 saya ${namabot}, bot ini adalah Beta Multi-Device Whatsapp
 
-Note : *_Bot Ini Masih Dalam Pengembangan Jika Ada Fitur Yang Eror Silakan Hubungi Owner!!!_*`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/Menu.jpg') }, templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender] })
+Note : ${note}`
+			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender] })
 			    break
 case prefix+'donasiah':
   reply(`Jika Ingin Donasi Harap Hubungi Owner\n\nhttps://wa.me/${ownerNumber}`)
@@ -563,7 +568,7 @@ case prefix+'donasiah':
 case prefix+'donasi':
   case prefix+'donate':
   var donasibut = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq2` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `Aku Ingin Donasi`, id: `${prefix}donasiah` } },
 		]
 var teks = `  │
@@ -576,7 +581,7 @@ var teks = `  │
   
   Donasi Untuk Upgrade Ke Fitur Premium
   Note : Donasi Seikhlasnya`
- conn.sendMessage(from, { caption: teks, image: {url: `${linkdonasi}`}, templateButtons: donasibut, footer: `${footer}`, mentions: [sender]} )  
+ conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/qris.jpg') }, templateButtons: donasibut, footer: 'DONASI UNTUK PERKEMBANGAN BOT', mentions: [sender] })
 			    break
 case prefix+'daftarprem':
   var teks = `*[ LIST HARGA PREM ]*
@@ -592,22 +597,24 @@ _Yakin kamu mau daftar ke premium?_
 - Rp. 2.000 - 7 Hari
 - Rp. 5.000 - 1 Bulan
 - Rp. 8.000 - 1 Tahun`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/premium.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/premium.jpg') }, templateButtons: button5, footer: 'DAFTAR PREM UNTUK AKSES FITUR PREMIUM', mentions: [sender] })
 			    break
 //Store Menu By Christian ID
 case prefix+'listff': //By Christian ID
   var teks = `*[ LIST DIAMOND FREE FIRE ]*
 
-✾ ${diamondsatu}
-✾ ${diamonddua}
-✾ ${diamondtiga}
-✾ ${diamondempat}
-✾ ${diamondlima}
+ ${diamondsatu}
+ ${diamonddua}
+ ${diamondtiga}
+ ${diamondempat}
+ ${diamondlima}
+ ${diamondenam}
+
 
 *_Pembayaran Via : ${via}_*
 
 *Jika Ingin Order Klick Button Dibawah Atau Ketik ${prefix}formatid*`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/ff.jpg') }, templateButtons: buttonsDiamondFF, footer: 'List Diamond FF', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/ff.jpg') }, templateButtons: buttonsDiamondFF, footer: 'LIST DIAMOND FF', mentions: [sender] })
 			    break
 case prefix+'rekber': //By Christian ID
   var teks = `*[ LIST HARGA REKBER ]*
@@ -620,7 +627,7 @@ case prefix+'rekber': //By Christian ID
  ${rekberf}
  ${rekberg}
  ${rekberh}`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/rekber.jpg') }, templateButtons: buttonsRekber, footer: 'List Rekber', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/rekber.jpg') }, templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
 			    break
 case prefix+'formatid': // By Christian ID
   reply(`*[ FORMAT FF ]*\n\nID Game = \nNick Game = \nJumlah Diamond = \nPembayaran Via = \n\n*Kirim Formulir Ini Ke ${nomor}*`)
@@ -635,7 +642,7 @@ case prefix+'sc': //By Christian ID
 *_Sc Bot Versi 2 Via MediaFire : https://www.mediafire.com/file/l8zoyc38l420wen/ChrisV1.7z/file_*
 
 _Sc Versi 2 Berpassword Syarat : Subscribe https://youtube.com/channel/UCbetUssizXWLgZdDVEFp8Sg Dan Screenshot Kirim Ke Owner_`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
 			    break
 case prefix+'rules': //By Christian ID
   var teks = `*── 「 RULES AND FAQ 」 ──*
@@ -668,7 +675,7 @@ Jika sudah dipahami rules-nya, silakan ketik *${prefix}allmenu* untuk memulai!
 
 Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu juga dalam project pembuatan Izumi Bot
 😖🙏`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/rules.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/rules.jpg') }, templateButtons: button5, footer: 'PATUHI RULES YANG ADA JANGAN LANGGAR RULES NYA JIKA MELANGGAR ADA AKIBAT NYA', mentions: [sender] })
 			    break
 case prefix+'sewabot': //By Christian ID
   var teks = `*── 「 SEWA BOT 」 ──*
@@ -706,7 +713,7 @@ case prefix+'claim': //By Christian ID
   reply(`Selamat Anda Mendapatkan ${htgm} Balance`)
   break
 case prefix+'groupizumi':
-  reply("Group 1\n\nhttps://chat.whatsapp.com/F92O1RmRXU2FYx3TudDVFj\nGroup 2\n\nhttps://chat.whatsapp.com/HWDIowVhHcd4EIm88F4X1y")
+  reply(`Group Izumi Bot\n${grup}`)
   break
 			case prefix+'speed':
 			  reply("Testing Speed...")

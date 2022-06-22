@@ -210,6 +210,8 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}lirik *Judul*
   ✾ ${prefix}grupwa *Pencarian*
   ✾ ${prefix}wame *Nomor*
+  ✾ ${prefix}linkig
+  ✾ ${prefix}github
   ✾ ${prefix}ytsearch *Pencarian*
   ✾ ${prefix}pinterest *Querry*
   ✾ ${prefix}getpp
@@ -241,6 +243,7 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}tebakkimia
   ✾ ${prefix}tekateki
   ✾ ${prefix}tebakkata
+  ✾ ${prefix}cekbapak
   ✾ ${prefix}apakah *Query*
   ✾ ${prefix}kapankah *Query*
   ✾ ${prefix}rate *Query*
