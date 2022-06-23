@@ -81,6 +81,7 @@ const capt = "*By Izumi Bot MD*" // Ganti Nama Bot Kalian
 const grup = "https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq" // Ganti Link Group Kalian
 const nomorown = "https://wa.me/6285921165857" // Ganti Nomor Kalian
 const note = "*_Bot Ini Masih Dalam Pengembangan Jika Ada Fitur Yang Eror Silakan Hubungi Owner!!!_*" // Kalau Mau Ganti Aja
+const namagrup = "Group Izumi MD" // Ubah Nama Group Mu
 
 // Setting Donasi
 const gopay = "0813-2850-7885" // Ganti Nomor Gopay Mu
@@ -322,35 +323,35 @@ module.exports = async(conn, msg, m, setting, store) => {
 		}
 		//{ callButton: { displayText: `Call Owner!`, phoneNumber: `+${ownerNumber}` } },
 		const buttonsDefault = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
+			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
 			{ quickReplyButton: { displayText: `💰 Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Script`, id: `${prefix}sc` } },
 		]
 		const button5 = [
 			{ callButton: { displayText: `Number Owner`, phoneNumber: `${numown}` } },
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `Back To Menu 🔙`, id: `${prefix}menu` } },
 		]
 		const buttonsSewa = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
 			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Menu`, id: `${prefix}menu` } },
 		]
 		const buttonsMenu = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
 			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 			{ quickReplyButton: { displayText: `Premium`, id: `${prefix}daftarprem` } },
 		]
 		const buttonsDiamondFF = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `Format ID`, id: `${prefix}formatid` } },
 		]
 		const buttonsAllmenu = [
-		    { urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+		    { urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
 			{ quickReplyButton: { displayText: `All Menu`, id: `${prefix}allmenu` } },
 			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 		]
@@ -495,6 +496,14 @@ module.exports = async(conn, msg, m, setting, store) => {
 		    tebaktebakan.splice(getGamePosi(from, tebaktebakan), 1)
 		  }
 		}
+		
+if (chats.startsWith(`bot`)){
+ conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+}
+if (chats.startsWith(`Bot`)){
+ conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+}
+ 
 if (chats.startsWith("@37258266435")){
 	/*conn.sendMessage(from, { react: { text: `😍`, key: msg.key }})*/
    conn.sendMessage(from, { audio: {url : `https://d.top4top.io/m_22231oj7h1.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
