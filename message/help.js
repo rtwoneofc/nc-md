@@ -22,18 +22,17 @@ function toCommas(x) {
 exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount) => {
 	return `*── 「 ${setting.botName} 」 ──*
 	
-  _*${ucapanWaktu} ${pushname !== undefined ? pushname : 'Kak'}*_
+  ${ucapanWaktu} kak *${pushname !== undefined ? pushname : 'No Detect Name'}* 👋
 
-    Library : *Baileys-MD*.
-    Prefix : ( ${prefix} )
-    Tanggal Server : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
-    Waktu Server : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}
+Tanggal : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
+Waktu : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}
 
-	Status : ${isOwner ? 'Owner' : isPremium ? 'Premium' : 'Free'}
-	Limit Harian : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}
-	Limit Game : ${isOwner ? '-' : cekGLimit(sender, gcount, glimit)}
-	Balance : $${toCommas(getBalance(sender, balance))}
-  Note : *_Bot Ini Masih Dalam Pengembangan Jika Ada Fitur Yang Eror Silakan Hubungi Owner!!!_*
+❋─────────────────❋
+Status : ${isOwner ? 'Owner' : isPremium ? 'Premium' : 'Free'}
+Sisa Limit : ${isOwner ? '-' : isPremium ? 'Unlimited' : getLimit(sender, limitCount, limit)}
+Limit Game : ${isOwner ? '-' : cekGLimit(sender, gcount, glimit)}
+Balance : $${toCommas(getBalance(sender, balance))}
+❋─────────────────❋
   
   _Ada Bug? Ketik ${prefix}report Bug mu_
   ${readmore}
@@ -46,6 +45,7 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}cekprem
   ✾ ${prefix}listprem
   ✾ ${prefix}daftarprem
+  ✾ ${prefix}listban
   ✾ ${prefix}rules
   ✾ ${prefix}izumi *text*
   ✾ ${prefix}simi *text*
@@ -201,7 +201,6 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}cerpen
   ✾ ${prefix}cersex
   ✾ ${prefix}wiki *Query*
-  ✾ ${prefix}igstalk *Username*
   ✾ ${prefix}say *text*
   ✾ ${prefix}qr *text*
   ✾ ${prefix}readmore *text|text*
@@ -215,6 +214,7 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}ytsearch *Pencarian*
   ✾ ${prefix}pinterest *Querry*
   ✾ ${prefix}getpp
+  ✾ ${prefix}kontak
 
   *❒ Islamic Menu ❒*
   ✾ ${prefix}quran *nomer*
@@ -243,6 +243,10 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}tebakkimia
   ✾ ${prefix}tekateki
   ✾ ${prefix}tebakkata
+  ✾ ${prefix}susunkata
+  ✾ ${prefix}tebakbendera
+  ✾ ${prefix}tebaklagu
+  ✾ ${prefix}siapakahaku
   ✾ ${prefix}cekbapak
   ✾ ${prefix}apakah *Query*
   ✾ ${prefix}kapankah *Query*
@@ -279,6 +283,8 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}add *@tag*
   ✾ ${prefix}promote *@tag*
   ✾ ${prefix}demote *@tag*
+  ✾ ${prefix}listadmin
+  ✾ ${prefix}infogc
   
   *❒ Owner Menu ❒*
   > evalcode
@@ -293,15 +299,11 @@ exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit,
   ✾ ${prefix}addprem
   ✾ ${prefix}delprem
   ✾ ${prefix}broadcast
+  ✾ ${prefix}ban
+  ✾ ${prefix}unban
+  ✾ ${prefix}block
+  ✾ ${prefix}unblock
+  ✾ ${prefix}setprefix multi/nopref
 
-  *THANKS TO*
-  - My God
-  - Baileys-Md (Adiwa Jshing)
-  - @irfann._x (Iyan)
-  - @arsrfi.jpg (Arasya)
-  - M Hadi Firmansya (Hadi Api)
-  - @melcanz_ (Amel)
-  - @${setting.Instagram} (Owner)
-  - @chris.tianid (Christian ID)
-  - @hardianto.xyz (Anto)`
+*${setting.botName} Version 2.0.0*`
 }
