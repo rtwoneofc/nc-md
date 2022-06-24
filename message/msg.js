@@ -660,7 +660,7 @@ case prefix+'delete':
   conn.sendMessage(from, { delete: { fromMe: true, id: quotedMsg.id, remoteJid: from }})
   break
 case prefix+'menu':
-  var teks = `${ucapanWaktu} kak *${pushname !== undefined ? pushname : 'No Detect Name'}* 
+  var teks = `${ucapanWaktu} kak *${pushname !== undefined ? pushname : 'No Detect Name'}*
 
 Tanggal : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
 Waktu : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}

@@ -22,7 +22,7 @@ function toCommas(x) {
 exports.allmenu = (sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount) => {
 	return `*── 「 ${setting.botName} 」 ──*
 	
-  ${ucapanWaktu} kak *${pushname !== undefined ? pushname : 'No Detect Name'}* 👋
+${ucapanWaktu} kak *${pushname !== undefined ? pushname : 'No Detect Name'}* 👋
 
 Tanggal : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
 Waktu : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}
