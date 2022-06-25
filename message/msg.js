@@ -43,6 +43,7 @@ const { isLimit, limitAdd, getLimit, giveLimit, addBalance, kurangBalance, getBa
 const { isTicTacToe, getPosTic } = require("../lib/tictactoe");
 const { addPlayGame, getJawabanGame, isPlayGame, cekWaktuGame, getGamePosi } = require("../lib/game");
 const { addBanned, unBanned, BannedExpired, cekBannedUser } = require("../lib/banned");
+const { addAfkUser, checkAfkUser, getAfkReason, getAfkTime, getAfkId, getAfkPosition } = require("../lib/afk");
 const tictac = require("../lib/tictac");
 const _prem = require("../lib/premium");
 const fs = require ("fs");
@@ -150,10 +151,12 @@ let limit = JSON.parse(fs.readFileSync('./database/limit.json'));
 let glimit = JSON.parse(fs.readFileSync('./database/glimit.json'));
 let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let antiwame = JSON.parse(fs.readFileSync('./database/antiwame.json'));
+let mute = JSON.parse(fs.readFileSync('./database/mute.json'));
+let afk = JSON.parse(fs.readFileSync('./database/afk.json'));
 
 moment.tz.setDefault("Asia/Jakarta").locale("id");
 
-module.exports = async(conn, msg, m, setting, store) => {
+module.exports = async(conn, msg, m, setting, store, _afk) => {
 	try {
 		let { ownerNumber, ownerName, botName, gamewaktu, limitCount } = setting
 		let { allmenu } = require('./help')
@@ -197,6 +200,8 @@ module.exports = async(conn, msg, m, setting, store) => {
 		const isUser = pendaftar.includes(sender)
 		const isPremium = isOwner ? true : _prem.checkPremiumUser(sender, premium)
 		const isBan = cekBannedUser(sender, ban)
+		const isMuted = isGroup ? mute.includes(from) : false
+        const isAfkOn = checkAfkUser(sender, afk)
 		const isAntiLink = isGroup ? antilink.includes(from) : false
         const isAntiWame = isGroup ? antiwame.includes(from) : false
 		const gcounti = setting.gcount
@@ -204,7 +209,7 @@ module.exports = async(conn, msg, m, setting, store) => {
 
         const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "41798898139-1429460331@g.us","inviteCode": "m","groupName": "Izumi Bot", "caption": `� ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "41798898139-1429460331@g.us" } : {}) },message: { "videoMessage": { "title":`*AUTO DOWNLOAD AUDIO YOUTUBE*`, "h": `Hmm`,'seconds': '100000000', 'caption': `*AUTO DOWNLOAD AUDIO YOUTUBE*`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
-    const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `41798898139-1429460331@g.us` } : {}) },message: { "videoMessage": { "title":`IZUMI BOT MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`} `, "h": `Hmm`,'seconds': '100000000', 'caption': `IZUMI MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`} `, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+    const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `41798898139-1429460331@g.us` } : {}) },message: { "videoMessage": { "title":`IZUMI BOT MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, "h": `Hmm`,'seconds': '100000000', 'caption': `IZUMI MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Hidetag Cuy!`,jpegThumbnail: fs.readFileSync(setting.pathimg)}}}
 		const mentionByTag = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.mentionedJid : []
                 const mentionByReply = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.participant || "" : ""
@@ -435,6 +440,38 @@ module.exports = async(conn, msg, m, setting, store) => {
     // Banned
         if (isBan) return
         BannedExpired(ban)
+        
+        // Mute
+        if (isMuted){
+            if (!isGroupAdmins && !isOwner) return
+            if (chats.toLowerCase().startsWith(prefix+'unmute')){
+                let anu = mute.indexOf(from)
+                mute.splice(anu, 1)
+                fs.writeFileSync('./database/mute.json', JSON.stringify(mute))
+                reply(`Bot telah diunmute di group ini`)
+            }
+        }
+        
+        // Afk
+        if (isGroup) {
+            if (mentioned.length !== 0){
+                for (let ment of mentioned) {
+                    if (checkAfkUser(ment, afk)) {
+                        const getId = getAfkId(ment, afk)
+                        const getReason = getAfkReason(getId, afk)
+                        const getTime = Date.now() - getAfkTime(getId, afk)
+                        const heheh = ms(getTime)
+                        await mentions(`*「 AFK MODE 」*\n\n*Sssttt! Orangnya lagi AFK, jangan diganggu!*\n\n*Nama :* @${ment.split('@')[0]}\n*Alasan :* ${getReason}\n*Sejak :* ${heheh.hours} \`\`\`Jam, ${heheh.minutes} Menit, ${heheh.seconds} Detik lalu\`\`\``, [ment], true)
+                        sendMess(ment, `Ada yang mencari anda saat anda offline\n\nNama : ${pushname}\nNomor : wa.me/${sender.split("@")[0]}\nIn Group : ${groupName}\nPesan : ${chats}`)
+                    }
+                }
+            }
+            if (checkAfkUser(sender, afk)) {
+                afk.splice(getAfkPosition(sender, afk), 1)
+                fs.writeFileSync('./database/afk.json', JSON.stringify(afk))
+                await mentions(`@${sender.split('@')[0]} telah kembali`, [sender], true)
+            }
+        }
         
 		// Tictactoe
 		if (isTicTacToe(from, tictactoe)) tictac(chats, prefix, tictactoe, from, sender, reply, mentions, addBalance, balance)
@@ -2102,22 +2139,33 @@ case prefix+'tebakkimia':
 			// Group Menu
 case prefix+'antilink':
    if (!isGroup) return reply(mess.OnlyGrup)
-				if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Mode Antilink Silakan Pilih On/Off*\n\n`
  conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilink, footer: 'ANTILINK', mentions: [sender]} )  
  break
 case prefix+'antiwame':
    if (!isGroup) return reply(mess.OnlyGrup)
-				if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Mode Antiwame Silakan Pilih On/Off*\n\n`
  conn.sendMessage(from, { text: teks, templateButtons: buttonsAntiwame, footer: 'ANTIWAME', mentions: [sender]} )  
  break
 case prefix+'group': case prefix+'grup':
    if (!isGroup) return reply(mess.OnlyGrup)
-				if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Setting Group Silakan Pilih Open/Close*\n\n`
  conn.sendMessage(from, { text: teks, templateButtons: buttonsGroup, footer: 'SETTING GROUP', mentions: [sender]} )  
  break
+case prefix+'afk':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (isAfkOn) return reply('afk sudah diaktifkan sebelumnya')
+                if (body.slice(150)) return reply('Alasanlu kepanjangan')
+                let reason = body.slice(5) ? body.slice(5) : 'Nothing.'
+                addAfkUser(sender, Date.now(), reason, afk)
+                mentions(`*Nama :* @${sender.split('@')[0]} sedang afk\n*Alasan :* ${reason}`, [sender], true)
+                break
 			case prefix+'linkgrup': case prefix+'link': case prefix+'linkgc':
 			    if (!isGroup) return reply(mess.OnlyGrup)
 				if (!isBotGroupAdmins) return reply(mess.BotAdmin)
@@ -2311,6 +2359,15 @@ case prefix+'add':
       reply(`Kirim perintah ${command} nomer atau balas pesan orang yang ingin dimasukkan kedalam grup`)
     }
     break
+case prefix+'mute':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (isMuted) return reply(`udah mute`)
+                mute.push(from)
+                fs.writeFileSync('./database/mute.json', JSON.stringify(mute))
+                reply(`Bot berhasil dimute di chat ini`)
+                break
 case prefix+'antilinka':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)

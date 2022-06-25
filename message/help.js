@@ -260,6 +260,8 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ✾ ${prefix}bisakah *Query*
   ✾ ${prefix}cekme
   ✾ ${prefix}dadu
+  ✾ ${prefix}truth
+  ✾ ${prefix}dare
   
   *❒ Payment & Bank ❒*
   ✾ ${prefix}buylimit *Jumlah*
@@ -270,6 +272,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ✾ ${prefix}topbalance
 
   *❒ Group Menu ❒*
+  ✾ ${prefix}afk *alasan*
   ✾ ${prefix}antilink
   ✾ ${prefix}antiwame
   ✾ ${prefix}linkgrup
@@ -285,6 +288,8 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ✾ ${prefix}demote *@tag*
   ✾ ${prefix}listadmin
   ✾ ${prefix}infogc
+  ✾ ${prefix}mute
+  ✾ ${prefix}unmute
   
   *❒ Owner Menu ❒*
   > evalcode
