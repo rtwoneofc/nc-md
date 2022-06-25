@@ -79,7 +79,6 @@ const numown = "0859-2116-5857" // Ganti Nomor Kalian
 const nameowner = "Christian" // Ganti Nama Kalian
 const footer = "Izumi MD 2022" // Ganti Nama Bot Kalian
 const capt = "*By Izumi Bot MD*" // Ganti Nama Bot Kalian
-const grup = "https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq" // Ganti Link Group Kalian
 const nomorown = "https://wa.me/6285921165857" // Ganti Nomor Kalian
 const note = "*Bot Ini Dalam Pengembangan*\n*Jika Ada Fitur Yang Eror Segera Hub Owner*" // Kalau Mau Ganti Aja
 const namagrup = "Group Izumi MD" // Ubah Nama Group Mu
@@ -153,6 +152,8 @@ let antilink = JSON.parse(fs.readFileSync('./database/antilink.json'));
 let antiwame = JSON.parse(fs.readFileSync('./database/antiwame.json'));
 let mute = JSON.parse(fs.readFileSync('./database/mute.json'));
 let afk = JSON.parse(fs.readFileSync('./database/afk.json'));
+let antiyt = JSON.parse(fs.readFileSync('./database/antilinkyt.json'));
+let antitiktok = JSON.parse(fs.readFileSync('./database/antilinktt.json'));
 
 moment.tz.setDefault("Asia/Jakarta").locale("id");
 
@@ -204,12 +205,14 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
         const isAfkOn = checkAfkUser(sender, afk)
 		const isAntiLink = isGroup ? antilink.includes(from) : false
         const isAntiWame = isGroup ? antiwame.includes(from) : false
+        const isAntiYt = isGroup ? antiyt.includes(from) : false
+        const isAntiTt = isGroup ? antitiktok.includes(from) : false
 		const gcounti = setting.gcount
 		const gcount = isPremium ? gcounti.prem : gcounti.user
 
-        const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "41798898139-1429460331@g.us","inviteCode": "m","groupName": "Izumi Bot", "caption": `� ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
-    const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "41798898139-1429460331@g.us" } : {}) },message: { "videoMessage": { "title":`*AUTO DOWNLOAD AUDIO YOUTUBE*`, "h": `Hmm`,'seconds': '100000000', 'caption': `*AUTO DOWNLOAD AUDIO YOUTUBE*`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
-    const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `41798898139-1429460331@g.us` } : {}) },message: { "videoMessage": { "title":`IZUMI BOT MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, "h": `Hmm`,'seconds': '100000000', 'caption': `IZUMI MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+        const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "120363040646100247@g.us","inviteCode": "m","groupName": "Izumi Bot", "caption": `� ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+    const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "120363040646100247@g.us" } : {}) },message: { "imageMessage": { "title":`*AUTO DOWNLOAD AUDIO YOUTUBE*`, "h": `Hmm`,'seconds': '100000000', 'caption': `*AUTO DOWNLOAD AUDIO YOUTUBE*`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+    const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `120363040646100247@g.us` } : {}) },message: { "imageMessage": { "title":`IZUMI BOT MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, "h": `Hmm`,'seconds': '100000000', 'caption': `IZUMI MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Hidetag Cuy!`,jpegThumbnail: fs.readFileSync(setting.pathimg)}}}
 		const mentionByTag = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.mentionedJid : []
                 const mentionByReply = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.participant || "" : ""
@@ -345,42 +348,50 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		}
 		//{ callButton: { displayText: `Call Owner!`, phoneNumber: `+${ownerNumber}` } },
 		const buttonsDefault = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${setting.grup}` } },
 			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
 			{ quickReplyButton: { displayText: `💰 Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Script`, id: `${prefix}sc` } },
 		]
 		const button5 = [
 			{ callButton: { displayText: `Number Owner`, phoneNumber: `${numown}` } },
-			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
+			{ urlButton: { displayText: `Youtube`, url : `${setting.youtube}` } },
 			{ quickReplyButton: { displayText: `Back To Menu 🔙`, id: `${prefix}menu` } },
 		]
 		const buttonsSewa = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${setting.grup}` } },
+			{ urlButton: { displayText: `Website`, url : `${setting.website}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
-			{ quickReplyButton: { displayText: `Menu`, id: `${prefix}menu` } },
+			{ quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } },
 		]
 		const buttonsMenu = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
+			{ urlButton: { displayText: `${namagrup}`, url : `${setting.grup}` } },
+			{ urlButton: { displayText: `Youtube`, url : `${setting.youtube}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 			{ quickReplyButton: { displayText: `Premium`, id: `${prefix}daftarprem` } },
 		]
 		const buttonsDiamondFF = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
+			{ urlButton: { displayText: `Website`, url : `${setting.website}` } },
 			{ quickReplyButton: { displayText: `Format ID`, id: `${prefix}formatid` } },
 		]
 		const buttonsAllmenu = [
-		    { urlButton: { displayText: `${namagrup}`, url : `${grup}` } },
+		    { urlButton: { displayText: `Youtube`, url : `${setting.youtube}` } },
+		    { urlButton: { displayText: `Website`, url : `${setting.website}` } },
 			{ quickReplyButton: { displayText: `All Menu`, id: `${prefix}allmenu` } },
-			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 			{ quickReplyButton: { displayText: `Thanks To`, id: `${prefix}tqto` } },
 		]
 		const buttonsAntilink = [
 			{ quickReplyButton: { displayText: `Antilink On`, id: `${prefix}antilinka enable` } },
 			{ quickReplyButton: { displayText: `Antilink Off`, id: `${prefix}antilinka disable` } },
+		]
+		const buttonsAntilinkyt = [
+			{ quickReplyButton: { displayText: `Antilink Youtube On`, id: `${prefix}antilinkyta enable` } },
+			{ quickReplyButton: { displayText: `Antilink Youtube Off`, id: `${prefix}antilinkyta disable` } },
+		]
+		const buttonsAntilinktt = [
+			{ quickReplyButton: { displayText: `Antilink Tiktok On`, id: `${prefix}antilinktta enable` } },
+			{ quickReplyButton: { displayText: `Antilink Tiktok Off`, id: `${prefix}antilinktta disable` } },
 		]
 		const buttonsAntiwame = [
 			{ quickReplyButton: { displayText: `Antiwame On`, id: `${prefix}antiwamea enable` } },
@@ -408,6 +419,22 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
         if (isGroup && isAntiLink && !isOwner && !isGroupAdmins && isBotGroupAdmins){
             if (chats.match(`://chat.whatsapp.com`)) {
                 reply(`*[ GROUP LINK DETECTOR ]*\n\nKamu Mengirim Link Grup, Bot Akan Kick Kamu`)
+                number = sender
+      conn.groupParticipantsUpdate(from, [number], "remove")
+            }
+        }
+         // Anti YT
+        if (isGroup && isAntiYt && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+            if (chats.match(`https://youtu.be/`)) {
+                reply(`*[ YOUTUBE LINK DETECTOR ]*\n\nKamu Mengirim Link Grup, Bot Akan Kick Kamu`)
+                number = sender
+      conn.groupParticipantsUpdate(from, [number], "remove")
+            }
+        }
+        // Anti Tiktok
+        if (isGroup && isAntiTt && !isOwner && !isGroupAdmins && isBotGroupAdmins){
+            if (chats.match(`https://vt.tiktok.com/`)) {
+                reply(`*[ TIKTOK LINK DETECTOR ]*\n\nKamu Mengirim Link Grup, Bot Akan Kick Kamu`)
                 number = sender
       conn.groupParticipantsUpdate(from, [number], "remove")
             }
@@ -462,7 +489,7 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
                         const getTime = Date.now() - getAfkTime(getId, afk)
                         const heheh = ms(getTime)
                         await mentions(`*「 AFK MODE 」*\n\n*Sssttt! Orangnya lagi AFK, jangan diganggu!*\n\n*Nama :* @${ment.split('@')[0]}\n*Alasan :* ${getReason}\n*Sejak :* ${heheh.hours} \`\`\`Jam, ${heheh.minutes} Menit, ${heheh.seconds} Detik lalu\`\`\``, [ment], true)
-                        sendMess(ment, `Ada yang mencari anda saat anda offline\n\nNama : ${pushname}\nNomor : wa.me/${sender.split("@")[0]}\nIn Group : ${groupName}\nPesan : ${chats}`)
+                        conn.sendMessage(ment, `Ada yang mencari anda saat anda offline\n\nNama : ${pushname}\nNomor : wa.me/${sender.split("@")[0]}\nIn Group : ${groupName}\nPesan : ${chats}`)
                     }
                 }
             }
@@ -490,7 +517,7 @@ if (chats.startsWith(yutu)) {
             y2mateA(yutu).then( data => {
               conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4'}, {quoted: msg})
               var caption = monospace(`Auto Download Youtube, Pilih Tipe Berikut`)
-              var but = [{buttonId: `${yutu}`, buttonText: { displayText: " File Document" }, type: 1 }, {buttonId: `/ytmp3vn ${yutu}`, buttonText: { displayText: " Voice Not" }, type: 2 }, {buttonId: `/ytmp4 ${yutu}`, buttonText: { displayText: " Video" }, type: 3 }]
+              var but = [{buttonId: `${yutu}`, buttonText: { displayText: "File Document" }, type: 1 }, {buttonId: `/ytmp3vn ${yutu}`, buttonText: { displayText: "Voice Not" }, type: 2 }, {buttonId: `/ytmp4 ${yutu}`, buttonText: { displayText: "Video" }, type: 3 }]
               conn.sendMessage(sender, { text: caption, buttons: but, footer: "Silahkan Pilih Untuk mengubah Tipe Audio", templateButtons: but }, {quoted: fvideo})
 					  })
             }
@@ -713,7 +740,7 @@ case prefix+'donasiah':
 case prefix+'donasi':
   case prefix+'donate':
   var donasibut = [
-			{ urlButton: { displayText: `Group Izumi Bot`, url : `${grup}` } },
+			{ urlButton: { displayText: `Group Izumi Bot`, url : `${setting.grup}` } },
 			{ quickReplyButton: { displayText: `Aku Ingin Donasi`, id: `${prefix}donasiah` } },
 		]
 var teks = `  │
@@ -858,7 +885,7 @@ case prefix+'claim': //By Christian ID
   reply(`Selamat Anda Mendapatkan ${htgm} Balance`)
   break
 case prefix+'groupizumi':
-  reply(`Group Izumi Bot\n${grup}`)
+  reply(`Group Izumi Bot\n${setting.grup}`)
   break
 			case prefix+'speed':
 			  reply("Testing Speed...")
@@ -869,26 +896,29 @@ case prefix+'groupizumi':
 case prefix+'infobot':
   case prefix+'inforobot':
     case prefix+'info':
-      var caption = `*[ INFO IZUMI BOT ]*
+      var caption = `*[ Info ${botName} ]*
 
-*Nama Bot :* Izumi - MD
-*Name Owner :* Christian ID
-*Nomor Bot :* wa.me/${nobot}
+Haii, aku adalah *${botName}*, Yang bisa membantu anda untuk membuat stiker dan download lagu yang di udah di program oleh Pemilik Aku *${ownerName}* aku mempunyai lebih dari 100 fitur yang bisa kau gunakan dengan gratis, kamu Bisa melihat fitur fitur tersebut dengan cara ketik /menu.
+
+*Nama Bot :* ${botName}
+*Name Owner :* ${ownerName}
+*Nomor Bot :* wa.me/${botNumber}
 *Nomor Owner :* wa.me/${ownerNumber}
 *Engine :* NodeJs
 *Status :* Aktif
 *Aktif Selama :* ${runtime(process.uptime())}
+*Auto Download :* Aktif
 
 ===================
 Thanks To
 - Riyan
 - Arasya
-- Christian ID
+- ${ownerName}
 - Amel
 - Hardianto
 - Febri`
 
-conn.sendMessage(from, {caption: caption, location: fs.readFileSync('media/chris2.jpg')}, {quoted: msg})
+conn.sendMessage(from, {caption: caption, image: fs.readFileSync('media/chris2.jpg')}, {quoted: fake})
 break
 case prefix+'thanksto':
 case prefix+'tqto':
@@ -1153,7 +1183,7 @@ case prefix+'ban':
 			{ quickReplyButton: { displayText: `Ubah Ke Audio`, id: `${prefix}tiktokaudio ${q}` } },
 				]
 				reply(mess.wait)
-				conn.sendMessage(from, { caption: `Succes Download Video Tiktok, Thanks For Using Izumi-Bot!`, video: {url: data.nowm}, templateButtons: tidtod, footer: `${footer}`, mentions: [sender]} )
+				conn.sendMessage(from, { caption: `Succes Download Video Tiktok, Thanks For Using Izumi-Bot!`, video: {url: data.nowm}, templateButtons: tidtod, footer: `Tiktok Downloader`, mentions: [sender]} )
 			}).catch(() => reply(mess.error.api))
 			limitAdd(sender, limit)
 			    break
@@ -1175,8 +1205,8 @@ case prefix+'ban':
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('mediafire')) return reply(mess.error.Iv)
 			    reply(mess.wait)
-					var data = await fetchJson(`https://docs-jojo.herokuapp.com/api/mediafire?url=${q}`)
-					conn.sendMessage(from, { document: { url: data.url }, fileName: `${data.filename}`, mimetype: 'zip' }, { quoted: msg })
+					var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/download/mediafire?url=${q}&apikey=${chrisapi}`)
+					conn.sendMessage(from, { document: { url: result.data.link }, fileName: `${result.data.nama}`, mimetype: 'zip' }, { quoted: msg })
 					limitAdd(sender, limit)
 					break
             case prefix+'play':
@@ -1194,12 +1224,10 @@ case prefix+'ytmp4': case prefix+'mp4':
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('youtu.be') && !args[1].includes('youtube.com')) return reply(mess.error.Iv)
 			    reply(mess.wait)
-			    xfar.Youtube(args[1]).then( data => {
-			      //var teks = `*Youtube Video Downloader*\n\n*≻ Title :* ${data.title}\n*≻ Quality :* ${data.medias[1].quality}\n*≻ Size :* ${data.medias[1].formattedSize}\n*≻ Url Source :* ${data.url}`
-			      var teks = `Succes`
-			      conn.sendMessage(from, { video: { url: data.medias[1].url }, caption: teks }, { quoted: msg })
-			      limitAdd(sender, limit)
-				}).catch(() => reply(mess.error.api))
+			    y2mateV(args[1]).then ( data => {
+			      var capt = monospace(`Title : ${data[0].judul}`)
+			      conn.sendMessage(from, {caption: capt, video: {url: data[0].link}}, {quoted: msg})
+			    }).catch(() => reply(mess.error.api))
 			    break
 /*case prefix+'ytmp3': case prefix+'mp3':
 			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
@@ -1340,7 +1368,7 @@ case prefix+'bc': case prefix+'broadcast':
 		            if (args.length < 2) return reply(`Masukkan isi pesannya`)
                             var data = await store.chats.all()
                             for (let i of data) {
-                               conn.sendMessage(i.id, { text: `*[ IZUMI BROADCAST ]*\n\n${q}` })
+                               conn.sendMessage(i.id, { text: `*[ ${botName} Broadcast ]*\n\n${q}` })
                                await sleep(1000)
                             }
                             break
@@ -2142,7 +2170,21 @@ case prefix+'antilink':
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Mode Antilink Silakan Pilih On/Off*\n\n`
- conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilink, footer: 'ANTILINK', mentions: [sender]} )  
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilink, footer: 'ANTILINK' }, mentions: [sender]} )  
+ break
+case prefix+'antilinkyt':
+   if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+ var teks = `\n*Mode Antilink Youtube Silakan Pilih On/Off*\n\n`
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinkyt, footer: 'ANTILINK YOUTUBE' }, mentions: [sender]} )  
+ break
+case prefix+'antilinktt':
+   if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+ var teks = `\n*Mode Antilink Tiktok Silakan Pilih On/Off*\n\n`
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinktt, footer: 'ANTILINK TIKTOK' }, mentions: [sender]} )  
  break
 case prefix+'antiwame':
    if (!isGroup) return reply(mess.OnlyGrup)
@@ -2385,6 +2427,44 @@ case prefix+'antilinka':
                     reply('*Antilink grup nonaktif*')
                 } else {
                     reply(`Pilih enable atau disable\nContoh : ${prefix}antilink enable`)
+                }
+                break
+case prefix+'antilinkyta':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilinkyt enable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isAntiYt) return reply(`Udah aktif`)
+                    antiyt.push(from)
+					fs.writeFileSync('./database/antilinkyt.json', JSON.stringify(antiyt))
+					reply('*Antilink Youtube aktif*')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = antiyt.indexOf(from)
+                    antiyt.splice(anu, 1)
+                    fs.writeFileSync('./database/antilinkyt.json', JSON.stringify(antiyt))
+                    reply('*Antilink Youtube nonaktif*')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilinkyt enable`)
+                }
+                break
+case prefix+'antilinktta':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable\nContoh : ${prefix}antilinktt enable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isAntiTt) return reply(`Udah aktif`)
+                    antitiktok.push(from)
+					fs.writeFileSync('./database/antilinktt.json', JSON.stringify(antitiktok))
+					reply('*Antilink Tiktok aktif*')
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = antitiktok.indexOf(from)
+                    antitiktok.splice(anu, 1)
+                    fs.writeFileSync('./database/antilinktt.json', JSON.stringify(antitiktok))
+                    reply('*Antilink Tiktok nonaktif*')
+                } else {
+                    reply(`Pilih enable atau disable\nContoh : ${prefix}antilinktt enable`)
                 }
                 break
 case prefix+'antiwamea':
