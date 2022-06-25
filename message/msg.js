@@ -2170,21 +2170,21 @@ case prefix+'antilink':
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Mode Antilink Silakan Pilih On/Off*\n\n`
- conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilink, footer: 'ANTILINK' }, mentions: [sender]} )  
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilink, footer: 'ANTILINK', mentions: [sender]} )  
  break
 case prefix+'antilinkyt':
    if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Mode Antilink Youtube Silakan Pilih On/Off*\n\n`
- conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinkyt, footer: 'ANTILINK YOUTUBE' }, mentions: [sender]} )  
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinkyt, footer: 'ANTILINK YOUTUBE', mentions: [sender]} )  
  break
 case prefix+'antilinktt':
    if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
  var teks = `\n*Mode Antilink Tiktok Silakan Pilih On/Off*\n\n`
- conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinktt, footer: 'ANTILINK TIKTOK' }, mentions: [sender]} )  
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinktt, footer: 'ANTILINK TIKTOK', mentions: [sender]} )  
  break
 case prefix+'antiwame':
    if (!isGroup) return reply(mess.OnlyGrup)
