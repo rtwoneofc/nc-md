@@ -279,13 +279,13 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
            url = url.videos[0].url
            hxz.youtube(url).then(async(data) => {
              /*var button = [{ buttonId: `/ytmp3 ${url}`, buttonText: { displayText: `🎵 Audio (${data.size_mp3})` }, type: 1 }, { buttonId: `/ytmp4 ${url}`, buttonText: { displayText: `🎥 Video (${data.size})` }, type: 1 }]*/
-             /*conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, location: { jpegThumbnail: await getBuffer(data.thumb) }, buttons: button, footer: 'Pilih Salah Satu Button Dibawah⬇️', mentions: [sender] })*/
+             /*conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, image: { jpegThumbnail: await getBuffer(data.thumb) }, buttons: button, footer: 'Pilih Salah Satu Button Dibawah⬇️', mentions: [sender] })*/
            var button = [
 		        	{ urlButton: { displayText: `Source`, url : `https://youtu.be/${data.id}` } },
 	         		{ quickReplyButton: { displayText: `🎵 Audio (${data.size_mp3})`, id: `${prefix}ytmp3 ${url}` } },
 	         		{ quickReplyButton: { displayText: `🎥 Video (${data.size})`, id: `${prefix}ytmp4 ${url}` } },
 		]
-             conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, location: { jpegThumbnail: await getBuffer(data.thumb) }, templateButtons: button, footer: 'Pilih Salah Satu Button Dibawah', mentions: [sender]} )
+             conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, image: { jpegThumbnail: await getBuffer(data.thumb) }, templateButtons: button, footer: 'Pilih Salah Satu Button Dibawah', mentions: [sender]} )
            }).catch((e) => {
              conn.sendMessage(from, { text: mess.error.api }, { quoted: msg })
                ownerNumber.map( i => conn.sendMessage(from, { text: `Send Play Error : ${e}` }))
@@ -716,7 +716,7 @@ if (chats.startsWith("@37258266435")){
 			    var teks = allmenu(sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount)
 			    
 				/*conn.sendMessage(from, { react: { text: `👋`, key: msg.key }})*/
-conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsMenu, footer: `${footer}`, mentions: [sender] })
+conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsMenu, footer: `${footer}`, mentions: [sender] })
 				break
 case prefix+'delete':
   case prefix+'d':
@@ -728,11 +728,12 @@ case prefix+'menu':
 
 Tanggal : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
 Waktu : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}
+Runtime : ${runtime(process.uptime())}
 
 saya ${namabot}, bot ini adalah Beta Multi-Device Whatsapp
 
 Note : ${note}`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender] })
 			    break
 case prefix+'donasiah':
   reply(`Jika Ingin Donasi Harap Hubungi Owner\n\nhttps://wa.me/${ownerNumber}`)
@@ -769,7 +770,7 @@ _Yakin kamu mau daftar ke premium?_
 - Rp. 2.000 - 7 Hari
 - Rp. 5.000 - 1 Bulan
 - Rp. 8.000 - 1 Tahun`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/premium.jpg') }, templateButtons: button5, footer: 'DAFTAR PREM UNTUK AKSES FITUR PREMIUM', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/premium.jpg') }, templateButtons: button5, footer: 'DAFTAR PREM UNTUK AKSES FITUR PREMIUM', mentions: [sender] })
 			    break
 //Store Menu By Christian ID
 case prefix+'listff': //By Christian ID
@@ -786,7 +787,7 @@ case prefix+'listff': //By Christian ID
 *_Pembayaran Via : ${via}_*
 
 *Jika Ingin Order Klick Button Dibawah Atau Ketik ${prefix}formatid*`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/ff.jpg') }, templateButtons: buttonsDiamondFF, footer: 'LIST DIAMOND FF', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/ff.jpg') }, templateButtons: buttonsDiamondFF, footer: 'LIST DIAMOND FF', mentions: [sender] })
 			    break
 case prefix+'rekber': //By Christian ID
   var teks = `*[ LIST HARGA REKBER ]*
@@ -799,7 +800,7 @@ case prefix+'rekber': //By Christian ID
  ${rekberf}
  ${rekberg}
  ${rekberh}`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/rekber.jpg') }, templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/rekber.jpg') }, templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
 			    break
 case prefix+'formatid': // By Christian ID
   reply(`*[ FORMAT FF ]*\n\nID Game = \nNick Game = \nJumlah Diamond = \nPembayaran Via = \n\n*Kirim Formulir Ini Ke ${nomor}*`)
@@ -814,7 +815,7 @@ case prefix+'sc': //By Christian ID
 *_Sc Bot Versi 2 Via MediaFire : https://www.mediafire.com/file/l8zoyc38l420wen/ChrisV1.7z/file_*
 
 _Sc Versi 2 Berpassword Syarat : Subscribe https://youtube.com/channel/UCbetUssizXWLgZdDVEFp8Sg Dan Screenshot Kirim Ke Owner_`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
 			    break
 case prefix+'rules': //By Christian ID
   var teks = `*── 「 RULES AND FAQ 」 ──*
@@ -847,7 +848,7 @@ Jika sudah dipahami rules-nya, silakan ketik *${prefix}allmenu* untuk memulai!
 
 Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu juga dalam project pembuatan Izumi Bot
 😖🙏`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/rules.jpg') }, templateButtons: button5, footer: 'PATUHI RULES YANG ADA JANGAN LANGGAR RULES NYA JIKA MELANGGAR ADA AKIBAT NYA', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/rules.jpg') }, templateButtons: button5, footer: 'PATUHI RULES YANG ADA JANGAN LANGGAR RULES NYA JIKA MELANGGAR ADA AKIBAT NYA', mentions: [sender] })
 			    break
 case prefix+'sewabot': //By Christian ID
   var teks = `*── 「 SEWA BOT 」 ──*
@@ -868,7 +869,7 @@ Permanen = ${permanen}
 
 *_Untuk Konfirmasi Saldo Hubungi Owner Silakan Klick Link Di Bawah_*
 *_${nomor}_*`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/sewa.jpg') }, templateButtons: buttonsSewa, footer: `© Sewa Bot ${nameown}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/sewa.jpg') }, templateButtons: buttonsSewa, footer: `© Sewa Bot ${nameown}`, mentions: [sender] })
 			    break
 case prefix+'runtime':
 case prefix+'tes':
@@ -877,7 +878,7 @@ case prefix+'tes':
 
 *[ STATUS BOT ONLINE ]*
 *_Runtime : ${runtime(process.uptime())}_*`
-			    conn.sendMessage(from, { caption: teks, location: { jpegThumbnail: fs.readFileSync('media/tes.jpg') }, templateButtons: buttonsSewa, footer: `© Bot By ${nameown}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/tes.jpg') }, templateButtons: buttonsSewa, footer: `© Bot By ${nameown}`, mentions: [sender] })
 			    break
 case prefix+'claim': //By Christian ID
   var htgm = randomNomor(500, 550)
@@ -885,7 +886,7 @@ case prefix+'claim': //By Christian ID
   reply(`Selamat Anda Mendapatkan ${htgm} Balance`)
   break
 case prefix+'groupizumi':
-  reply(`Group Izumi Bot\n${setting.grup}`)
+  reply(`Group ${setting.botName}\n${setting.grup}`)
   break
 			case prefix+'speed':
 			  reply("Testing Speed...")
@@ -2491,7 +2492,7 @@ case prefix+'antiwamea':
                 balance.sort((a, b) => (a.balance < b.balance) ? 1 : -1)
                 let top = '*── 「 TOP BALANCE 」 ──*\n\n'
                 let arrTop = []
-				var total = 20
+				var total = 10
 				if (balance.length < 10) total = balance.length
                 for (let i = 0; i < total; i ++){
                     top += `${i + 1}. @${balance[i].id.split("@")[0]}\n=> Balance : $${balance[i].balance}\n\n`
@@ -2696,18 +2697,6 @@ case prefix+'goldenroses': // By Christian ID
   reply("Tunggu Sebentar Sedang Membuat Makernya Sekitar 1 Menit Kurang")
 conn.sendMessage(from, {caption: `${capt}`, image: { url: `https://hadi-api.herokuapp.com/api/photoxy/golden-roses?text=${q}`}}, {quoted: msg})
 limitAdd(sender, limit)
-break
-case prefix+'youtubegold': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/maker/goldbutton?text=${q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {caption: `${capt}`, image: {url: data.result}}, {quoted: msg})
-break
-case prefix+'youtubesilver': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/maker/silverbutton?text=${q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {caption: `${capt}`,  image: {url: data.result}}, {quoted: msg})
 break
 case prefix+'thunder': // By Christian ID
 if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
@@ -3026,37 +3015,6 @@ case prefix+'woodheart':
 conn.sendMessage(from, {caption: `${capt}`, image: { url: `https://hadi-api.herokuapp.com/api/photoxy/wood-hearth?text=${q}`}}, {quoted: msg})
 limitAdd(sender, limit)
 break
-//PHOTO OXY BY CHRISTIAN ID//
-case prefix+'army': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/photooxy/army?text=${q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {image: {url: data.result}}, {quoted: msg})
-break
-case prefix+'matrix': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/maker/matrix?text=${q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {image: {url: data.result}}, {quoted: msg})
-break
-case prefix+'butterfly': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/photooxy/butterfly?text={q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {image: {url: data.result}}, {quoted: msg})
-break
-case prefix+'burnpapper': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/photooxy/burn-papper?text=${q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {image: {url: data.result}}, {quoted: msg})
-break
-case prefix+'glitcheffect': // By Christian ID
-if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/photooxy/message-under-grass?text={q}&apikey=${chrisapi}`)
-reply(mess.wait)
-conn.sendMessage(from, {image: {url: data.result}}, {quoted: msg})
-break
 case prefix+'say': case prefix+'tts':
   if (args.length < 2) return reply(`Kirim perintah ${command} Text`)
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
@@ -3255,7 +3213,7 @@ case prefix+'ghstalk': //By Christian ID
     if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
     if (args.length < 2) return reply(`Kirim perintah ${command} Username\nContoh : ${command} chris.tianid`)
     var data = await fetchJson(`https://hadi-api.herokuapp.com/api/githubstalk?username=${q}`)
-    var caption = `*[ GITHUB STALK ]*\n\n Bio : ${data.result.bio}\n Company : ${data.result.company}\n Email : ${data.result.email}\n Twiter Username : ${data.result.twiter_username}\n Public Repo : ${data.result.public_repo}\n Public Gists : ${data.result.public_gists}\n Followers : ${data.result.follower}\n Following : ${data.result.following}\n Location : ${data.result.location}\n Type : ${data.result.Type}\n\n${readmore} *By Izumi Bot*`
+    var caption = `*[ GITHUB STALK ]*\n\nBio : ${data.result.bio}\nCompany : ${data.result.company}\nEmail : ${data.result.email}\nTwiter Username : ${data.result.twiter_username}\nPublic Repo : ${data.result.public_repo}\nPublic Gists : ${data.result.public_gists}\nFollowers : ${data.result.follower}\nFollowing : ${data.result.following}\nLocation : ${data.result.location}\nType : ${data.result.Type}\n\n${readmore} *By Izumi Bot*`
     conn.sendMessage(from, {caption: caption, image: {url: data.result.avatar}}, {quoted: msg})
     limitAdd(sender, limit)
     break

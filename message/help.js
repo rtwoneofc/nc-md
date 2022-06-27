@@ -128,8 +128,6 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}skytext *text*
   ❑ ${prefix}pornhub *text1*| *text2*
   ❑ ${prefix}avengers *text*| *text2*
-  ❑ ${prefix}youtubegold *text*
-  ❑ ${prefix}youtubesilver *text*
   ❑ ${prefix}mascotbear *text*
   ❑ ${prefix}goldenroses *text*
   ❑ ${prefix}hallowen *text*
@@ -172,22 +170,6 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}3d *text*
   ❑ ${prefix}logowolf *text*
   ❑ ${prefix}logowolf2 *text*
-  
-  *Photo Oxy Menu ❒ (Eror)*
-  ❑ ${prefix}coffecup *text*
-  ❑ ${prefix}glitch *text1*| *text2*
-  ❑ ${prefix}undergrass *text*
-  ❑ ${prefix}lovetext *text*
-  ❑ ${prefix}lovetext2 *text*
-  ❑ ${prefix}army *text*
-  ❑ ${prefix}matrix *text*
-  ❑ ${prefix}pubg *text*
-  ❑ ${prefix}breakwall *text*
-  ❑ ${prefix}butterfly *text*
-  ❑ ${prefix}narutotext *text*
-  ❑ ${prefix}smoke *text*
-  ❑ ${prefix}burnpapper *text*
-  ❑ ${prefix}doubleheart *text*
   
   *Other Menu*
   ❑ ${prefix}ssweb *Link*
