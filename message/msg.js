@@ -1138,7 +1138,7 @@ case prefix+'ban':
 			    exec(`ffmpeg -i ./${rand1} ./${rand2}`, (err) => {
 			      fs.unlinkSync(`./${rand1}`)
 			      if (err) return reply(mess.error.api)
-			      conn.sendMessage(from, { image: { url: `./${rand2}` }}, { quoted: msg })
+			      conn.sendMessage(from, { image: { url: `./${rand2}` }}, { quoted: fake })
 			      limitAdd(sender, limit)
 				  fs.unlinkSync(`./${rand2}`)
 			    })
@@ -1146,7 +1146,7 @@ case prefix+'ban':
 			    reply(mess.wait)
 		          webp2mp4File(`./${rand1}`).then( data => {
 			       fs.unlinkSync(`./${rand1}`)
-			       conn.sendMessage(from, { video: { url: data.result }}, { quoted: msg })
+			       conn.sendMessage(from, { video: { url: data.result }}, { quoted: fake })
 			       limitAdd(sender, limit)
 				  })
 			    }
@@ -2530,11 +2530,11 @@ case prefix+'antiwamea':
                 if (args[1].includes('-')) return reply(`Jangan menggunakan -`)
                 if (isNaN(args[1])) return reply(`Harus berupa angka`)
                 if (args[1].toLowerCase() === 'infinity') return reply(`Yahaha saya ndak bisa di tipu`)
-                let ane = Number(parseInt(args[1]) * 100)
+                let ane = Number(parseInt(args[1]) * 150)
                 if (getBalance(sender, balance) < ane) return reply(`Balance kamu tidak mencukupi untuk pembelian ini`)
                 kurangBalance(sender, ane, balance)
                 givegame(sender, parseInt(args[1]), glimit)
-                reply(monospace(`Pembeliaan game limit sebanyak ${args[1]} berhasil\n\nSisa Balance : $${toCommas(getBalance(sender, balance))}\nSisa Game Limit : ${cekGLimit(sender, gcount, glimit)}/${gcount}`))
+                reply(monospace(`Pembeliaan game limit sebanyak ${args[1]} berhasil\n\nSisa Balance : $${getBalance(sender, balance)}\nSisa Game Limit : ${cekGLimit(sender, gcount, glimit)}/${gcount}`))
             }
                 break
 			case prefix+'limit': case prefix+'balance':
