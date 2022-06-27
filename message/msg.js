@@ -1285,9 +1285,9 @@ limitAdd(sender, limit)
                 if (isNaN(args[1])) return reply(`Hanya support angka! pilih angka 1 sampai 10\nContoh : ${command} 2`)
                 if (args[1] > arrey.length) return reply(`Urutan Hasil *${prefix}ytsearch* Hanya Sampai *${arrey.length}*`)
 			    reply(mess.wait)
-			    xfar.Youtube(`https://youtube.com/watch?v=${arrey[args[1] -1]}`).then( data => {
-			      var teks = `*Youtube Video Downloader*\n\n*≻ Title :* ${data.title}\n*≻ Quality :* ${data.medias[1].quality}\n*≻ Size :* ${data.medias[1].formattedSize}\n*≻ Url Source :* ${data.url}\n\n_wait a minute sending media..._`
-			      conn.sendMessage(from, { video: { url: data.medias[1].url }, caption: teks }, { quoted: msg })
+			    y2mateV(`https://youtube.com/watch?v=${arrey[args[1] -1]}`).then( data => {
+			      var capt = monospace(`Judul : ${data[0].judul}`)
+			      conn.sendMessage(from, { video: { url: data[0].link }, caption: capt }, { quoted: msg })
 			       limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
 		        break
@@ -1304,9 +1304,7 @@ limitAdd(sender, limit)
                 if (args[1] > arrey.length) return reply(`Urutan Hasil *${prefix}ytsearch* Hanya Sampai *${arrey.length}*`)
 			    reply(mess.wait)
 			    y2mateA(`https://youtube.com/watch?v=${arrey[args[1] -1]}`).then( data => {
-			      var teks = `*Youtube Audio Downloader*\n\n*≻ Title :* ${data[0].judul}\n*≻ Quality :* ${data[0].quality}\n*≻ Size :* ${data.medias[0].size}\n\n_wait a minute sending media..._`
-			      conn.sendMessage(from, { image: { url: data[0].thumbnail }, caption: teks }, { quoted: msg })
-			      conn.sendMessage(from, { document: { url: data[0].link }, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3' }, { quoted: msg })
+			      conn.sendMessage(from, {document: {url: data[0].link}, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3'}, {quoted: msg})
 			      limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
 			    break
