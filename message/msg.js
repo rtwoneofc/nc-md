@@ -882,7 +882,7 @@ _5. Russia / +7 = 3K_
 \`\`\`TIDAK MENERIMA VIPUL
 SCAN QR DI ATAS PEMBAYARAN BISA MELAUI = GOPAY - OVO - DANA - SHOOPEPAY - DLL\`\`\``
 var kode = [{buttonId: `/owner`, buttonText: { displayText: "Owner" }, type: 1 }]
-				conn.sendMessage(from, { caption: teks, image: { url: `https://bit.ly/3OozGwE` }, buttons: kode, footer: 'Silakan Hubungi Owner Untuk Melanjutkan Pesananmu' }, { quoted: fgclink })
+				conn.sendMessage(from, { caption: teks, image: { url: `https://bit.ly/3OozGwE` }, buttons: kode, footer: 'Silakan Hubungi Owner Untuk Melanjutkan Pesananmu' }, { quoted: fake })
 				break
 case prefix+'runtime':
 case prefix+'tes':
