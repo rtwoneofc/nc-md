@@ -278,17 +278,15 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
            var url = await yts(query)
            url = url.videos[0].url
            hxz.youtube(url).then(async(data) => {
-             /*var button = [{ buttonId: `/ytmp3 ${url}`, buttonText: { displayText: `🎵 Audio (${data.size_mp3})` }, type: 1 }, { buttonId: `/ytmp4 ${url}`, buttonText: { displayText: `🎥 Video (${data.size})` }, type: 1 }]*/
-             /*conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, image: { jpegThumbnail: await getBuffer(data.thumb) }, buttons: button, footer: 'Pilih Salah Satu Button Dibawah⬇️', mentions: [sender] })*/
            var button = [
 		        	{ urlButton: { displayText: `Source`, url : `https://youtu.be/${data.id}` } },
-	         		{ quickReplyButton: { displayText: `🎵 Audio (${data.size_mp3})`, id: `${prefix}ytmp3 ${url}` } },
-	         		{ quickReplyButton: { displayText: `🎥 Video (${data.size})`, id: `${prefix}ytmp4 ${url}` } },
+	         		{ quickReplyButton: { displayText: ` Audio (${data.size_mp3})`, id: `${prefix}ytmp3 ${url}` } },
+	         		{ quickReplyButton: { displayText: ` Video (${data.size})`, id: `${prefix}ytmp4 ${url}` } },
 		]
-             conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, image: { jpegThumbnail: await getBuffer(data.thumb) }, templateButtons: button, footer: 'Pilih Salah Satu Button Dibawah', mentions: [sender]} )
+             conn.sendMessage(from, { caption: `*Title :* ${data.title}\n*Quality :* ${data.quality}\n*Url :* https://youtu.be/${data.id}`, image: {url: data.thumb}, templateButtons: button, footer: 'Pilih Salah Satu Button Dibawah', mentions: [sender]} )
            }).catch((e) => {
              conn.sendMessage(from, { text: mess.error.api }, { quoted: msg })
-               ownerNumber.map( i => conn.sendMessage(from, { text: `Send Play Error : ${e}` }))
+               ownerNumber.map( i => conn.sendMessage(ownerNumber, { text: `Send Play Error : ${e}` }))
            })
         }
 		const isUrl = (url) => {
@@ -716,7 +714,7 @@ if (chats.startsWith("@37258266435")){
 			    var teks = allmenu(sender, prefix, pushname, isOwner, isPremium, balance, limit, limitCount, glimit, gcount)
 			    
 				/*conn.sendMessage(from, { react: { text: `👋`, key: msg.key }})*/
-conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsMenu, footer: `${footer}`, mentions: [sender] })
+conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: buttonsMenu, footer: `${footer}`, mentions: [sender]} )
 				break
 case prefix+'delete':
   case prefix+'d':
@@ -733,7 +731,7 @@ Runtime : ${runtime(process.uptime())}
 saya ${namabot}, bot ini adalah Beta Multi-Device Whatsapp
 
 Note : ${note}`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender]} )
 			    break
 case prefix+'donasiah':
   reply(`Jika Ingin Donasi Harap Hubungi Owner\n\nhttps://wa.me/${ownerNumber}`)
@@ -770,7 +768,7 @@ _Yakin kamu mau daftar ke premium?_
 - Rp. 2.000 - 7 Hari
 - Rp. 5.000 - 1 Bulan
 - Rp. 8.000 - 1 Tahun`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/premium.jpg') }, templateButtons: button5, footer: 'DAFTAR PREM UNTUK AKSES FITUR PREMIUM', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/premium.jpg'), templateButtons: button5, footer: 'DAFTAR PREM UNTUK AKSES FITUR PREMIUM', mentions: [sender] })
 			    break
 //Store Menu By Christian ID
 case prefix+'listff': //By Christian ID
@@ -787,7 +785,7 @@ case prefix+'listff': //By Christian ID
 *_Pembayaran Via : ${via}_*
 
 *Jika Ingin Order Klick Button Dibawah Atau Ketik ${prefix}formatid*`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/ff.jpg') }, templateButtons: buttonsDiamondFF, footer: 'LIST DIAMOND FF', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/ff.jpg'), templateButtons: buttonsDiamondFF, footer: 'LIST DIAMOND FF', mentions: [sender] })
 			    break
 case prefix+'rekber': //By Christian ID
   var teks = `*[ LIST HARGA REKBER ]*
@@ -800,7 +798,7 @@ case prefix+'rekber': //By Christian ID
  ${rekberf}
  ${rekberg}
  ${rekberh}`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/rekber.jpg') }, templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/rekber.jpg'), templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
 			    break
 case prefix+'formatid': // By Christian ID
   reply(`*[ FORMAT FF ]*\n\nID Game = \nNick Game = \nJumlah Diamond = \nPembayaran Via = \n\n*Kirim Formulir Ini Ke ${nomor}*`)
@@ -815,7 +813,7 @@ case prefix+'sc': //By Christian ID
 *_Sc Bot Versi 2 Via MediaFire : https://www.mediafire.com/file/l8zoyc38l420wen/ChrisV1.7z/file_*
 
 _Sc Versi 2 Berpassword Syarat : Subscribe https://youtube.com/channel/UCbetUssizXWLgZdDVEFp8Sg Dan Screenshot Kirim Ke Owner_`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/chris2.jpg') }, templateButtons: button5, footer: `${footer}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: button5, footer: `${footer}`, mentions: [sender] })
 			    break
 case prefix+'rules': //By Christian ID
   var teks = `*── 「 RULES AND FAQ 」 ──*
@@ -844,11 +842,11 @@ Sanksi: *PERMANENT BLOCK*
 
 Jika sudah dipahami rules-nya, silakan ketik *${prefix}allmenu* untuk memulai!
 
-⚠️ Segala kebijakan dan ketentuan Izumi Bot di pegang oleh owner dan segala perubahan kebijakan, sewaktu waktu owner berhak mencabut, memblokir user(*﹏*)
+⚠️ Segala kebijakan dan ketentuan ${setting.botName} di pegang oleh owner dan segala perubahan kebijakan, sewaktu waktu owner berhak mencabut, memblokir user(*﹏*)
 
-Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu juga dalam project pembuatan Izumi Bot
+Arigatou Gozaimasu! Untuk kalian user ramah dan Beberapa orang yg ikut membantu juga dalam project pembuatan ${setting.botName}
 😖🙏`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/rules.jpg') }, templateButtons: button5, footer: 'PATUHI RULES YANG ADA JANGAN LANGGAR RULES NYA JIKA MELANGGAR ADA AKIBAT NYA', mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/rules.jpg'), templateButtons: button5, footer: 'PATUHI RULES YANG ADA JANGAN LANGGAR RULES NYA JIKA MELANGGAR ADA AKIBAT NYA', mentions: [sender] })
 			    break
 case prefix+'sewabot': //By Christian ID
   var teks = `*── 「 SEWA BOT 」 ──*
@@ -869,7 +867,7 @@ Permanen = ${permanen}
 
 *_Untuk Konfirmasi Saldo Hubungi Owner Silakan Klick Link Di Bawah_*
 *_${nomor}_*`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/sewa.jpg') }, templateButtons: buttonsSewa, footer: `© Sewa Bot ${nameown}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/sewa.jpg'), templateButtons: buttonsSewa, footer: `© Sewa Bot ${nameown}`, mentions: [sender] })
 			    break
 case prefix+'runtime':
 case prefix+'tes':
@@ -878,7 +876,7 @@ case prefix+'tes':
 
 *[ STATUS BOT ONLINE ]*
 *_Runtime : ${runtime(process.uptime())}_*`
-			    conn.sendMessage(from, { caption: teks, image: { jpegThumbnail: fs.readFileSync('media/tes.jpg') }, templateButtons: buttonsSewa, footer: `© Bot By ${nameown}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/tes.jpg'), templateButtons: buttonsSewa, footer: `© Bot By ${nameown}`, mentions: [sender] })
 			    break
 case prefix+'claim': //By Christian ID
   var htgm = randomNomor(500, 550)
@@ -1483,7 +1481,7 @@ case prefix+'covid': case prefix+'covid19': case prefix+'kopit':
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
   var data = await fetchJson(`https://docs-jojoapi.herokuapp.com/api/covidworld?apikey=${jojoapi}`)
   var captnya = `*[ COVID WORLD ]*\n\nTotal Kasus Seluruh Dunia : *${data.result.totalCases}* Jiwa\nTotal Sembuh : *${data.result.recovered}* Jiwa\nMeninggal : *${data.result.deaths}* Jiwa\nKasus Aktif : *${data.result.activeCases}*\nKasus Tertutup : *${data.result.closedCases}*\n\nPembaruan Terakhir Pada : *${data.result.lastUpdate}*`
-   conn.sendMessage(from, {caption: captnya, image: { url: `https://telegra.ph/file/86b3b90581f9d31353b62.jpg`}}, {quoted: msg})
+   conn.sendMessage(from, {caption: captnya, image: { url: `https://telegra.ph/file/86b3b90581f9d31353b62.jpg`}}, {quoted: fake})
    limitAdd(sender, limit)
    break
 //Persingkat Url By Christian ID
@@ -1558,7 +1556,7 @@ case prefix+'artinama':
 			    var query = ["cecan hd","cecan indo","cewe cantik", "cewe aesthetic", "cecan aesthetic"]
                 var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/cecan`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Cewe Cantik", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Cewe Cantik", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
  			    break
 			case prefix+'cogan': case prefix+'cowok':
@@ -1567,7 +1565,7 @@ case prefix+'artinama':
 				var query = ["cogan hd","cogan indo","cowo ganteng","handsome boy","hot boy","oppa","cowo aesthetic","cogan aesthetic"]
 				var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/cogan`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Cowo Ganteng", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Cowo Ganteng", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
 				break
 case prefix+'naruto':
@@ -1576,7 +1574,7 @@ case prefix+'naruto':
 			    var query = ["naruto hd","naruto boruto","naruto sasuke", "naruto aesthetic", "naruto aesthetic"]
                 var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/naruto`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Foto Naruto", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Foto Naruto", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
  			    break
 case prefix+'yaoi':
@@ -1586,7 +1584,7 @@ case prefix+'yaoi':
 			    var query = ["yaoi","yaoi aesthetic","yaoi hd","yaoi ganteng"]
                 var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/${command}`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Foto Yaoi", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Foto Yaoi", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
  			    break
 case prefix+'loli':
@@ -1595,7 +1593,7 @@ case prefix+'loli':
 			    var query = ["loli","loli chan","loli anime","loli hd","loli aesthetic"]
                 var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/loli`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Foto Loli Chan", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Foto Loli Chan", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
  			    break
 case prefix+'waifu':
@@ -1604,7 +1602,7 @@ case prefix+'waifu':
 			    var query = ["waifu","waifu aesthetic","waifu hd"]
                 var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/waifu`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Waifu", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Waifu", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
  			    break
 case prefix+'husbu':
@@ -1613,7 +1611,7 @@ case prefix+'husbu':
 			    var query = ["husbu anime","husbu hd","husbu aesthetic"]
                 var data = await pinterest(pickRandom(query))
 				var but = [{buttonId: `/husbu`, buttonText: { displayText: "Get Again Pict" }, type: 1 }]
-				conn.sendMessage(from, { caption: "Random Husbu", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: msg })
+				conn.sendMessage(from, { caption: "Random Husbu", image: { url: pickRandom(data.result) }, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, { quoted: fake })
 			    limitAdd(sender, limit)
  			    break
 			// Search Menu
@@ -1675,7 +1673,7 @@ case prefix+'husbu':
 				  no += 1
 				  txt += `\n─────────────────\n\n*No Urutan : ${no.toString()}*\n*▢ Judul :* ${yt[i].title}\n*▢ ID :* ${yt[i].videoId}\n*▢ Channel :* ${yt[i].author.name}\n*▢ Upload :* ${yt[i].ago}\n*▢ Ditonton :* ${yt[i].views}\n*▢ Duration :* ${yt[i].timestamp}\n*▢ URL :* ${yt[i].url}\n`
 				}
-				conn.sendMessage(from, { image: { url: yt[0].image }, caption: txt }, { quoted: msg })
+				conn.sendMessage(from, { image: { url: yt[0].image }, caption: txt }, { quoted: fake })
 				limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
 			    break
