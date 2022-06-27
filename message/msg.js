@@ -1725,19 +1725,19 @@ limitAdd(sender, limit)
 break
 //Sound Menu By Christian ID
 case prefix+'sound1':
-conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 break
 case prefix+'sound2':
-conn.sendMessage(from, { audio: fs.readFileSync('audio/sound2.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+conn.sendMessage(from, { audio: fs.readFileSync('audio/sound2.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 break
 case prefix+'sound3':
-conn.sendMessage(from, { audio: fs.readFileSync('audio/sound3.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+conn.sendMessage(from, { audio: fs.readFileSync('audio/sound3.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 break
 case prefix+'sound4':
-conn.sendMessage(from, { audio: fs.readFileSync('audio/sound4.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+conn.sendMessage(from, { audio: fs.readFileSync('audio/sound4.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 break
 case prefix+'sound5':
-conn.sendMessage(from, { audio: fs.readFileSync('audio/sound5.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+conn.sendMessage(from, { audio: fs.readFileSync('audio/sound5.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 break
 //game & fun menu
 //suit menu
@@ -1875,7 +1875,7 @@ Cek Pintar : ${pinter}%
 Menyukai : ${gai}
   `
 
-					 conn.profilePictureUrl(from, 'image').then( res => conn.sendMessage(from, {caption: cek, image: { url: res }}, {quoted: msg})).catch(() => conn.sendMessage(from, {caption: cek, image: {url: `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`}}, {quoted: msg}))
+					 conn.profilePictureUrl(from, 'image').then( res => conn.sendMessage(from, {caption: cek, image: { url: res }}, {quoted: fake})).catch(() => conn.sendMessage(from, {caption: cek, image: {url: `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`}}, {quoted: fake}))
 				    limitAdd(sender, limit)
 				    break
 case prefix+'y':
@@ -1973,7 +1973,7 @@ case prefix+'truth':
   reply(`*_TRUTH_* Jawablah Dengan Jujur`)
   var truth = ['Pernah suka sama siapa aja? berapa lama?','Kalau boleh atau kalau mau, di gc/luar gc siapa yang akan kamu jadikan sahabat?(boleh beda/sma jenis)','apa ketakutan terbesar kamu?','pernah suka sama orang dan merasa orang itu suka sama kamu juga?','Siapa nama mantan pacar teman mu yang pernah kamu sukai diam diam?','pernah gak nyuri uang nyokap atau bokap? Alesanya?','hal yang bikin seneng pas lu lagi sedih apa','pernah cinta bertepuk sebelah tangan? kalo pernah sama siapa? rasanya gimana brou?','pernah jadi selingkuhan orang?','hal yang paling ditakutin','siapa orang yang paling berpengaruh kepada kehidupanmu','hal membanggakan apa yang kamu dapatkan di tahun ini','siapa orang yang bisa membuatmu sange','siapa orang yang pernah buatmu sange','(bgi yg muslim) pernah ga solat seharian?','Siapa yang paling mendekati tipe pasangan idealmu di sini','suka mabar(main bareng)sama siapa?','pernah nolak orang? alasannya kenapa?','Sebutkan kejadian yang bikin kamu sakit hati yang masih di inget','pencapaian yang udah didapet apa aja ditahun ini?','kebiasaan terburuk lo pas di sekolah apa?','Pernah gak sih ngeliat dia lagi sama yg lain?']
   var caption = pickRandom(truth)
-  conn.sendMessage(from, {caption: `[ TRUTH!! ]\n${caption}`, image: fs.readFileSync('media/truthdare.jpg')}, {quoted: msg})
+  conn.sendMessage(from, {caption: `[ TRUTH!! ]\n${caption}`, image: fs.readFileSync('media/truthdare.jpg')}, {quoted: fake})
   limitAdd(sender, limit)
   break
 case prefix+'dare':
@@ -1981,7 +1981,7 @@ case prefix+'dare':
   reply(`*_DARE_* Lakukan Tantangan Yang Diberikan Oleh Bot!`)
   var dare = ['Kirim pesan ke mantan kamu dan bilang "aku masih suka sama kamu','telfon crush/pacar sekarang dan ss ke pemain','pap ke salah satu anggota grup','Bilang "KAMU CANTIK BANGET NGGAK BOHONG" ke cowo','ss recent call whatsapp','drop emot "" setiap ngetik di gc/pc selama 1 hari','kirim voice note bilang can i call u baby?','drop kutipan lagu/quote, terus tag member yang cocok buat kutipan itu','pake foto sule sampe 3 hari','ketik pake bahasa daerah 24 jam','ganti nama menjadi "gue anak lucinta luna" selama 5 jam','chat ke kontak wa urutan sesuai %batre kamu, terus bilang ke dia "i lucky to hv you','prank chat mantan dan bilang " i love u, pgn balikan','record voice baca surah al-kautsar','bilang "i hv crush on you, mau jadi pacarku gak?" ke lawan jenis yang terakhir bgt kamu chat (serah di wa/tele), tunggu dia bales, kalo udah ss drop ke sini','sebutkan tipe pacar mu!','snap/post foto pacar/crush','teriak gajelas lalu kirim pake vn kesini','pap mukamu lalu kirim ke salah satu temanmu','kirim fotomu dengan caption, aku anak pungut','teriak pake kata kasar sambil vn trus kirim kesini','teriak " anjimm gabutt anjimmm " di depan rumah mu','ganti nama jadi " BOWO " selama 24 jam','Pura pura kerasukan, contoh : kerasukan maung, kerasukan belalang, kerasukan kulkas, dll']
   var caption = pickRandom(dare)
-  conn.sendMessage(from, {caption: `[ DARE!! ]\n${caption}`, image: fs.readFileSync('media/truthdare.jpg')}, {quoted: msg})
+  conn.sendMessage(from, {caption: `[ DARE!! ]\n${caption}`, image: fs.readFileSync('media/truthdare.jpg')}, {quoted: fake})
   limitAdd(sender, limit)
   break
 			case prefix+'tictactoe': case prefix+'ttt': case prefix+'ttc':
@@ -2036,7 +2036,7 @@ case prefix+'dare':
 				var data = pickRandom(tg)
 				  data.jawaban = data.jawaban.split('Jawaban ').join('')
 				  var teks = `*TEBAK GAMBAR*\n\n`+monospace(`Petunjuk : ${data.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nDeskripsi : ${data.deskripsi}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {caption: teks, image: {url: data.img}}, {quoted: msg})
+				  conn.sendMessage(from, {caption: teks, image: {url: data.img}}, {quoted: fake})
 				  .then( res => {
 					var jawab = data.jawaban.toLowerCase()
 					addPlayGame(from, 'TEBAK KATA', jawab, gamewaktu, res, tebakgambar)
@@ -2078,7 +2078,7 @@ case prefix+'tebakbendera':
 				var kukus = pickRandom(teben)
 				  kukus.name = kukus.name.split('Jawaban ').join('')
 				  var teks = `*TEBAK BENDERA*\n\n`+monospace(`Petunjuk : ${kukus.name.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nFlag Code : ${kukus.flag}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {caption: teks, image: {url: kukus.img}}, {quoted: msg})
+				  conn.sendMessage(from, {caption: teks, image: {url: kukus.img}}, {quoted: fake})
 				  .then( res => {
 					var jawab = kukus.name.toLowerCase()
 					addPlayGame(from, 'TEBAK BENDERA', jawab, gamewaktu, res, tb)
