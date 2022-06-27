@@ -210,7 +210,7 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		const gcounti = setting.gcount
 		const gcount = isPremium ? gcounti.prem : gcounti.user
 
-        const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "120363040646100247@g.us","inviteCode": "m","groupName": "Izumi Bot", "caption": `© ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+        const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "120363040646100247@g.us","inviteCode": "https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq","groupName": "Izumi Bot", "caption": `© ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "120363040646100247@g.us" } : {}) },message: { "imageMessage": { "title":`*AUTO DOWNLOAD AUDIO YOUTUBE*`, "h": `Hmm`,'seconds': '100000000', 'caption': `*AUTO DOWNLOAD AUDIO YOUTUBE*`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `120363040646100247@g.us` } : {}) },message: { "imageMessage": { "title":`IZUMI BOT MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, "h": `Hmm`,'seconds': '100000000', 'caption': `IZUMI MULTI DEVICE\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Hidetag Cuy!`,jpegThumbnail: fs.readFileSync(setting.pathimg)}}}
