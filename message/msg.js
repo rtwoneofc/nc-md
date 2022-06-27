@@ -869,6 +869,20 @@ Permanen = ${permanen}
 *_${nomor}_*`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/sewa.jpg'), templateButtons: buttonsSewa, footer: `© Sewa Bot ${nameown}`, mentions: [sender] })
 			    break
+case prefix+'kodeotp':
+case prefix+'listkodeotp':
+var teks = `*KODE OTP WHATSAPP*
+
+_1. Vietnam / +84 = 3K_
+_2. Ukraine / +380 = 4K_
+_3. Estonia / +372 = 3K_
+_4. Indonesia / +62 = 3K_
+_5. Russia / +7 = 3K_
+
+\`\`\`TIDAK MENERIMA VIPUL
+SCAN QR DI ATAS PEMBAYARAN BISA MELAUI = GOPAY - OVO - DANA - SHOOPEPAY - DLL\`\`\``
+var kode = [{buttonId: `/owner`, buttonText: { displayText: "Owner" }, type: 1 }]
+				conn.sendMessage(from, { caption: teks, image: { url: `https://bit.ly/3OozGwE` }, buttons: kode, footer: 'Silakan Hubungi Owner Untuk Melanjutkan Pesananmu' }, { quoted: fgclink })
 case prefix+'runtime':
 case prefix+'tes':
   var teks = `*── 「 TES STATUS BOT 」 ──*
