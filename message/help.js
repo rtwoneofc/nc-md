@@ -92,6 +92,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
   *Store Menu*
   ❑ ${prefix}listff
   ❑ ${prefix}rekber
+  ❑ ${prefix}kodeotp
   ❑ ${prefix}sewabot
 
   *Primbon Menu*
