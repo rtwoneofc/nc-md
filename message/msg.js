@@ -652,22 +652,22 @@ if (chats.startsWith(yutu)) {
 		
 if (chats.startsWith(`bot`)){
  var teks = `Halo Kak ${pushname} \n\nAda Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu`
-var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
 if (chats.startsWith(`Bot`)){
- var teks = `Halo Kak ${pushname} \n\nAda Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu`
-var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+ var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
+var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
 if (chats.startsWith(`P`)){ 
-var teks = `Halo Kak ${pushname} \n\nAda Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu`
-var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
+var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
 if (chats.startsWith(`p`)){ 
-var teks = `Halo Kak ${pushname} \n\nAda Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu`
-var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
+var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
  
