@@ -657,7 +657,7 @@ if (chats.startsWith(`Bot`)){
  conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 }
 if (chats.startsWith(`P`)){
- conn.sendMessage(from, { caption: *Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Ketik ${prefix}menu Untuk Memulai Menu_*, {quoted: fake})
+ conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 }
  
 if (chats.startsWith("@37258266435")){
