@@ -658,7 +658,8 @@ if (chats.startsWith(`Bot`)){
 }
 if (chats.startsWith(`P`)){ 
 var teks = `Halo Kak ${pushname} \n\n Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu`
-var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }] conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
+var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
  
 if (chats.startsWith("@37258266435")){
