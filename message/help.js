@@ -76,6 +76,8 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}igf *Instagram Image*
   ❑ ${prefix}facebook *LinkFb*
   ❑ ${prefix}mediafire *LinkMediaFire*
+  ❑ ${prefix}tiktok *Link Tiktok*
+  ❑ ${prefix}tiktokaudio *Link Tiktok*
   
   *Random Menu*
   ❑ ${prefix}quotes
@@ -83,11 +85,39 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}katagalau
   ❑ ${prefix}cecan
   ❑ ${prefix}cogan
-  ❑ ${prefix}naruto
+  ❑ ${prefix}asupan
+
+  *Anime Menu*
   ❑ ${prefix}loli
   ❑ ${prefix}waifu
   ❑ ${prefix}husbu
   ❑ ${prefix}yaoi
+  ❑ ${prefix}cosplay
+  ❑ ${prefix}waifu2
+  ❑ ${prefix}yotsuba
+  ❑ ${prefix}shinomiya
+  ❑ ${prefix}yumeko
+  ❑ ${prefix}shizuka
+  ❑ ${prefix}mikasa
+  ❑ ${prefix}elaina
+  ❑ ${prefix}onepiece
+  ❑ ${prefix}megumin
+  ❑ ${prefix}naruto
+  ❑ ${prefix}hinata
+  ❑ ${prefix}minato
+  ❑ ${prefix}deidara
+  ❑ ${prefix}itachi
+  ❑ ${prefix}madara
+  ❑ ${prefix}boruto
+  ❑ ${prefix}sakura
+  ❑ ${prefix}tsunade 
+  
+  *Nsfw Menu*
+  ❑ ${prefix}ahegao
+  ❑ ${prefix}bloewjob
+  ❑ ${prefix}hentai
+  ❑ ${prefix}masturbation
+  ❑ ${prefix}pussy
 
   *Store Menu*
   ❑ ${prefix}listff
@@ -108,17 +138,6 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}cuttly *link*
   ❑ ${prefix}bitly *link*
   ❑ ${prefix}tinyurl *link*
-  
-  *Premium User*
-  ❑ ${prefix}asupan
-  ❑ ${prefix}xnxx link
-  ❑ ${prefix}ahegao
-  ❑ ${prefix}bloewjob
-  ❑ ${prefix}hentai
-  ❑ ${prefix}masturbation
-  ❑ ${prefix}pussy
-  ❑ ${prefix}tiktok *Link Tiktok*
-  ❑ ${prefix}tiktokaudio *Link Tiktok*
   
   *Textpro Menu*
   ❑ ${prefix}thunder *text*
@@ -189,7 +208,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}qr *text*
   ❑ ${prefix}readmore *text|text*
   ❑ ${prefix}hitungmundur 12 10 2022
-  ❑ ${prefix}translate *from**to*
+  ❑ ${prefix}translate *from to*
   ❑ ${prefix}lirik *Judul*
   ❑ ${prefix}grupwa *Pencarian*
   ❑ ${prefix}wame *Nomor*
@@ -202,7 +221,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
 
   *Islamic Menu*
   ❑ ${prefix}quran *nomer*
-  ❑ ${prefix}quranaudio *surah**ayat*
+  ❑ ${prefix}quranaudio *surah ayat*
   ❑ ${prefix}listquran *nomer*
   ❑ ${prefix}kisahnabi *Nama Nabi*
 
@@ -217,7 +236,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}huluh
   ❑ ${prefix}holoh
   
-  *Game & Fun Menu*
+  *Game Menu*
   ❑ ${prefix}tictactoe @tag
   ❑ ${prefix}delttc
   ❑ ${prefix}suit
@@ -231,6 +250,8 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}tebakbendera
   ❑ ${prefix}tebaklagu
   ❑ ${prefix}siapakahaku
+
+  *Fun Menu*
   ❑ ${prefix}cekbapak
   ❑ ${prefix}apakah *Query*
   ❑ ${prefix}kapankah *Query*

@@ -526,9 +526,9 @@ if (chats.startsWith(yutu)) {
 		if (isPlayGame(from, tebakgambar) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tebakgambar)) {
 		    var kode = randomNomor(1000000000, 9000000000)
-		    var htgm = randomNomor(500, 550)
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebakgambar)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tebakgambar)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var tebakgmbr = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakgambar` } },
 		]
@@ -540,10 +540,10 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, kuiscuy)
 		if (isPlayGame(from, kuiscuy) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, kuiscuy)) {
-		    var htgm = randomNomor(500, 550)
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
 			var kode = randomNomor(1000000000, 9000000000)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, kuiscuy)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, kuiscuy)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakkata` } },
 		]
@@ -556,9 +556,9 @@ if (chats.startsWith(yutu)) {
 		if (isPlayGame(from, tekateki) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tekateki)) {
 		    var kode = randomNomor(1000000000, 9000000000)
-		    var htgm = randomNomor(500, 550)
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tekateki)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tekateki)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tekateki` } },
 		]
@@ -570,9 +570,9 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, tebakkimia)
 		if (isPlayGame(from, tebakkimia) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tebakkimia)) {
-		    var htgm = randomNomor(500, 550)
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebakkimia)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tebakkimia)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakkimia` } },
 		]
@@ -584,9 +584,9 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, tebaktebakan)
 		if (isPlayGame(from, tebaktebakan) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tebaktebakan)) {
-		    var htgm = randomNomor(500, 550)
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebaktebakan)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tebaktebakan)}\nHadiah : ${htgm} balance\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}kuis` } },
 		]
@@ -597,10 +597,9 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, tebaklagu)
 		if (isPlayGame(from, tebaklagu) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tebaklagu)) {
-		    var htgm = randomNomor(500, 550)
-		    
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tebaklagu)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tebaklagu)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebaklagu` } },
 		]
@@ -612,10 +611,9 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, susun)
 		if (isPlayGame(from, susun) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, susun)) {
-		    var htgm = randomNomor(500, 550)
-		    
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, susun)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, susun)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}susunkata` } },
 		]
@@ -627,10 +625,9 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, siapaaku)
 		if (isPlayGame(from, siapaaku) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, siapaaku)) {
-		    var htgm = randomNomor(500, 550)
-		    
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, siapaaku)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, siapaaku)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}siapakahaku` } },
 		]
@@ -642,10 +639,9 @@ if (chats.startsWith(yutu)) {
 		cekWaktuGame(conn, tb)
 		if (isPlayGame(from, tb) && isUser) {
 		  if (chats.toLowerCase() == getJawabanGame(from, tb)) {
-		    var htgm = randomNomor(500, 550)
+		    var htgm = randomNomor(200, 400)
 			addBalance(sender, htgm, balance)
-			
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar *\n\nJawaban : ${getJawabanGame(from, tb)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tb)}\nHadiah : ${htgm} balance\nKode Game : ${makeid(15)}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
 			var kus = [
 			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebakbendera` } },
 		]
@@ -655,10 +651,14 @@ if (chats.startsWith(yutu)) {
 		}
 		
 if (chats.startsWith(`bot`)){
- conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+ conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 }
 if (chats.startsWith(`Bot`)){
- conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+ conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
+}
+if (chats.startsWith(`P`)){
+ var but = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+ conn.sendMessage(from, { caption: *Halo Kak ${pushname}*\n\n*Ada Yang Bisa Saya Bantu ?*\n*_Klik Button Dibawah Untuk Memulai Menu_*, image: fs.readFileSync('media/chris2.jpg'), buttons: but, footer: 'Silakan Klik Button Dibawah' }, { quoted: fake })
 }
  
 if (chats.startsWith("@37258266435")){
@@ -936,6 +936,7 @@ conn.sendMessage(from, {caption: caption, image: fs.readFileSync('media/chris2.j
 break
 case prefix+'thanksto':
 case prefix+'tqto':
+var but = [{buttonId: `/owner`, buttonText: { displayText: "Owner" }, type: 1 }]
   var teks = `*── 「 THANKS TO 」 ──*
 
 *- Chitanda :*
@@ -945,8 +946,8 @@ case prefix+'tqto':
 *- Christian ID :*
 *https://github.com/TianBot1*
 *- Penyedia Apikey*`
-			    conn.sendMessage(from, { caption: teks, image: {url: `https://telegra.ph/file/690548b0ce1de0b305496.jpg`}, templateButtons: button5, footer: 'THANKS TO', mentions: [sender]} )  
-			    break
+conn.sendMessage(from, { caption: teks, image: { url: `https://telegra.ph/file/690548b0ce1de0b305496.jpg` }, buttons: but, footer: 'Thanks You For Making This Bot' }, { quoted: fake })
+break
 			/*case prefix+'donate':
 			case prefix+'donasi':
 			    reply(`◪ DONASI
@@ -967,7 +968,7 @@ case prefix+'tqto':
 			    break*/
 			case prefix+'owner':
 			    for (let x of ownerNumber) {
-			      sendContact(from, x.split('@s.whatsapp.net')[0], ownerName, msg)
+			      sendContact(from, x.split('@s.whatsapp.net')[0], ownerName, fake)
 			    }
 			    break
 			case prefix+'cekprem':
@@ -1124,7 +1125,7 @@ case prefix+'ban':
 				  .on("error", console.error)
 				  .on("end", () => {
 				    exec(`webpmux -set exif ./sticker/data.exif ./${rand2} -o ./${rand2}`, async (error) => {
-				      conn.sendMessage(from, { sticker: fs.readFileSync(`./${rand2}`) }, { quoted: msg })
+				      conn.sendMessage(from, { sticker: fs.readFileSync(`./${rand2}`) }, { quoted: fake })
 				      limitAdd(sender, limit)
 					  fs.unlinkSync(`./${rand1}`)
 				      fs.unlinkSync(`./${rand2}`)
@@ -1209,7 +1210,7 @@ case prefix+'ban':
 			    if (!args[1].includes('tiktok')) return reply(mess.error.Iv)
 			    reply(mess.wait)
 			    hxz.ttdownloader(args[1]).then( data => {
-			      conn.sendMessage(from, { audio: { url: data.nowm }, mimetype: 'audio/mp4' }, { quoted: msg })
+			      conn.sendMessage(from, { audio: { url: data.nowm }, mimetype: 'audio/mp4' }, { quoted: fake })
 			       limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
 		        break
@@ -1220,7 +1221,7 @@ case prefix+'ban':
 			    if (!args[1].includes('mediafire')) return reply(mess.error.Iv)
 			    reply(mess.wait)
 					var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/download/mediafire?url=${q}&apikey=${chrisapi}`)
-					conn.sendMessage(from, { document: { url: result.data.link }, fileName: `${result.data.nama}`, mimetype: 'zip' }, { quoted: msg })
+					conn.sendMessage(from, { document: { url: result.data.link }, fileName: `${result.data.nama}`, mimetype: 'zip' }, { quoted: fake })
 					limitAdd(sender, limit)
 					break
             case prefix+'play':
@@ -1240,7 +1241,7 @@ case prefix+'ytmp4': case prefix+'mp4':
 			    reply(mess.wait)
 			    y2mateV(args[1]).then ( data => {
 			      var capt = monospace(`Title : ${data[0].judul}`)
-			      conn.sendMessage(from, {caption: capt, video: {url: data[0].link}}, {quoted: msg})
+			      conn.sendMessage(from, {caption: capt, video: {url: data[0].link}}, {quoted: fake})
 			    }).catch(() => reply(mess.error.api))
 			    break
 /*case prefix+'ytmp3': case prefix+'mp3':
@@ -1265,9 +1266,9 @@ case prefix+'ytmp3':
 			    reply(mess.wait)
 				y2mateA(q).then( data => {
 					var capt = `📛 *Title :* ${data[0].judul}\n🔰 *Size Audio :* ${data[0].size}\n\n_Tunggu sebentar audio akan di kirim...._`
-					conn.sendMessage(from, {caption: capt, image: {url: data[0].thumb}}, {quoted: msg}) 
+					conn.sendMessage(from, {caption: capt, image: {url: data[0].thumb}}, {quoted: fake}) 
 					
-					conn.sendMessage(from, { document: { url: data[0].link }, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3' }, { quoted: msg })
+					conn.sendMessage(from, { document: { url: data[0].link }, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3' }, { quoted: fake })
 					  }
 					  )
 limitAdd(sender, limit)
@@ -1282,7 +1283,7 @@ limitAdd(sender, limit)
 					var capt = `📛 *Title :* ${data[0].judul}\n🔰 *Size Video :* ${data[0].size}\n⤵️ *Download :* ${data[0].link}\n\n_Tunggu sebentar audio akan di kirim...._`
 					conn.sendMessage(from, {caption: capt, image: {url: data[0].thumb}}, {quoted: msg}) 
 					
-					conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
+					conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 					  }
 					  )
 				limitAdd(sender, limit)
@@ -2622,6 +2623,115 @@ Silahkan Pilih Type Buku/Folio Berikut
 Note : Anggap "<" dan ">" Tidak Ada
  `)
  break
+//Wallpaper
+case prefix+'cosplay': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/randomcosplay`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Cosplay*`, image: {url: `https://christian-id-api.herokuapp.com/api/random/cosplay?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'hinata': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/hinata`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Hinata*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/hinata?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'minato': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/minato`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Minato*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/minato?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'boruto': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/boruto`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Boruto*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/boruto?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'yotsuba': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/yotsuba`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Yotsuba*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/yotsuba?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'waifu2': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/waifu2`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Waifu*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/waifu2?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'shinomiya': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/shinomiya`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Shinomiya*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/shinomiya?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'yumeko': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/yumeko`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Yumeko*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/yumeko?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'shizuka': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/shizuka`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Shizuka*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/shizuka?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'mikasa': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/mikasa`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Mikasa*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/mikasa?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'elaina': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/elaina`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Elaina*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/elaina?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'deidara': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/deidara`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Deidara*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/deidara?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'itachi': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/itachi`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Itachi*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/itachi?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'sakura': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/sakura`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Sakura*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/sakura?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'madara': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/madara`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Madara*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/madara?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'tsunade': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/tsunade`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Tsunade*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/tsunade?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'onepiece': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/onepiece`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random One Piece*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/onepiece?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
+case prefix+'megumin': // By Christian ID
+if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+reply(mess.wait)
+var but = [{buttonId: `/sakura`, buttonText: { displayText: "Next" }, type: 1 }]
+conn.sendMessage(from, {caption: `*Random Megumin*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/megumin?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
+break
 //nsfw
 case prefix+'pussy':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
