@@ -657,8 +657,7 @@ if (chats.startsWith(`Bot`)){
  conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 }
 if (chats.startsWith(`P`)){
- var but = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }]
- conn.sendMessage(from, { caption: *Halo Kak ${pushname}*\n\n*Ada Yang Bisa Saya Bantu ?*\n*_Klik Button Dibawah Untuk Memulai Menu_*, image: fs.readFileSync('media/chris2.jpg'), buttons: but, footer: 'Silakan Klik Button Dibawah' }, { quoted: fake })
+ conn.sendMessage(from, { caption: *Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Ketik ${prefix}menu Untuk Memulai Menu_*, {quoted: fake})
 }
  
 if (chats.startsWith("@37258266435")){
