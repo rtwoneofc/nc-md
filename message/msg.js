@@ -88,10 +88,10 @@ const gopay = "0813-2850-7885" // Ganti Nomor Gopay Mu
 const pulsa = "0813-2850-7885" // Ganti No Pulsa Mu
 const insta = "chris.tianid" // Ganti Nama IG Mu
 const github = "TianBot1" // Ganti Nama Github Mu
-const linkdonasi = "https://telegra.ph/file/b7f1243d43509983f3230.jpg" // Ganti Link Qris Mu
+const linkdonasi = "https://i.ibb.co/f2h3MDQ/Qris.jpg" // Ganti Link Qris Mu
 
 // Setting SewaBot Ubah Harga Sesuai Harga Mu//
-const qris = "https://telegra.ph/file/b7f1243d43509983f3230.jpg"
+const qris = "https://i.ibb.co/f2h3MDQ/Qris.jpg"
 const nomor = "wa.me/6285921165857"
 const tujuhhari = "5.000"
 const tigapuluhhari = "10.000"
@@ -656,8 +656,9 @@ if (chats.startsWith(`bot`)){
 if (chats.startsWith(`Bot`)){
  conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
 }
-if (chats.startsWith(`P`)){
- conn.sendMessage(from, { audio: fs.readFileSync('audio/sound1.mp3'), mimetype: 'audio/mp4', ptt: true}, {quoted: fake})
+if (chats.startsWith(`P`)){ 
+var teks = Halo Kak ${pushname} \n\n Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu
+var buttonsDefa = [{buttonId: `/menu`, buttonText: { displayText: "Menu" }, type: 1 }] conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: botName, mentions: [sender]}, { quoted: fake })
 }
  
 if (chats.startsWith("@37258266435")){
@@ -881,7 +882,7 @@ _5. Russia / +7 = 3K_
 \`\`\`TIDAK MENERIMA VIPUL
 SCAN QR DI ATAS PEMBAYARAN BISA MELAUI = GOPAY - OVO - DANA - SHOOPEPAY - DLL\`\`\``
 var kode = [{buttonId: `/owner`, buttonText: { displayText: "Owner" }, type: 1 }]
-				conn.sendMessage(from, { caption: teks, image: { url: `https://bit.ly/3OozGwE` }, buttons: kode, footer: 'Silakan Hubungi Owner Untuk Melanjutkan Pesananmu' }, { quoted: fake })
+				conn.sendMessage(from, { caption: teks, image: { url: `${linkdonasi}` }, buttons: kode, footer: 'Silakan Hubungi Owner Untuk Melanjutkan Pesananmu' }, { quoted: fake })
 				break
 case prefix+'runtime':
 case prefix+'tes':
