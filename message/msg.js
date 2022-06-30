@@ -1,5 +1,6 @@
 /*HELLO BRO TERIMA KASIH SUDAH AMBIL SCRIPT INI JANGAN LUPA IKUTI DAN SUBSCRIBE MEDIA SOSIAL OWNER DAN BOT
 
+Base By Chitanda/Irfan
 Sc Ori By Arasya
 Sc Record By Christian ID
 Note : Jangan Perjualkan Sc Ini!!!
@@ -128,6 +129,7 @@ const exif = new Exif()
 let tictactoe = [];
 let tebakgambar = []
 let kuiscuy = []
+let tebaklirik = []
 let tebaktebakan = []
 let tekateki = []
 let tebakkimia = []
@@ -385,24 +387,28 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 			{ quickReplyButton: { displayText: `Thanks To`, id: `${prefix}tqto` } },
 		]
 		const buttonsAntilink = [
-			{ quickReplyButton: { displayText: `Antilink On`, id: `${prefix}antilinka enable` } },
-			{ quickReplyButton: { displayText: `Antilink Off`, id: `${prefix}antilinka disable` } },
+			{ quickReplyButton: { displayText: `Antilink Enable`, id: `${prefix}antilinka enable` } },
+			{ quickReplyButton: { displayText: `Antilink Disable`, id: `${prefix}antilinka disable` } },
 		]
 		const buttonsAntilinkyt = [
-			{ quickReplyButton: { displayText: `Antilink Youtube On`, id: `${prefix}antilinkyta enable` } },
-			{ quickReplyButton: { displayText: `Antilink Youtube Off`, id: `${prefix}antilinkyta disable` } },
+			{ quickReplyButton: { displayText: `Antilink Youtube Enable`, id: `${prefix}antilinkyta enable` } },
+			{ quickReplyButton: { displayText: `Antilink Youtube Disable`, id: `${prefix}antilinkyta disable` } },
 		]
 		const buttonsAntilinktt = [
-			{ quickReplyButton: { displayText: `Antilink Tiktok On`, id: `${prefix}antilinktta enable` } },
-			{ quickReplyButton: { displayText: `Antilink Tiktok Off`, id: `${prefix}antilinktta disable` } },
+			{ quickReplyButton: { displayText: `Antilink Tiktok Enable`, id: `${prefix}antilinktta enable` } },
+			{ quickReplyButton: { displayText: `Antilink Tiktok Disable`, id: `${prefix}antilinktta disable` } },
 		]
 		const buttonsAntiwame = [
-			{ quickReplyButton: { displayText: `Antiwame On`, id: `${prefix}antiwamea enable` } },
-			{ quickReplyButton: { displayText: `Antiwame Off`, id: `${prefix}antiwamea disable` } },
+			{ quickReplyButton: { displayText: `Antiwame Enable`, id: `${prefix}antiwamea enable` } },
+			{ quickReplyButton: { displayText: `Antiwame Disable`, id: `${prefix}antiwamea disable` } },
 		]
 		const buttonsGroup = [
 			{ quickReplyButton: { displayText: `Group Open`, id: `${prefix}groupa open` } },
 			{ quickReplyButton: { displayText: `Group Close`, id: `${prefix}groupa close` } },
+		]
+		const buttonsAntibad = [
+			{ quickReplyButton: { displayText: `Anti Badword Enable`, id: `${prefix}antibadworda enable` } },
+			{ quickReplyButton: { displayText: `Anti Badword Disable`, id: `${prefix}antibadworda disable` } },
 		]
 		const buttonsRekber = [
 			{ urlButton: { displayText: `Chat Owner`, url : `${nomorown}` } },
@@ -458,7 +464,7 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
                 if (chats.toLowerCase().includes(kasar)){
                     if (isCountKasar(sender, senbadword)){
                         if (!isBotGroupAdmins) return reply(`Kamu beruntung karena bot bukan admin`)
-                        reply(`*[ ANTI BADWORD ]*\n\nSepertinya kamu sudah berkata kasar lebih dari 5x, maaf kamu akan di kick`)
+                        reply(`*[ ANTI BADWORD ]*\n\nSepertinya kamu sudah berkata kasar lebih dari 3x, maaf kamu akan di kick`)
                         number = sender
       conn.groupParticipantsUpdate(from, [number], "remove")
                         delCountKasar(sender, senbadword)
@@ -509,7 +515,7 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
                         const getTime = Date.now() - getAfkTime(getId, afk)
                         const heheh = ms(getTime)
                         await mentions(`*「 AFK MODE 」*\n\n*Sssttt! Orangnya lagi AFK, jangan diganggu!*\n\n*Nama :* @${ment.split('@')[0]}\n*Alasan :* ${getReason}\n*Sejak :* ${heheh.hours} \`\`\`Jam, ${heheh.minutes} Menit, ${heheh.seconds} Detik lalu\`\`\``, [ment], true)
-                        conn.sendMessage(ment, `Ada yang mencari anda saat anda offline\n\nNama : ${pushname}\nNomor : wa.me/${sender.split("@")[0]}\nIn Group : ${groupName}\nPesan : ${chats}`)
+                        sendMess(ment, `Ada yang mencari anda saat anda offline\n\nNama : ${pushname}\nNomor : wa.me/${sender.split("@")[0]}\nIn Group : ${groupName}\nPesan : ${chats}`)
                     }
                 }
             }
@@ -571,6 +577,20 @@ if (chats.startsWith(yutu)) {
 		]
 			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'TEBAK KATA', mentions: [sender]} )  
 		    kuiscuy.splice(getGamePosi(from, kuiscuy), 1)
+		  }
+		}
+		cekWaktuGame(conn, tebaklirik)
+		if (isPlayGame(from, tebaklirik) && isUser) {
+		  if (chats.toLowerCase() == getJawabanGame(from, tebaklirik)) {
+		    var htgm = randomNomor(200, 400)
+			addBalance(sender, htgm, balance)
+			var kode = randomNomor(1000000000, 9000000000)
+		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tebaklirik)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
+			var kus = [
+			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebaklirik` } },
+		]
+			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'TEBAK LIRIK', mentions: [sender]} )  
+		    tebaklirik.splice(getGamePosi(from, tebaklirik), 1)
 		  }
 		}
 		
@@ -776,7 +796,7 @@ Note : ${note}`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: buttonsAllmenu, footer: `${footer}`, mentions: [sender]} )
 			    break
 case prefix+'donasiah':
-  reply(`Jika Ingin Donasi Harap Hubungi Owner\n\nhttps://wa.me/${ownerNumber}`)
+  fakemsg(`Jika Ingin Donasi Harap Hubungi Owner\n\nhttps://wa.me/${ownerNumber}`)
   break
 case prefix+'donasi':
   case prefix+'donate':
@@ -843,7 +863,7 @@ case prefix+'rekber': //By Christian ID
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/rekber.jpg'), templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
 			    break
 case prefix+'formatid': // By Christian ID
-  reply(`*[ FORMAT FF ]*\n\nID Game = \nNick Game = \nJumlah Diamond = \nPembayaran Via = \n\n*Kirim Formulir Ini Ke ${nomor}*`)
+  fakemsg(`*[ FORMAT FF ]*\n\nID Game = \nNick Game = \nJumlah Diamond = \nPembayaran Via = \n\n*Kirim Formulir Ini Ke ${nomor}*`)
   break
 case prefix+'sc': //By Christian ID
   var teks = `*── 「 SOURCE CODE 」 ──*
@@ -935,19 +955,15 @@ case prefix+'tes':
 *_Runtime : ${runtime(process.uptime())}_*`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/tes.jpg'), templateButtons: buttonsSewa, footer: `© Bot By ${nameown}`, mentions: [sender] })
 			    break
-case prefix+'claim': //By Christian ID
-  var htgm = randomNomor(500, 550)
-  addBalance(sender, htgm, balance)
-  reply(`Selamat Anda Mendapatkan ${htgm} Balance`)
-  break
 case prefix+'groupizumi':
-  reply(`Group ${setting.botName}\n${setting.grup}`)
+  fakemsg(`Group ${setting.botName}\n${setting.grup}`)
   break
 			case prefix+'speed':
+			case prefix+'ping':
 			  reply("Testing Speed...")
 			    let timestamp = speed();
                             let latensi = speed() - timestamp
-                            textImg(`*${latensi.toFixed(4)}* Second Membalas Chat Anda`)
+                            fakemsg(`*${latensi.toFixed(4)}* Second Membalas Chat Anda`)
 		            break
 case prefix+'infobot':
   case prefix+'inforobot':
@@ -1943,6 +1959,42 @@ case prefix+'n':
 case prefix+'test':
 fakemsg("Bot Online")
 break
+case prefix+'sange':
+					if (!isGroup)return reply(mess.OnlyGrup)
+					var kamu = groupMembers
+					var cinta = groupMembers
+					var aku = cinta[Math.floor(Math.random() * kamu.length)]
+					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
+					let tejsqq = `Yang paling sange di group ini adalah\n*@${aku.jid.split('@')[0]}*`
+					mentions(tejsqq, [aku.jid, cintax.jid], true)
+					break
+				case prefix+'ganteng':
+					if (!isGroup)return reply(mess.OnlyGrup)
+					var kamu = groupMembers
+					var cinta = groupMembers
+					var aku = cinta[Math.floor(Math.random() * kamu.length)]
+					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
+					let tejs = `Cowok paling ganteng di group ini adalah\n*@${aku.jid.split('@')[0]}*`
+					mentions(tejs, [aku.jid, cintax.jid], true)
+					break
+				case prefix+'cantik':
+					if (!isGroup)return reply(mess.OnlyGrup)
+					var kamu = groupMembers
+					var cinta = groupMembers
+					var aku = cinta[Math.floor(Math.random() * kamu.length)]
+					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
+					let gejs = `Cewek paling cantik di group ini adalah\n*@${cintax.jid.split('@')[0]}*`
+					mentions(gejs, [aku.jid, cintax.jid], true)
+					break
+					case prefix+'jadian':
+					if (!isGroup)return reply(mess.OnlyGrup)
+					var kamu = groupMembers
+					var cinta = groupMembers
+					var aku = cinta[Math.floor(Math.random() * kamu.length)]
+					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
+					let vejs = `Ciee.. yang lagi jadian\n*@${aku.jid.split('@')[0]}*  @${cintax.jid.split('@')[0]}\nSemoga Langgeng Hii`
+					mentions(vejs, [aku.jid, cintax.jid], true)
+					break
 case prefix+'apakah':
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 				if (!q) return reply(`Penggunaan ${command} text\n\nContoh : ${command} saya wibu`)
@@ -2106,10 +2158,24 @@ case prefix+'dare':
 				var kukus = pickRandom(kuisnya)
 				  kukus.jawaban = kukus.jawaban.split('Jawaban ').join('')
 				  var teks = `*TEBAK KATA*\n\n`+monospace(`Soal : ${kukus.soal}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
 					var jawab = kukus.jawaban.toLowerCase()
 					addPlayGame(from, 'TEBAK KATA', jawab, gamewaktu, res, kuiscuy)
+					gameAdd(sender, glimit)
+				  })
+			    break
+case prefix+'tebaklirik':
+		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
+			    if (isPlayGame(from, tebaklirik)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tebaklirik[getGamePosi(from, tebaklirik)].fake)
+				var liriknya = (`https://christian-id-api.herokuapp.com/api/game/tebaklirik?apikey=${chrisapi}
+				var kukus = pickRandom(liriknya)
+				  kukus.jawaban = kukus.jawaban.split('Jawaban ').join('')
+				  var teks = `*TEBAK LIRIK*\n\n`+monospace(`Soal : ${kukus.result.question}\nWaktu : ${gamewaktu}s`)
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
+				  .then( res => {
+					var jawab = kukus.result.answer.toLowerCase()
+					addPlayGame(from, 'TEBAK LIRIK', jawab, gamewaktu, res, tebaklirik)
 					gameAdd(sender, glimit)
 				  })
 			    break
@@ -2120,7 +2186,7 @@ case prefix+'susunkata':
 				var kukus = pickRandom(ngen)
 				  kukus.jawaban = kukus.jawaban.split('Jawaban ').join('')
 				  var teks = `*SUSUN KATA*\n\n`+monospace(`Susunlah Kalimat Berikut :\n${kukus.soal}\nPetunjuk : ${kukus.tipe}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
 					var jawab = kukus.jawaban.toLowerCase()
 					addPlayGame(from, 'Susun Kalimat', jawab, gamewaktu, res, susun)
@@ -2149,7 +2215,7 @@ case prefix+'kuis':
 				var hayo = pickRandom(tebaknya)
 				  hayo.jawaban = hayo.jawaban.split('Jawaban ').join('')
 				  var teks = `*KUIS GAME*\n\n`+monospace(`Soal : ${hayo.soal}\nPetunjuk : ${hayo.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
 					var jawab = hayo.jawaban.toLowerCase()
 					addPlayGame(from, 'KUIS GAME', jawab, gamewaktu, res, tebaktebakan)
@@ -2164,7 +2230,7 @@ case prefix+'tekateki':
 				var hayo = pickRandom(tebaknya)
 				  hayo.jawaban = hayo.jawaban.split('Jawaban ').join('')
 				  var teks = `*TEKA TEKI*\n\n`+monospace(`Soal : ${hayo.soal}\nPetunjuk : ${hayo.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
 					var jawab = hayo.jawaban.toLowerCase()
 					addPlayGame(from, 'TEKA TEKI', jawab, gamewaktu, res, tekateki)
@@ -2179,7 +2245,7 @@ case prefix+'tebaklagu':
 				var hayo = pickRandom(tebaknya)
 				  hayo.judul = hayo.judul.split('Judul ').join('')
 				  var teks = `*TEBAK LAGU*\n\n`+monospace(`Tebak Lagu Berikut\nArtis : ${hayo.penyanyi}\nPetunjuk : ${hayo.judul.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  conn.sendMessage(from, {audio: {url: hayo.link}, mimetype: 'audio/mp4', ptt: true}, {quoted: msg})
 				  .then( res => {
 					var jawab = hayo.judul.toLowerCase()
@@ -2196,7 +2262,7 @@ case prefix+'siapakahaku':
 				var hayo = pickRandom(tebaknya)
 				  hayo.jawaban = hayo.jawaban.split('Jawaban ').join('')
 				  var teks = `*Siapa Aku?*\n\n`+monospace(`Soal : ${hayo.soal}\nNomor Soal Ke : ${hayo.index}\nPetunjuk : ${hayo.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
 					var jawab = hayo.jawaban.toLowerCase()
 					addPlayGame(from, 'Siapa Aku?', jawab, gamewaktu, res, siapaaku)
@@ -2211,7 +2277,7 @@ case prefix+'tebakkimia':
 				var hayo = pickRandom(tebaknya)
 				  hayo.unsur = hayo.unsur.split('Jawaban ').join('')
 				  var teks = `*TEBAK KIMIA*\n\n`+monospace(`Soal : Apa Kepanjangan Dari Unsur ${hayo.lambang}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: msg})
+				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
 					var jawab = hayo.unsur.toLowerCase()
 					addPlayGame(from, 'TEBAK KIMIA', jawab, gamewaktu, res, tebakkimia)
@@ -2224,28 +2290,35 @@ case prefix+'antilink':
    if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
- var teks = `\n*Mode Antilink Silakan Pilih On/Off*\n\n`
+ var teks = `\n*Mode Antilink Silakan Pilih On/Off*\n`
  conn.sendMessage(from, { text: teks, footer: "ANTILINK", templateButtons: buttonsAntilink }, {quoted: fake})
  break
 case prefix+'antilinkyt':
    if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
- var teks = `\n*Mode Antilink Youtube Silakan Pilih On/Off*\n\n`
+ var teks = `\n*Mode Antilink Youtube Silakan Pilih On/Off*\n`
  conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinkyt, footer: 'ANTILINK YOUTUBE', mentions: [sender]} )  
  break
 case prefix+'antilinktt':
    if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
- var teks = `\n*Mode Antilink Tiktok Silakan Pilih On/Off*\n\n`
+ var teks = `\n*Mode Antilink Tiktok Silakan Pilih On/Off*\n`
  conn.sendMessage(from, { text: teks, templateButtons: buttonsAntilinktt, footer: 'ANTILINK TIKTOK', mentions: [sender]} )  
+ break
+case prefix+'antibadword':
+   if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+ var teks = `\n*Mode Antiwame Silakan Pilih On/Off*\n`
+ conn.sendMessage(from, { text: teks, templateButtons: buttonsAntibad, footer: 'ANTI BADWORD', mentions: [sender]} )  
  break
 case prefix+'antiwame':
    if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
- var teks = `\n*Mode Antiwame Silakan Pilih On/Off*\n\n`
+ var teks = `\n*Mode Antiwame Silakan Pilih On/Off*\n`
  conn.sendMessage(from, { text: teks, templateButtons: buttonsAntiwame, footer: 'ANTIWAME', mentions: [sender]} )  
  break
 case prefix+'group': case prefix+'grup':
@@ -2457,7 +2530,7 @@ case prefix+'add':
       reply(`Kirim perintah ${command} nomer atau balas pesan orang yang ingin dimasukkan kedalam grup`)
     }
     break
-case prefix+'antibadword':
+case prefix+'antibadworda':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
                 if (!isBotGroupAdmins) return reply(mess.BotAdmin)
@@ -2696,7 +2769,7 @@ case prefix+'nuliskanan':
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
   if (args.length < 2) return reply(`Kirim Perintah ${command} Tulisan Mu\nContoh ${command} Izumi Ganteng\n\n⚠️ *NOTE : GAK BOLEH DI TAMBAHIN EMOJI/TEXT TEXT GAK JELAS*`)
   reply(mess.wait)
-  conn.sendMessage(from, { image: { url: `https://hadi-api.herokuapp.com/api/canvas/nulis?text=${kanan}`}})
+  conn.sendMessage(from, { image: { url: `https://hadi-api.herokuapp.com/api/canvas/nulis?text=${kanan}`}}, {quoted: fake})
   limitAdd(sender, limit)
   break
 case prefix+'foliokiri':
@@ -2704,13 +2777,13 @@ case prefix+'foliokiri':
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
   if (args.length < 2) return reply(`Kirim Perintah ${command} Tulisan Mu\nContoh ${command} Izumi Ganteng\n\n⚠️ *NOTE : GAK BOLEH DI TAMBAHIN EMOJI/TEXT TEXT GAK JELAS*`)
   reply(mess.wait)
-  conn.sendMessage(from, { image: { url: `https://hadi-api.herokuapp.com/api/canvas/nulis2?text=${fkiri}`}})
+  conn.sendMessage(from, { image: { url: `https://hadi-api.herokuapp.com/api/canvas/nulis2?text=${fkiri}`}}, {quoted: fake})
   limitAdd(sender, limit)
   break
 case prefix+'nulis':
   case prefix+'tulis':
     case prefix+'menulis':
-reply(`*[ COMMAND NOT FOUND ]*
+fakemsg(`*[ COMMAND NOT FOUND ]*
 Command Salah ❌
 Silahkan Pilih Type Buku/Folio Berikut
 
@@ -2826,7 +2899,7 @@ break
 case prefix+'megumin': // By Christian ID
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 reply(mess.wait)
-var but = [{buttonId: `/sakura`, buttonText: { displayText: "Next" }, type: 1 }]
+var but = [{buttonId: `/megumin`, buttonText: { displayText: "Next" }, type: 1 }]
 conn.sendMessage(from, {caption: `*Random Megumin*`, image: {url: `https://christian-id-api.herokuapp.com/api/wallpaper/megumin?apikey=${chrisapi}`}, buttons: but, footer: 'Pencet tombol dibawah untuk foto selanjutnya' }, {quoted: fake})
 break
 //nsfw
@@ -2835,35 +2908,35 @@ case prefix+'pussy':
   reply(mess.wait)
 var pussy = JSON.parse(fs.readFileSync('./fitur/nsfw/pussy.json'))
 var hasil = pickRandom(pussy)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break
 case prefix+'masturbation':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   reply(mess.wait)
 var masturbation = JSON.parse(fs.readFileSync('./fitur/nsfw/masturbation.json'))
 var hasil = pickRandom(masturbation)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 case prefix+'hentai':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   reply(mess.wait)
 var hentai = JSON.parse(fs.readFileSync('./fitur/nsfw/hentai.json'))
 var hasil = pickRandom(hentai)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 case prefix+'blowjob':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   reply(mess.wait)
 var bj = JSON.parse(fs.readFileSync('./fitur/nsfw/blowjob.json'))
 var hasil = pickRandom(bj)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 case prefix+'bdsm':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   reply(mess.wait)
 var bdsm = JSON.parse(fs.readFileSync('./fitur/nsfw/bdsm.json'))
 var hasil = pickRandom(bdsm)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 
@@ -2871,21 +2944,21 @@ if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur
 
 var hentai = JSON.parse(fs.readFileSync('./fitur/nsfw/hentai.json'))
 var hasil = pickRandom(hentai)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 case prefix+'ass':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   reply(mess.wait)
 var ass = JSON.parse(fs.readFileSync('./fitur/nsfw/ass.json'))
 var hasil = pickRandom(ass)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 case prefix+'ahegao':
   if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   reply(mess.wait)
 var ahegao = JSON.parse(fs.readFileSync('./fitur/nsfw/ahegao.json'))
 var hasil = pickRandom(ahegao)
-conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: msg})
+conn.sendMessage(from, {caption: `Sange kok sama gambar`, image: {url: hasil}}, {quoted: fake})
 break 
 ///MAKER MENU BY JOJO AND CHRISTIAN ID!!!
 case prefix+'glitch':
@@ -3409,13 +3482,13 @@ case prefix+'readmore':
     var read = q.split('|')[0] ? q.split('|')[0] : q
                 var morr = q.split('|')[1] ? q.split('|')[1] : ''
     var retmor = `${read}${readmore}${morr}`
-    conn.sendMessage(from, { text: retmor}, { quoted: msg })
+    conn.sendMessage(from, { text: retmor}, { quoted: fake })
     break
 case prefix+'izumi':
   case prefix+'simi':
  var text = `${q}`
 var cimcimi = await fetchJson(`https://api.simsimi.net/v2/?text=${text}&lc=id`)
-  conn.sendMessage(from, { text: cimcimi.success}, {quoted: msg})
+  conn.sendMessage(from, { text: cimcimi.success}, {quoted: fake})
   break
 case prefix+'igstalk':
   case prefix+'stalkig':
@@ -3423,7 +3496,7 @@ case prefix+'igstalk':
     if (args.length < 2) return reply(`Kirim perintah ${command} Username\nContoh : ${command} chris.tianid`)
     var data = await fetchJson(`https://hardianto.xyz/api/igstalk?username=${q}&apikey=hardianto`)
     var caption = `*[ INSTAGRAM STALK ]*\n\n👤Username : ${data.username}\n📛 Full Name : ${data.fullname}\n✔️ Verified : ${data.verified}\n👥 Followers : ${data.followers}\n🫂 Following : ${data.follow}\n🗣️ Kategori ${data.category}\n\n${readmore} *� Izumi Bot*`
-    conn.sendMessage(from, {caption: caption, image: {url: data.thumbnail}}, {quoted: msg})
+    conn.sendMessage(from, {caption: caption, image: {url: data.thumbnail}}, {quoted: fake})
     limitAdd(sender, limit)
     break
 case prefix+'ghstalk': //By Christian ID
@@ -3472,7 +3545,7 @@ case prefix+'cersex':
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
   var data = await fetchJson(`https://docs-jojo.herokuapp.com/api/cersex`)
   var caption = `*[ CERSEX ]*\n\n*Judul* : ${data.result.judul}\n*Cerita* : ${data.result.cersex}\n${readmore} *${setting.botName}*`
-  conn.sendMessage(from, {caption: caption, image: {url: data.result.img}}, {quoted: msg})
+  conn.sendMessage(from, {caption: caption, image: {url: data.result.img}}, {quoted: fake})
   limitAdd(sender, limit)
   break
 case prefix+'cerpen':
@@ -3489,7 +3562,7 @@ case prefix+'faktaunik':
 var caption = `Tahukah kamu?
 ${data.result}`
 var but = [{buttonId: `${command}`, buttonText: { displayText: "Fakta Unik" }, type: 1 }]
-conn.sendMessage(from, { text: caption, buttons: but, footer: `${footer}`, templateButtons: but }, {quoted: msg})
+conn.sendMessage(from, { text: caption, buttons: but, footer: `${footer}`, templateButtons: but }, {quoted: fake})
 limitAdd(sender, limit)
 break
 //maker arasya
@@ -3590,7 +3663,7 @@ reply(textnya.replace(/[a|i|u|e|o|A|I|U|E|O]/gi, 'o'))
 	if (!args[2]) return reply(`Mau Di translate ke bahasa apa?`)
 	 var quoted = quotedMsg.chats
 var data = await fetchJson(`https://docs-jojo.herokuapp.com/api/translate?text=${quoted}&from=${args[1]}&to=${args[2]}`)
-conn.sendMessage(from, {text: data.translated_text}, {quoted: msg})
+conn.sendMessage(from, {text: data.translated_text}, {quoted: fake})
 limitAdd(sender, limit)
 break
 case prefix+'igv':
@@ -3649,17 +3722,18 @@ case prefix+'getprofile':
   case prefix+'getpic':
 if (!isQuotedMsg) return reply(`Reply Message nya!`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-conn.profilePictureUrl(quotedMsg.sender, 'image').then( res => conn.sendMessage(from, { image: { url: res }}, {quoted: fake})).catch(() => conn.sendMessage(from, {caption: `Yah maaf kak, dia ini gak pake foto profile, kayaknya dia depresiiiii/Di Private...\n\nJadiii aku kasih ini ajaaa ya`, image: {url: `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`}}, {quoted: msg}))
+conn.profilePictureUrl(quotedMsg.sender, 'image').then( res => conn.sendMessage(from, { image: { url: res }}, {quoted: fake})).catch(() => conn.sendMessage(from, {caption: `Yah maaf kak, dia ini gak pake foto profile, kayaknya dia depresiiiii/Di Private...\n\nJadiii aku kasih ini ajaaa ya`, image: {url: `https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg`}}, {quoted: fake}))
 limitAdd(sender, limit)
 break
 case prefix+'suratto':
   case prefix+'surat':
-    if (args.length < 2) return reply(`Kirim perintah ${command} nomer|Suratnya\nContoh ${command} 6285921165857|Anjing\n\nAWALI DENGAN 62!`)
-    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
+    if (args.length < 2) return reply(`Kirim perintah ${command} nomer|Suratnya\nContoh ${command} 62813199449171|Anjing\n\nAWALI DENGAN 62!`)
+    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
   var number = q.split('|')[0] ? q.split('|')[0] : q
                 var text = q.split('|')[1] ? q.split('|')[1] : ''
                 reply(`Pesan Sukses Terkirim`)
-conn.sendMessage(`${number}@s.whatsapp.net`, {text: `*[ FITUR SURAT ]*\n\n*Dari :* @${sender} (${pushname})\n*Pesan :* ${text}`, mentions: [sender]})
+                var caption = `*[ FITUR BOT SURAT ]*\nDari : Tidak Diketahui\nUntuk : Kamu\nPesan : *${text}*`
+conn.sendMessage(`${number}@s.whatsapp.net`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
 limitAdd(sender, limit)
 break
 case prefix+'gombal':
@@ -3674,12 +3748,14 @@ var gom = [
 limitAdd(sender, limit)
 break
 case prefix+'textchat':
-  if (!isOwner) return reply(mess.OnlyOwner)
-  if (args.length < 2) return reply(`Kirim perintah ${command} nomer|Laporan nya\nContoh ${command} 6285921165857|Anjing\n\nAWALI DENGAN 62!`)
-  var nomorcuy = q.split('|')[0] ? q.split('|')[0] : q
-                var okecuy = q.split('|')[1] ? q.split('|')[1] : ''
+  case prefix+'kirim':
+    if (args.length < 2) return reply(`Kirim perintah ${command} nomer|Suratnya\nContoh ${command} 62813199449171|Anjing\n\nAWALI DENGAN 62!`)
+    if (!isOwner) return reply(mess.OnlyOwner)
+  var number = q.split('|')[0] ? q.split('|')[0] : q
+                var text = q.split('|')[1] ? q.split('|')[1] : ''
                 reply(`Pesan Sukses Terkirim`)
-conn.sendMessage(`${nomorcuy}@s.whatsapp.net`, {text: `*[ DARI OWNER ]*\nPesan Dari Owner : *${okecuy}*\nThanks For Using Izumi-BOT! ( ${sender} )`, mentions: [sender]})
+                var caption = `*[ PESAN DARI OWNER ]*\nDari : Owner\nUntuk : Kamu\nPesan : *${text}*`
+conn.sendMessage(`${number}@s.whatsapp.net`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
 break
 case prefix+'lirik':
   if (args.length < 2) return reply(`kirim Perintah ${command} Judul Lagu`)
@@ -3702,11 +3778,7 @@ case prefix+'sendvirus':
   conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/3.txt')})
   conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/4.txt')})
   conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/virtex.txt')})
-  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/1.txt')})
-  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/2.txt')})
-  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/3.txt')})
-  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/4.txt')})
-  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/virtex.txt')})
+  conn.sendMessage(`${q}@s.whatsapp.net`, {text: fs.readFileSync('fitur/virtex/5.txt')})
   break
 case prefix+'kontak':
   if (args.length < 2) return reply(`kirim Perintah ${command} Nomer Kontak|Nama Kontak\nContoh ${command} 6285921165857|Christian ID`)
