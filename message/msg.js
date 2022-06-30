@@ -2169,12 +2169,11 @@ case prefix+'tebaklirik':
 		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
 			    if (isPlayGame(from, tebaklirik)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tebaklirik[getGamePosi(from, tebaklirik)].fake)
 				var liriknya = (`https://christian-id-api.herokuapp.com/api/game/tebaklirik?apikey=${chrisapi}
-				var kukus = pickRandom(liriknya)
-				  kukus.jawaban = kukus.jawaban.split('Jawaban ').join('')
-				  var teks = `*TEBAK LIRIK*\n\n`+monospace(`Soal : ${kukus.question}\nWaktu : ${gamewaktu}s`)
+				  liriknya.jawaban = liriknya.jawaban.split('Jawaban ').join('')
+				  var teks = `*TEBAK LIRIK*\n\n`+monospace(`Soal : ${liriknya.result.question}\nWaktu : ${gamewaktu}s`)
 				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
-					var jawab = kukus.answer.toLowerCase()
+					var jawab = liriknya.result.answer.toLowerCase()
 					addPlayGame(from, 'TEBAK LIRIK', jawab, gamewaktu, res, tebaklirik)
 					gameAdd(sender, glimit)
 				  })
