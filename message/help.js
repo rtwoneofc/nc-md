@@ -278,6 +278,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
 
   *Group Menu*
   ❑ ${prefix}afk *alasan*
+  ❑ ${prefix}antibadword
   ❑ ${prefix}antilink
   ❑ ${prefix}antiwame
   ❑ ${prefix}antilinkyt
@@ -316,6 +317,8 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}block
   ❑ ${prefix}unblock
   ❑ ${prefix}setprefix multi/nopref
+  ❑ ${prefix}addbadword *text*
+  ❑ ${prefix}delbadword *text*
 
 \`\`\`${setting.botName} Version 2.0.0\`\`\``
 }

@@ -458,7 +458,7 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
                 if (chats.toLowerCase().includes(kasar)){
                     if (isCountKasar(sender, senbadword)){
                         if (!isBotGroupAdmins) return reply(`Kamu beruntung karena bot bukan admin`)
-                        reply(`* ANTI BADWORD *\n\nSepertinya kamu sudah berkata kasar lebih dari 5x, maaf kamu akan di kick`)
+                        reply(`*[ ANTI BADWORD ]*\n\nSepertinya kamu sudah berkata kasar lebih dari 5x, maaf kamu akan di kick`)
                         number = sender
       conn.groupParticipantsUpdate(from, [number], "remove")
                         delCountKasar(sender, senbadword)
@@ -682,13 +682,23 @@ if (chats.startsWith(`Bot`)){
 var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
-if (chats.startsWith(`P`)){ 
+if (chats.startsWith(`@380999367339`)){ 
 var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
 var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
-if (chats.startsWith(`p`)){ 
+if (chats.startsWith(`Tes`)){ 
 var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
+var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
+}
+if (chats.startsWith(`tes`)){ 
+var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
+var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
+conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
+}
+if (chats.startsWith(`@6285921165857`)){ 
+var teks = `*Halo Kak ${pushname}*\n\n*_Jangan Tag Owner Ku Dia Lagi Sibuk_*`
 var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
@@ -1428,6 +1438,16 @@ case prefix+'bc': case prefix+'broadcast':
 				  reply(`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
 				}
 				break
+case prefix+'setthumb':
+                if (!isOwner) return reply(mess.OnlyOwner)
+                    if (!isQuotedImage) return reply('Reply imagenya blokk!')
+                    const messimagethumb = JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
+                    const downiamgethumb = await conn.downloadMediaMessage(messimagethumb)
+                    fs.unlinkSync(`${setting.pathImg}`)
+                    await sleep(2000)
+                    fs.writeFileSync(`${setting.pathImg}`, downiamgethumb)
+                    reply('Succes')
+                    break
 			case prefix+'addprem':
                 if (!isOwner) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Penggunaan :\n*${prefix}addprem* @tag waktu\n*${prefix}addprem* nomor waktu\n\nContoh : ${command} @tag 30d`)
