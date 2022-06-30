@@ -460,15 +460,13 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
                         if (!isBotGroupAdmins) return reply(`Kamu beruntung karena bot bukan admin`)
                         reply(`* ANTI BADWORD *\n\nSepertinya kamu sudah berkata kasar lebih dari 5x, maaf kamu akan di kick`)
                         number = sender
-      conn.groupParticipantsUpdate(from, [number], "remove")
+                        conn.groupParticipantsUpdate(from, [number], "remove")
                         delCountKasar(sender, senbadword)
                     } else {
                         addCountKasar(sender, senbadword)
                         reply(`Kamu terdeteksi berkata kasar\nJangan ulangi lagi atau kamu akan dikick`)
                     }
                 }
-            }
-        }
 
 		// Auto Read & Presence Online
 		conn.sendReadReceipt(from, sender, [msg.key.id])
