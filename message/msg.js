@@ -44,6 +44,7 @@ const { isTicTacToe, getPosTic } = require("../lib/tictactoe");
 const { addPlayGame, getJawabanGame, isPlayGame, cekWaktuGame, getGamePosi } = require("../lib/game");
 const { addBanned, unBanned, BannedExpired, cekBannedUser } = require("../lib/banned");
 const { addAfkUser, checkAfkUser, getAfkReason, getAfkTime, getAfkId, getAfkPosition } = require("../lib/afk");
+const { addBadword, delBadword, isKasar, addCountKasar, isCountKasar, delCountKasar } = require("../lib/badword");
 const tictac = require("../lib/tictac");
 const _prem = require("../lib/premium");
 const fs = require ("fs");
@@ -154,6 +155,9 @@ let mute = JSON.parse(fs.readFileSync('./database/mute.json'));
 let afk = JSON.parse(fs.readFileSync('./database/afk.json'));
 let antiyt = JSON.parse(fs.readFileSync('./database/antilinkyt.json'));
 let antitiktok = JSON.parse(fs.readFileSync('./database/antilinktt.json'));
+let badword = JSON.parse(fs.readFileSync('./database/badword.json'));
+let grupbadword = JSON.parse(fs.readFileSync('./database/grupbadword.json'));
+let senbadword = JSON.parse(fs.readFileSync('./database/senbadword.json'));
 
 moment.tz.setDefault("Asia/Jakarta").locale("id");
 
@@ -207,6 +211,7 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
         const isAntiWame = isGroup ? antiwame.includes(from) : false
         const isAntiYt = isGroup ? antiyt.includes(from) : false
         const isAntiTt = isGroup ? antitiktok.includes(from) : false
+        const isBadword = isGroup ? grupbadword.includes(from) : false
 		const gcounti = setting.gcount
 		const gcount = isPremium ? gcounti.prem : gcounti.user
 
@@ -445,6 +450,23 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 
       conn.groupParticipantsUpdate(from, [number], "remove")
 
+            }
+        }
+                // Badword
+        if (isGroup && isBadword && !isOwner && !isGroupAdmins){
+            for (let kasar of badword){
+                if (chats.toLowerCase().includes(kasar)){
+                    if (isCountKasar(sender, senbadword)){
+                        if (!isBotGroupAdmins) return reply(`Kamu beruntung karena bot bukan admin`)
+                        reply(`* ANTI BADWORD *\n\nSepertinya kamu sudah berkata kasar lebih dari 5x, maaf kamu akan di kick`)
+                        number = sender
+      conn.groupParticipantsUpdate(from, [number], "remove")
+                        delCountKasar(sender, senbadword)
+                    } else {
+                        addCountKasar(sender, senbadword)
+                        reply(`Kamu terdeteksi berkata kasar\nJangan ulangi lagi atau kamu akan dikick`)
+                    }
+                }
             }
         }
 
@@ -1231,7 +1253,7 @@ case prefix+'ban':
 			    if (!args[1].includes('mediafire')) return reply(mess.error.Iv)
 			    reply(mess.wait)
 					var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/download/mediafire?url=${q}&apikey=${chrisapi}`)
-					conn.sendMessage(from, { document: { url: result.data.link }, fileName: `${result.data.nama}`, mimetype: 'zip' }, { quoted: fake })
+					conn.sendMessage(from, { document: { url: data.link }, fileName: `${data.nama}`, mimetype: 'zip' }, { quoted: fake })
 					limitAdd(sender, limit)
 					break
             case prefix+'play':
@@ -1300,7 +1322,7 @@ limitAdd(sender, limit)
 				  break
 				  
 			case prefix+'getvideo': case prefix+'getvidio':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 			    if (!isQuotedImage) return reply(`Balas hasil pencarian dari ${prefix}ytsearch dengan teks ${command} <no urutan>`)
 				if (!quotedMsg.fromMe) return reply(`Hanya bisa mengambil hasil dari pesan bot`)
 				if (args.length < 2) return reply(`Balas hasil pencarian dari ${prefix}ytsearch dengan teks ${command} <no urutan>`)
@@ -1318,7 +1340,7 @@ limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
 		        break
 			case prefix+'getmusik': case prefix+'getmusic':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 			    if (!isQuotedImage) return reply(`Balas hasil pencarian dari ${prefix}ytsearch dengan teks ${command} <no urutan>`)
 				if (!quotedMsg.fromMe) return reply(`Hanya bisa mengambil hasil dari pesan bot`)
 				if (args.length < 2) return reply(`Balas hasil pencarian dari ${prefix}ytsearch dengan teks ${command} <no urutan>`)
@@ -1335,7 +1357,7 @@ limitAdd(sender, limit)
 				}).catch(() => reply(mess.error.api))
 			    break
 			case prefix+'igdl': case prefix+'instagram': case prefix+'ig':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 				if (args.length < 2) return reply(`Kirim perintah ${command} link`)
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('instagram.com')) return reply(mess.error.Iv)
@@ -1512,7 +1534,7 @@ case prefix+'covid': case prefix+'covid19': case prefix+'kopit':
 case prefix+'shortlink':
   if (args.length < 2) return reply(`Kirim perintah ${command} link`)
   if (!isUrl(args[1])) return reply("Masukan Link")
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 				var data = await fetchJson(`https://hadi-api.herokuapp.com/api/shorturl?url=${args[1]}2`)
 			    reply(`*Hasil : ${data.result}*`)
 				limitAdd(sender, limit)
@@ -1520,7 +1542,7 @@ case prefix+'shortlink':
 case prefix+'cuttly':
   if (args.length < 2) return reply(`Kirim perintah ${command} link`)
   if (!isUrl(args[1])) return reply("Masukan Link")
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 				var data = await fetchJson(`https://hadi-api.herokuapp.com/api/cuttly?url=${args[1]}`)
 			    reply(`*Hasil : ${data.result}*`)
 				limitAdd(sender, limit)
@@ -1528,7 +1550,7 @@ case prefix+'cuttly':
 case prefix+'bitly':
   if (args.length < 2) return reply(`Kirim perintah ${command} link`)
   if (!isUrl(args[1])) return reply("Masukan Link")
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 				var data = await fetchJson(`https://hadi-api.herokuapp.com/api/bitly?url=${args[1]}`)
 			    reply(`*Link : ${data.result}*`)
 				limitAdd(sender, limit)
@@ -1536,7 +1558,7 @@ case prefix+'bitly':
 case prefix+'tinyurl':
   if (args.length < 2) return reply(`Kirim perintah ${command} link`)
   if (!isUrl(args[1])) return reply("Masukan Link")
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+			    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
 				var data = await fetchJson(`https://hadi-api.herokuapp.com/api/tinyurl?url=${args[1]}`)
 			    reply(`*Hasil : ${data.result}*`)
 				limitAdd(sender, limit)
@@ -2300,9 +2322,10 @@ case prefix+'afk':
 			case prefix+'hidetag':
 		        if (!isGroup) return reply(mess.OnlyGrup)
 				if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+				
 			    let mem = [];
 		        groupMembers.map( i => mem.push(i.id) )
-				conn.sendMessage(from, { text: q ? q : '', mentions: mem })
+				conn.sendMessage(from, { text: q ? q : '', mentions: mem }, {quoted: fdoc})
 			    break
 case prefix+'tagall':
       if (!isGroup) return reply(mess.OnlyGrup)
@@ -2424,6 +2447,60 @@ case prefix+'add':
       reply(`Kirim perintah ${command} nomer atau balas pesan orang yang ingin dimasukkan kedalam grup`)
     }
     break
+case prefix+'antibadword':
+                if (!isGroup) return reply(mess.OnlyGrup)
+                if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                if (!isBotGroupAdmins) return reply(mess.BotAdmin)
+                if (args.length === 1) return reply(`Pilih enable atau disable`)
+                if (args[1].toLowerCase() === 'enable'){
+                    if (isBadword) return reply(`Udah aktif`)
+                    grupbadword.push(from)
+					fs.writeFileSync('./database/grupbadword.json', JSON.stringify(grupbadword))
+					reply(`antibadword grup aktif, kirim ${prefix}listbadword untuk melihat list badword`)
+                } else if (args[1].toLowerCase() === 'disable'){
+                    let anu = grupbadword.indexOf(from)
+                    grupbadword.splice(anu, 1)
+                    fs.writeFileSync('./database/grupbadword.json', JSON.stringify(grupbadword))
+                    reply('antibadword grup nonaktif')
+                } else {
+                    reply(`Pilih enable atau disable`)
+                }
+                break
+            case prefix+'listbadword':
+                let bi = `List badword\n\n`
+                for (let boo of badword){
+                    bi += `- ${boo}\n`
+                }
+                bi += `\nTotal : ${badword.length}`
+                reply(bi)
+                break
+            case prefix+'addbadword':
+                if (!isOwner) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`masukkan kata`)
+                if (isKasar(args[1].toLowerCase(), badword)) return reply(`Udah ada`)
+                addBadword(args[1].toLowerCase(), badword)
+                reply(`Sukses`)
+                break
+            case prefix+'delbadword':
+                if (!isOwner) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`masukkan kata`)
+                if (!isKasar(args[1].toLowerCase(), badword)) return reply(`Ga ada`)
+                delBadword(args[1].toLowerCase(), badword)
+                reply(`Sukses`)
+                break
+            case prefix+'clearbadword':
+                if (!isOwner) return reply(mess.OnlyOwner)
+                if (args.length < 2) return reply(`tag atau nomor`)
+                if (mentioned.length !== 0){
+                    for (let i = 0; i < mentioned.length; i++){
+                    delCountKasar(mentioned[i], senbadword)
+                    }
+                    reply('Sukses')
+                } else {
+                    delCountKasar(args[1] + '@s.whatsapp.net', senbadword)
+                    reply('Sukses')
+                }
+                break
 case prefix+'mute':
                 if (!isGroup) return reply(mess.OnlyGrup)
                 if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
@@ -2589,7 +2666,7 @@ case prefix+'ssweb':
   case prefix+'sshpfull':
   if (!isUrl(args[1])) return reply(mess.error.Iv)
   var seweb = chats.slice(7)
-  if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+  if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   if (args.length < 2) return reply(`Kirim Perintah ${command} link Mu\nContoh ${command} https://github.com/GetSya`)
   reply(mess.wait)
   conn.sendMessage(from, { image: { url: `https://hadi-api.herokuapp.com/api/ssweb?url=${q}&device=phone&full=on`}})
@@ -2598,7 +2675,7 @@ case prefix+'ssweb':
 case prefix+'ssdesktop':
   if (!isUrl(args[1])) return reply(mess.error.Iv)
   var seweb = chats.slice(7)
-  if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+  if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   if (args.length < 2) return reply(`Kirim Perintah ${command} link Mu\nContoh ${command} https://github.com/GetSya`)
   reply(mess.wait)
   conn.sendMessage(from, { image: { url: `https://hadi-api.herokuapp.com/api/ssweb?url=${q}&device=desktop&full=on`}})
@@ -3568,7 +3645,7 @@ break
 case prefix+'suratto':
   case prefix+'surat':
     if (args.length < 2) return reply(`Kirim perintah ${command} nomer|Suratnya\nContoh ${command} 6285921165857|Anjing\n\nAWALI DENGAN 62!`)
-    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+    if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
   var number = q.split('|')[0] ? q.split('|')[0] : q
                 var text = q.split('|')[1] ? q.split('|')[1] : ''
                 reply(`Pesan Sukses Terkirim`)
