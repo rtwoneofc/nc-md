@@ -129,7 +129,6 @@ const exif = new Exif()
 let tictactoe = [];
 let tebakgambar = []
 let kuiscuy = []
-let tebaklirik = []
 let tebaktebakan = []
 let tekateki = []
 let tebakkimia = []
@@ -577,20 +576,6 @@ if (chats.startsWith(yutu)) {
 		]
 			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'TEBAK KATA', mentions: [sender]} )  
 		    kuiscuy.splice(getGamePosi(from, kuiscuy), 1)
-		  }
-		}
-		cekWaktuGame(conn, tebaklirik)
-		if (isPlayGame(from, tebaklirik) && isUser) {
-		  if (chats.toLowerCase() == getJawabanGame(from, tebaklirik)) {
-		    var htgm = randomNomor(200, 400)
-			addBalance(sender, htgm, balance)
-			var kode = randomNomor(1000000000, 9000000000)
-		    var texttg = `*Selamat ${pushname} Jawaban Kamu Benar*\n\nJawaban : ${getJawabanGame(from, tebaklirik)}\nHadiah : ${htgm} balance\nKode Game : ${kode}\n\nIngin bermain lagi? Pencet Tombol Dibawah`
-			var kus = [
-			{ quickReplyButton: { displayText: `Main Lagi`, id: `${prefix}tebaklirik` } },
-		]
-			 conn.sendMessage(from, { text: texttg, templateButtons: kus, footer: 'TEBAK LIRIK', mentions: [sender]} )  
-		    tebaklirik.splice(getGamePosi(from, tebaklirik), 1)
 		  }
 		}
 		
@@ -2162,19 +2147,6 @@ case prefix+'dare':
 				  .then( res => {
 					var jawab = kukus.jawaban.toLowerCase()
 					addPlayGame(from, 'TEBAK KATA', jawab, gamewaktu, res, kuiscuy)
-					gameAdd(sender, glimit)
-				  })
-			    break
-case prefix+'tebaklirik':
-		        if (isGame(sender, isOwner, gcount, glimit)) return reply(`Limit game kamu sudah habis`)
-			    if (isPlayGame(from, tebaklirik)) return conn.reply(from, `Masih ada game yang belum diselesaikan`, tebaklirik[getGamePosi(from, tebaklirik)].fake)
-				var liriknya = (`https://christian-id-api.herokuapp.com/api/game/tebaklirik?apikey=${chrisapi}
-				  liriknya.jawaban = liriknya.jawaban.split('Jawaban ').join('')
-				  var teks = `*TEBAK LIRIK*\n\n`+monospace(`Soal : ${liriknya.result.question}\nWaktu : ${gamewaktu}s`)
-				  conn.sendMessage(from, {text: teks}, {quoted: fake})
-				  .then( res => {
-					var jawab = liriknya.result.answer.toLowerCase()
-					addPlayGame(from, 'TEBAK LIRIK', jawab, gamewaktu, res, tebaklirik)
 					gameAdd(sender, glimit)
 				  })
 			    break
