@@ -124,6 +124,8 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}rekber
   ❑ ${prefix}kodeotp
   ❑ ${prefix}sewabot
+  ❑ proses *< Reply Chat >*
+  ❑ done *< Reply Chat>*
 
   *Primbon Menu*
   ❑ ${prefix}artimimpi *mimpi*

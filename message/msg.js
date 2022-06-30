@@ -754,7 +754,19 @@ if (chats.startsWith("@37258266435")){
 			console.log('->[\x1b[1;32mCMD\x1b[1;37m]', color(moment(msg.messageTimestamp *1000).format('DD/MM/YYYY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(pushname), 'in', color(groupName))
 		}
 
-		switch(command) {
+		switch(command){
+            case 'P': case 'proses':{
+            	if (!isQuotedMsg) return reply(`Reply Message nya!`)
+            	if (!isGroup) return fakemsg(mess.OnlyGrup)
+                fakemsg(`*「 TRANSAKSI PENDING 」*\n\n\`\`\`TANGGAL : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}\nJAM : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB\nSTATUS : Pending\`\`\`\n\nPesanan @${sender} Sedang Diproses`)
+            }
+                break
+             case 'D': case 'done':{
+             	if (!isQuotedMsg) return reply(`Reply Message nya!`)
+             	if (!isGroup) return fakemsg(mess.OnlyGrup)
+                fakemsg(`*「 TRANSAKSI BERHASIL 」*\n\n\`\`\`TANGGAL : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}\nJAM : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')} WIB\nSTATUS : Berhasil\`\`\`\n\nTerimakasih @${sender} Next Order Ya`)
+            }
+                break
 			// Main Menu
 			case prefix+'allmenu':
 			  /*conn.sendMessage(from, { audio: fs.readFileSync('audio/Menu.m4a'), mimetype: 'audio/mp4', ptt: true}, {quoted: msg})*/
@@ -1264,7 +1276,7 @@ case prefix+'ban':
 			    if (!args[1].includes('mediafire')) return reply(mess.error.Iv)
 			    fakemsg(mess.wait)
 					var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/download/mediafire?url=${q}&apikey=${chrisapi}`)
-					conn.sendMessage(from, { document: { url: data.link }, fileName: `${data.nama}`, mimetype: 'zip' }, { quoted: fake })
+					conn.sendMessage(from, { document: { url: data.result.link }, fileName: `${data.result.nama}`, mimetype: 'zip' }, { quoted: fake })
 					limitAdd(sender, limit)
 					break
             case prefix+'play':
@@ -1944,42 +1956,6 @@ case prefix+'n':
 case prefix+'test':
 fakemsg("Bot Online")
 break
-case prefix+'sange':
-					if (!isGroup)return reply(mess.OnlyGrup)
-					var kamu = groupMembers
-					var cinta = groupMembers
-					var aku = cinta[Math.floor(Math.random() * kamu.length)]
-					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
-					let tejsqq = `Yang paling sange di group ini adalah\n*@${aku.jid.split('@')[0]}*`
-					mentions(tejsqq, [aku.jid, cintax.jid], true)
-					break
-				case prefix+'ganteng':
-					if (!isGroup)return reply(mess.OnlyGrup)
-					var kamu = groupMembers
-					var cinta = groupMembers
-					var aku = cinta[Math.floor(Math.random() * kamu.length)]
-					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
-					let tejs = `Cowok paling ganteng di group ini adalah\n*@${aku.jid.split('@')[0]}*`
-					mentions(tejs, [aku.jid, cintax.jid], true)
-					break
-				case prefix+'cantik':
-					if (!isGroup)return reply(mess.OnlyGrup)
-					var kamu = groupMembers
-					var cinta = groupMembers
-					var aku = cinta[Math.floor(Math.random() * kamu.length)]
-					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
-					let gejs = `Cewek paling cantik di group ini adalah\n*@${cintax.jid.split('@')[0]}*`
-					mentions(gejs, [aku.jid, cintax.jid], true)
-					break
-					case prefix+'jadian':
-					if (!isGroup)return reply(mess.OnlyGrup)
-					var kamu = groupMembers
-					var cinta = groupMembers
-					var aku = cinta[Math.floor(Math.random() * kamu.length)]
-					var cintax = kamu[Math.floor(Math.random() * cinta.length)]
-					let vejs = `Ciee.. yang lagi jadian\n*@${aku.jid.split('@')[0]}*  @${cintax.jid.split('@')[0]}\nSemoga Langgeng Hii`
-					mentions(vejs, [aku.jid, cintax.jid], true)
-					break
 case prefix+'apakah':
   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 				if (!q) return reply(`Penggunaan ${command} text\n\nContoh : ${command} saya wibu`)
