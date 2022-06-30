@@ -2171,10 +2171,10 @@ case prefix+'tebaklirik':
 				var liriknya = (`https://christian-id-api.herokuapp.com/api/game/tebaklirik?apikey=${chrisapi}
 				var kukus = pickRandom(liriknya)
 				  kukus.jawaban = kukus.jawaban.split('Jawaban ').join('')
-				  var teks = `*TEBAK LIRIK*\n\n`+monospace(`Soal : ${kukus.result.question}\nWaktu : ${gamewaktu}s`)
+				  var teks = `*TEBAK LIRIK*\n\n`+monospace(`Soal : ${kukus.question}\nWaktu : ${gamewaktu}s`)
 				  conn.sendMessage(from, {text: teks}, {quoted: fake})
 				  .then( res => {
-					var jawab = kukus.result.answer.toLowerCase()
+					var jawab = kukus.answer.toLowerCase()
 					addPlayGame(from, 'TEBAK LIRIK', jawab, gamewaktu, res, tebaklirik)
 					gameAdd(sender, glimit)
 				  })
