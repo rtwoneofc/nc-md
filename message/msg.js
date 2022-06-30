@@ -1438,16 +1438,6 @@ case prefix+'bc': case prefix+'broadcast':
 				  reply(`Kirim/balas gambar dengan caption ${command} untuk mengubah foto profil bot`)
 				}
 				break
-case prefix+'setthumb':
-                if (!isOwner) return reply(mess.OnlyOwner)
-                    if (!isQuotedImage) return reply('Reply imagenya blokk!')
-                    const messimagethumb = JSON.parse(JSON.stringify(msg).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
-                    const downiamgethumb = await conn.downloadMediaMessage(messimagethumb)
-                    fs.unlinkSync(`${setting.pathImg}`)
-                    await sleep(2000)
-                    fs.writeFileSync(`${setting.pathImg}`, downiamgethumb)
-                    reply('Succes')
-                    break
 			case prefix+'addprem':
                 if (!isOwner) return reply(mess.OnlyOwner)
                 if (args.length < 2) return reply(`Penggunaan :\n*${prefix}addprem* @tag waktu\n*${prefix}addprem* nomor waktu\n\nContoh : ${command} @tag 30d`)
