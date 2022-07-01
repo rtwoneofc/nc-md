@@ -55,7 +55,6 @@ const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
 const xfar = require('xfarr-api');
 const axios = require("axios");
-const hikki = require("hikki-me");
 const hxz = require("hxz-api");
 const igApi = require("insta-fetcher");
 const ra = require("ra-api");
