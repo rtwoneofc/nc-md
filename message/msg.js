@@ -55,8 +55,9 @@ const { exec, spawn } = require("child_process");
 const ffmpeg = require("fluent-ffmpeg");
 const xfar = require('xfarr-api');
 const axios = require("axios");
+const hikki = require("hikki-me");
 const hxz = require("hxz-api");
-const ig = require("insta-fetcher");
+const igApi = require("insta-fetcher");
 const ra = require("ra-api");
 const kotz = require("kotz-api");
 const yts = require("yt-search");
@@ -528,24 +529,29 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		// Tictactoe
 		if (isTicTacToe(from, tictactoe)) tictac(chats, prefix, tictactoe, from, sender, reply, mentions, addBalance, balance)
 
-// Auto Youtube Downloader
-let yutu = `https://youtu${chats.slice(13)}`
-if (!isGroup){
-if (chats.startsWith(yutu)) {
-            y2mateA(yutu).then( data => {
-              conn.sendMessage(from, {document: {url: data[0].link}, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3'}, {quoted: fvideo})
-})
-}
-}
-if (isGroup) {
-if (chats.startsWith(yutu)) {
-            y2mateA(yutu).then( data => {
-              conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4'}, {quoted: msg})
-              var caption = monospace(`Auto Download Youtube, Pilih Tipe Berikut`)
-              var but = [{buttonId: `${yutu}`, buttonText: { displayText: "File Document" }, type: 1 }, {buttonId: `/ytmp3vn ${yutu}`, buttonText: { displayText: "Voice Not" }, type: 2 }, {buttonId: `/ytmp4 ${yutu}`, buttonText: { displayText: "Video" }, type: 3 }]
-              conn.sendMessage(sender, { text: caption, buttons: but, footer: "Silahkan Pilih Untuk mengubah Tipe Audio", templateButtons: but }, {quoted: fvideo})
-					  })
-            }
+// Auto Youtube Downloader
+let yutu = `https://youtu${chats.slice(13)}`
+if (!isGroup){
+if (chats.startsWith(yutu)) {
+            y2mateA(yutu).then( data => {
+              conn.sendMessage(from, {document: {url: data[0].link}, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3'}, {quoted: fvideo})
+})
+}
+}
+if (isGroup) {
+if (chats.startsWith(yutu)) {
+  var buttonsYt = [
+			{ urlButton: { displayText: `Link`, url : `${yutu}` } },
+			{ quickReplyButton: { displayText: `Video`, id: `${prefix}ytmp4 ${yutu}` } },
+			{ quickReplyButton: { displayText: `Voice Not`, id: `${prefix}ytmp3vn ${yutu}` } },
+			{ quickReplyButton: { displayText: `Document`, id: yutu } },
+		]
+            y2mateA(yutu).then( data => {
+              conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4'}, {quoted: msg})
+              var caption = monospace(`Auto Download Youtube, Pilih Tipe Berikut`)
+              conn.sendMessage(sender, {text: caption, templateButtons: buttonsYt, footer: botName, mentions: [sender]} )
+					  })
+            }
 }
 
         // Game
@@ -943,6 +949,22 @@ SCAN QR DI ATAS PEMBAYARAN BISA MELAUI = GOPAY - OVO - DANA - SHOOPEPAY - DLL\`\
 var kode = [{buttonId: `/owner`, buttonText: { displayText: "Owner" }, type: 1 }]
 				conn.sendMessage(from, { caption: teks, image: { url: `${linkdonasi}` }, buttons: kode, footer: 'Silakan Hubungi Owner Untuk Melanjutkan Pesananmu' }, { quoted: fake })
 				break
+case prefix+'jadibot':
+case prefix+'listjadibot':
+  var teks = `*[ LIST JADI BOT ]*
+
+Jasa Jadi Bot:15k
+Satus :Permanen
+
+*_Pembayaran Via : ${via}_*
+
+*Jika Ingin Order Klick Button Dibawah Atau Ketik ${prefix}formatjd*`
+			    var jd = [{buttonId: `/formatjd`, buttonText: { displayText: "Format Jadi Bot" }, type: 1 }]
+				conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), buttons: jd, footer: `Klik Button Dibawah Untuk Mengisi Formulir Atau Bisa Ketik ${prefix}formatjd` }, { quoted: fake })
+				break
+case prefix+'formatjd':
+fakemsg(`[JASA JADI BOT]\n\nHARGA/DANA :15K\nSTATUS :PERMANENT\n*KIRIM*\n\nNAMA BOT:\nNAMA OWNER:\nNOMOR BOT:\nNOMOR OWNER:\nNAMA GITHUB:\nNAMA IG:\nNOMOR/LINK PEMBAYARAN STORE SHOP:(NOMOR/LINK)\nLINK GRUP:\n\nBUAT LOGO UNTUK BOT NYA\n\nSYARAT:\nHARUS ADA 2 HP UNTUK SCANE QR NYA\n\n_SEKIAN TERIMAKASI_\n\n*Kirim Formulir Ini Ke ${nomor}*`)
+  break
 case prefix+'runtime':
 case prefix+'tes':
   var teks = `*── 「 TES STATUS BOT 」 ──*
@@ -1270,13 +1292,14 @@ case prefix+'ban':
 				}).catch(() => reply(mess.error.api))
 		        break
 				case prefix+'mediafire':
-					if (!isPremium)return reply("Perintah Ini Khusus Pengguna Premium, Upgrade Fitur Premium Ke Owner, Ketik !owner")
+				  if (!isPremium)return reply(mess.OnlyPrem)
+					if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 			    if (args.length < 2) return reply(`Kirim perintah ${command} link`)
 			    if (!isUrl(args[1])) return reply(mess.error.Iv)
 			    if (!args[1].includes('mediafire')) return reply(mess.error.Iv)
 			    fakemsg(mess.wait)
-					var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/download/mediafire?url=${q}&apikey=${chrisapi}`)
-					conn.sendMessage(from, { document: { url: data.result.link }, fileName: `${data.result.nama}`, mimetype: 'zip' }, { quoted: fake })
+					var data = await fetchJson(`https://docs-jojo.herokuapp.com/api/mediafire?url=${q}`)
+					conn.sendMessage(from, { document: { url: data.url }, fileName: `${data.filename}`, mimetype: 'zip' }, { quoted: fake })
 					limitAdd(sender, limit)
 					break
             case prefix+'play':
