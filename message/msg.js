@@ -852,7 +852,7 @@ case prefix+'sewabot': //By Christian ID
 
 *_Untuk Konfirmasi Saldo Hubungi Owner Silakan Klick Link Di Bawah_*
 *_https://wa.me/${setting.ownerNumber}_*`
-			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/sewa.jpg'), templateButtons: buttonsSewa, footer: `© Sewa Bot ${nameown}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/sewa.jpg'), templateButtons: buttonsSewa, footer: `© Sewa Bot ${setting.ownerName}`, mentions: [sender] })
 			    break
 case prefix+'kodeotp':
 case prefix+'listkodeotp':
@@ -876,7 +876,7 @@ case prefix+'tes':
 
 *[ STATUS BOT ONLINE ]*
 *_Runtime : ${runtime(process.uptime())}_*`
-			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/tes.jpg'), templateButtons: buttonsSewa, footer: `© Bot By ${nameown}`, mentions: [sender] })
+			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/tes.jpg'), templateButtons: buttonsSewa, footer: `© Bot By ${setting.ownerName}`, mentions: [sender] })
 			    break
 case prefix+'groupizumi':
   fakemsg(`Group ${setting.botName}\n${setting.grup}`)
@@ -2866,182 +2866,182 @@ conn.sendMessage(from, {caption: `${setting.capt}`, image: { url: `https://hadi-
 limitAdd(sender, limit)
 break
 case prefix+'thunder': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/thunder2?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'neonlight': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/neon-light?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'neondevil': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/neon-devil?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'hallowen': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/hallowen-text?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'skytext': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/sky-text?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'holografic': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/holograpic?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'grafity': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/grafity-text?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'christmas': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/christmas?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'luxury': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/luxury?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'harrypotter': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/harry-potter?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'brokenglass': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/broken-glass?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'artpapper': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/art-papper?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'watercolor': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/water-color?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'glossymaker': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/glossy?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'multicolor': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/multi-color?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'deluxesilver': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/deluxe-silver?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'gluetext': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/glue-text?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'fabric': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/fabric?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'engraved': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/engraved?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'writing': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/writing?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'wicker': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/wicker?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'larva': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/larva?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'toxic': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/toxic-bokeh?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'koipish': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/koi?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'strobery': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/stroberi?text=$q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
 conn.sendMessage(from, {caption: `${setting.capt}`, image: {url: data.result}}, {quoted: fake})
 break
 case prefix+'jokerlogo': // By Christian ID
-if (args.length < 2) return reply(`Kirim perintah ${command} *${nameown}`)
+if (args.length < 2) return reply(`Kirim perintah ${command} ${setting.ownerName}`)
 if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
 var data = await fetchJson(`https://christian-id-api.herokuapp.com/api/textpro/joker-logo?text=${q}&apikey=${chrisapi}`)
 fakemsg(mess.wait)
