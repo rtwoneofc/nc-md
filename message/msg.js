@@ -305,32 +305,28 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		}
 		//{ callButton: { displayText: `Call Owner!`, phoneNumber: `+${ownerNumber}` } },
 		const buttonsDefault = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${setting.grup}` } },
-			{ urlButton: { displayText: `Nomer Owner`, url : `${nomorown}` } },
+			{ urlButton: { displayText: `Group ${setting.botName}`, url : `${setting.grup}` } },
+			{ urlButton: { displayText: `Nomer Owner`, url : `wa.me/${ownerNumber}` } },
 			{ quickReplyButton: { displayText: `💰 Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Script`, id: `${prefix}sc` } },
 		]
 		const button5 = [
-			{ callButton: { displayText: `Number Owner`, phoneNumber: `${numown}` } },
+			{ callButton: { displayText: `Number Owner`, phoneNumber: `${setting.ownNum}` } },
 			{ urlButton: { displayText: `Youtube`, url : `${setting.youtube}` } },
 			{ quickReplyButton: { displayText: `Back To Menu 🔙`, id: `${prefix}menu` } },
 		]
 		const buttonsSewa = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${setting.grup}` } },
+			{ urlButton: { displayText: `Group ${setting.botName}`, url : `${setting.grup}` } },
 			{ urlButton: { displayText: `Website`, url : `${setting.website}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Owner`, id: `${prefix}owner` } },
 		]
 		const buttonsMenu = [
-			{ urlButton: { displayText: `${namagrup}`, url : `${setting.grup}` } },
+			{ urlButton: { displayText: `Group ${setting.botName}`, url : `${setting.grup}` } },
 			{ urlButton: { displayText: `Youtube`, url : `${setting.youtube}` } },
 			{ quickReplyButton: { displayText: `Donasi`, id: `${prefix}donate` } },
 			{ quickReplyButton: { displayText: `Rules`, id: `${prefix}rules` } },
 			{ quickReplyButton: { displayText: `Premium`, id: `${prefix}daftarprem` } },
-		]
-		const buttonsDiamondFF = [
-			{ urlButton: { displayText: `Website`, url : `${setting.website}` } },
-			{ quickReplyButton: { displayText: `Format ID`, id: `${prefix}formatid` } },
 		]
 		const buttonsAllmenu = [
 		    { urlButton: { displayText: `Youtube`, url : `${setting.youtube}` } },
@@ -361,9 +357,6 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		const buttonsAntibad = [
 			{ quickReplyButton: { displayText: `Anti Badword Enable`, id: `${prefix}antibadworda enable` } },
 			{ quickReplyButton: { displayText: `Anti Badword Disable`, id: `${prefix}antibadworda disable` } },
-		]
-		const buttonsRekber = [
-			{ urlButton: { displayText: `Chat Owner`, url : `${nomorown}` } },
 		]
         
 		const isImage = (type == 'imageMessage')
