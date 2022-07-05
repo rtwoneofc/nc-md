@@ -120,8 +120,6 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}pussy
 
   *Store Menu*
-  ❑ ${prefix}listff
-  ❑ ${prefix}rekber
   ❑ ${prefix}kodeotp
   ❑ ${prefix}sewabot
   ❑ proses *< Reply Chat >*
