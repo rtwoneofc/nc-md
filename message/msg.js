@@ -67,6 +67,7 @@ const ms = require("parse-ms");
 //Apikey melcanz, Search aja melcanz.com
 //Apikey Anto = hardianto
 //Apikey Jojo = Syaa
+// Apikey Chris = IzumiBot
 const apikey = "melcantik"
 const keyanto = "hardianto"
 const jojoapi = "Syaa"
@@ -528,29 +529,52 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		// Tictactoe
 		if (isTicTacToe(from, tictactoe)) tictac(chats, prefix, tictactoe, from, sender, reply, mentions, addBalance, balance)
 
-// Auto Youtube Downloader
-let yutu = `https://youtu${chats.slice(13)}`
-if (!isGroup){
-if (chats.startsWith(yutu)) {
-            y2mateA(yutu).then( data => {
-              conn.sendMessage(from, {document: {url: data[0].link}, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3'}, {quoted: fvideo})
-})
-}
-}
-if (isGroup) {
-if (chats.startsWith(yutu)) {
-  var buttonsYt = [
-			{ urlButton: { displayText: `Link`, url : `${yutu}` } },
-			{ quickReplyButton: { displayText: `Video`, id: `${prefix}ytmp4 ${yutu}` } },
-			{ quickReplyButton: { displayText: `Voice Not`, id: `${prefix}ytmp3vn ${yutu}` } },
-			{ quickReplyButton: { displayText: `Document`, id: yutu } },
-		]
-            y2mateA(yutu).then( data => {
-              conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4'}, {quoted: msg})
-              var caption = monospace(`Auto Download Youtube, Pilih Tipe Berikut`)
-              conn.sendMessage(sender, {text: caption, templateButtons: buttonsYt, footer: botName, mentions: [sender]} )
-					  })
-            }
+// Auto Youtube Downloader
+
+let yutu = `https://youtu${chats.slice(13)}`
+
+if (!isGroup){
+
+if (chats.startsWith(yutu)) {
+
+            y2mateA(yutu).then( data => {
+
+              conn.sendMessage(from, {document: {url: data[0].link}, fileName: `${data[0].judul}.mp3`, mimetype: 'audio/mp3'}, {quoted: fvideo})
+
+})
+
+}
+
+}
+
+if (isGroup) {
+
+if (chats.startsWith(yutu)) {
+
+  var buttonsYt = [
+
+			{ urlButton: { displayText: `Link`, url : `${yutu}` } },
+
+			{ quickReplyButton: { displayText: `Video`, id: `${prefix}ytmp4 ${yutu}` } },
+
+			{ quickReplyButton: { displayText: `Voice Not`, id: `${prefix}ytmp3vn ${yutu}` } },
+
+			{ quickReplyButton: { displayText: `Document`, id: yutu } },
+
+		]
+
+            y2mateA(yutu).then( data => {
+
+              conn.sendMessage(from, {audio: {url: data[0].link}, mimetype: 'audio/mp4'}, {quoted: msg})
+
+              var caption = monospace(`Auto Download Youtube, Pilih Tipe Berikut`)
+
+              conn.sendMessage(sender, {text: caption, templateButtons: buttonsYt, footer: botName, mentions: [sender]} )
+
+					  })
+
+            }
+
 }
 
         // Game
@@ -692,7 +716,7 @@ if (chats.startsWith(`Bot`)){
 var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
 }
-if (chats.startsWith(`@380999367339`)){ 
+if (chats.startsWith(`@6282314869843`)){ 
 var teks = `*Halo Kak ${pushname}*\n\n*_Ada Yang Bisa Saya Bantu ? Klik Buttton Dibawah Untuk Memulai Menu_*`
 var buttonsDefa = [{buttonId: `${prefix}menu`, buttonText: { displayText: "Menu" }, type: 1 }]
 conn.sendMessage(from, { caption: teks, image: fs.readFileSync(setting.pathimg), buttons: buttonsDefa, footer: `${setting.botName}` }, { quoted: fake })
@@ -854,14 +878,14 @@ case prefix+'listff': //By Christian ID
 case prefix+'rekber': //By Christian ID
   var teks = `*[ LIST HARGA REKBER ]*
 
- ${rekbera}
- ${rekberb}
- ${rekberc}
- ${rekberd}
- ${rekbere}
- ${rekberf}
- ${rekberg}
- ${rekberh}`
+${rekbera}
+${rekberb}
+${rekberc}
+${rekberd}
+${rekbere}
+${rekberf}
+${rekberg}
+${rekberh}`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/rekber.jpg'), templateButtons: buttonsRekber, footer: 'LIST REKBER', mentions: [sender] })
 			    break
 case prefix+'formatid': // By Christian ID
@@ -1215,34 +1239,35 @@ case prefix+'ban':
 			    }
                 break
 			case prefix+'toimg': case prefix+'toimage':
-			case prefix+'tovid': case prefix+'tovideo':
-			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-			    if (!isQuotedSticker) return reply(`Reply stikernya!`)
-			    var stream = await downloadContentFromMessage(msg.message.extendedTextMessage?.contextInfo.quotedMessage.stickerMessage, 'sticker')
-			    var buffer = Buffer.from([])
-			    for await(const chunk of stream) {
-			       buffer = Buffer.concat([buffer, chunk])
-			    }
-			    var rand1 = 'sticker/'+getRandom('.webp')
-			    var rand2 = 'sticker/'+getRandom('.png')
-			    fs.writeFileSync(`./${rand1}`, buffer)
-			    if (isQuotedSticker && msg.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated !== true) {
-			    exec(`ffmpeg -i ./${rand1} ./${rand2}`, (err) => {
-			      fs.unlinkSync(`./${rand1}`)
-			      if (err) return reply(mess.error.api)
-			      conn.sendMessage(from, { image: { url: `./${rand2}` }}, { quoted: fake })
-			      limitAdd(sender, limit)
-				  fs.unlinkSync(`./${rand2}`)
-			    })
-			    } else {
-			    fakemsg(mess.wait)
-		          webp2mp4File(`./${rand1}`).then( data => {
-			       fs.unlinkSync(`./${rand1}`)
-			       conn.sendMessage(from, { video: { url: data.result }}, { quoted: fake })
-			       limitAdd(sender, limit)
-				  })
-			    }
-			    break
+                case prefix+'tovid': case prefix+'tovideo':
+                   if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
+                   if (!isQuotedSticker) return reply(`Reply stikernya!`)
+                   var stream = await downloadContentFromMessage(msg.message.extendedTextMessage?.contextInfo.quotedMessage.stickerMessage, 'sticker')
+                   var buffer = Buffer.from([])
+                   for await(const chunk of stream) {
+                     buffer = Buffer.concat([buffer, chunk])
+                   }
+                   var rand1 = 'sticker/'+getRandom('.webp')
+                   var rand2 = 'sticker/'+getRandom('.png')
+                   fs.writeFileSync(`./${rand1}`, buffer)
+                   if (isQuotedSticker && msg.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated !== true) {
+                     fakemsg(mess.wait)
+                     exec(`ffmpeg -i ./${rand1} ./${rand2}`, (err) => {
+                       fs.unlinkSync(`./${rand1}`)
+                       if (err) return reply(mess.error.api)
+                       conn.sendMessage(from, { image: fs.readFileSync(`./${rand2}`) }, { quoted: fake })
+                       limitAdd(sender, limit)
+                       fs.unlinkSync(`./${rand2}`)
+                     })
+                   } else {
+                     reply(mess.wait)
+                     webp2mp4File(`./${rand1}`).then(async(data) => {
+                       fs.unlinkSync(`./${rand1}`)
+                       conn.sendMessage(from, { video: await getBuffer(data.data) }, { quoted: fake })
+                       limitAdd(sender, limit)
+                     })
+                   }
+                   break
 	        // Downloader Menu
 			/*case prefix+'tiktok':
 			    if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
@@ -3702,7 +3727,7 @@ case prefix+'suratto':
                 var text = q.split('|')[1] ? q.split('|')[1] : ''
                 reply(`Pesan Sukses Terkirim`)
                 var caption = `*[ FITUR BOT SURAT ]*\nDari : @${sender}\nUntuk : Kamu\nPesan : *${text}*`
-conn.sendMessage(`${number}@s.whatsapp.net`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
+conn.sendMessage(`${number}`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
 limitAdd(sender, limit)
 break
 case prefix+'gombal':
@@ -3724,7 +3749,17 @@ case prefix+'textchat':
                 var text = q.split('|')[1] ? q.split('|')[1] : ''
                 reply(`Pesan Sukses Terkirim`)
                 var caption = `*[ PESAN DARI OWNER ]*\nDari : Owner\nUntuk : Kamu\nPesan : *${text}*`
-conn.sendMessage(`${number}@s.whatsapp.net`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
+conn.sendMessage(`${number}`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
+break
+case prefix+'chatprem':
+  case prefix+'infoprem':
+    if (args.length < 2) return reply(`Kirim perintah ${command} Nomor|Pesan\nContoh ${command} 62813199449171|Anjing\n\nAWALI DENGAN 62!`)
+    if (!isOwner) return reply(mess.OnlyOwner)
+  var number = q.split('|')[0] ? q.split('|')[0] : q
+                var text = q.split('|')[1] ? q.split('|')[1] : ''
+                reply(`Pesan Sukses Terkirim`)
+                var caption = `*[ UPGRADE TO PREMIUM ]*\nPesan : *${text}*`
+conn.sendMessage(`${number}`, {caption: caption, image : fs.readFileSync('./media/surat.jpeg')}, {quoted: fake})
 break
 case prefix+'lirik':
   if (args.length < 2) return reply(`kirim Perintah ${command} Judul Lagu`)
@@ -3732,7 +3767,7 @@ case prefix+'lirik':
   fakemsg(mess.wait)
   lirikLagu(q).then ( data => {
     var caption = `*[ > 🎵 LIRIK LAGU 🎵 < ]*\n\n*Lirik :* ${data[0].result}`
-    conn.sendMessage(from, {text: caption}, {quoted: msg})
+    conn.sendMessage(from, {text: caption}, {quoted: fake})
     limitAdd(sender, limit)
   }).catch(() => reply(`Lagu ${q} Tidak Di Temukan`))
   break
