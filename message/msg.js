@@ -761,7 +761,7 @@ Tanggal : ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
 Waktu : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}
 Runtime : ${runtime(process.uptime())}
 
-saya ${namabot}, bot ini adalah Beta Multi-Device Whatsapp
+saya ${setting.botName}, bot ini adalah Beta Multi-Device Whatsapp
 
 Note : ${setting.note}`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: buttonsAllmenu, footer: `${setting.footer}`, mentions: [sender]} )
