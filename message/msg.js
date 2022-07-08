@@ -801,7 +801,7 @@ ${setting.premium}`
 case prefix+'sc': //By Christian ID
   var teks = `*── 「 SOURCE CODE 」 ──*
 
-*Base : *https://github.com/rtwone*
+*Base : https://github.com/rtwone*
 *Created : https://youtube.com/channel/UCZzt-Qw0zTYc8UP-LL2G5fA*
 *Record : https://youtube.com/c/ChristianID99*`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: button5, footer: `${setting.footer}`, mentions: [sender] })
