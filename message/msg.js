@@ -21,6 +21,7 @@ THANKS TO
 - Febri
 - Jojo
 - Christian ID
+- NC Store
 
 Terimakasih*/
 "use strict";
@@ -169,9 +170,9 @@ module.exports = async(conn, msg, m, setting, store, _afk) => {
 		const gcounti = setting.gcount
 		const gcount = isPremium ? gcounti.prem : gcounti.user
 
-        const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "120363040646100247@g.us","inviteCode": "https://chat.whatsapp.com/LsNzi7PDERyB9xIlW0F8Eq","groupName": "Izumi Bot", "caption": `� ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
-    const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "120363040646100247@g.us" } : {}) },message: { "imageMessage": { "title":`*AUTO DOWNLOAD AUDIO YOUTUBE*`, "h": `Hmm`,'seconds': '100000000', 'caption': `*AUTO DOWNLOAD AUDIO YOUTUBE*`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
-    const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `120363040646100247@g.us` } : {}) },message: { "imageMessage": { "title":`${setting.fake}\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, "h": `Hmm`,'seconds': '100000000', 'caption': `${setting.fake}\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+        const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "120363021182430762@g.us","inviteCode": "https://chat.whatsapp.com/CRBhUIW8G9J3ljCJOuanZB","groupName": "NC Bot", "caption": `� ${pushname}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+    const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "120363021182430762@g.us" } : {}) },message: { "imageMessage": { "title":`*AUTO DOWNLOAD AUDIO YOUTUBE*`, "h": `Hmm`,'seconds': '100000000', 'caption': `*AUTO DOWNLOAD AUDIO YOUTUBE*`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
+    const fake = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `120363021182430762@g.us` } : {}) },message: { "imageMessage": { "title":`${setting.fake}\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, "h": `Hmm`,'seconds': '100000000', 'caption': `${setting.fake}\n${ucapanWaktu} ${pushname !== undefined ? pushname : `Kak`}`, 'jpegThumbnail': fs.readFileSync(setting.pathimg)}}}
     const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Hidetag Cuy!`,jpegThumbnail: fs.readFileSync(setting.pathimg)}}}
 		const mentionByTag = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.mentionedJid : []
                 const mentionByReply = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.participant || "" : ""
@@ -801,7 +802,7 @@ ${setting.premium}`
 case prefix+'sc': //By Christian ID
   var teks = `*── 「 SOURCE CODE 」 ──*
 
-*Base : https://github.com/rtwone*
+*Base : *https://github.com/rtwone*
 *Created : https://youtube.com/channel/UCZzt-Qw0zTYc8UP-LL2G5fA*
 *Record : https://youtube.com/c/ChristianID99*`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: button5, footer: `${setting.footer}`, mentions: [sender] })
@@ -858,11 +859,32 @@ case prefix+'kodeotp':
 case prefix+'listkodeotp':
 var teks = `*KODE OTP WHATSAPP*
 
-_1. Vietnam / +84 = 3K_
-_2. Ukraine / +380 = 4K_
-_3. Estonia / +372 = 3K_
-_4. Indonesia / +62 = 3K_
-_5. Russia / +7 = 3K_
+List Harga Kode Otp Whatsapp
+1. Vietnam / +84 = Rp. 3.000
+2. Ukraine / +380 = Rp. 4.000
+3. Estonia / +372 = Rp. 3.000
+4. Indonesia / +62 = Rp. 3.000
+5. Russia / +7 = Rp. 3.000
+6. Myanmar / +95 = Rp. 7.000
+7. Philippines / +63 = Rp. 6.000
+8. Malaysia / +60 = Rp. 9.000
+9. Kenya /+254 = Rp. 6.000
+10. Israel / +972 = Rp. 12.000
+11. Hongkong /+852 = Rp. 13.000
+12. England / +44 = Rp. 6.000
+13. DCongo / +243 = Rp. 6.000
+14. India / +91 = Rp. 3500
+15. Ireland / +353 = Rp. 12.000
+16. Laos / +856 = Rp. 6.000
+17. Ivory / +225 = Rp. 7.500
+18. Gambia / +220 = Rp. 11.500
+19. Yemen / +967 = Rp. 12.000
+20. South Afrika / +27 = Rp. 5.000
+21. Romania / +40 = Rp. 7.000
+22. Canada / +1 = Rp. 5.000
+23. Ghana / +233 = Rp. 8.000
+24. Argentina / +54 = Rp. 8.000
+25. Uzbekistan / +998 = Rp. 16.000
 
 \`\`\`TIDAK MENERIMA VIPUL
 SCAN QR DI ATAS PEMBAYARAN BISA MELAUI = GOPAY - OVO - DANA - SHOOPEPAY - DLL\`\`\``
@@ -878,7 +900,7 @@ case prefix+'tes':
 *_Runtime : ${runtime(process.uptime())}_*`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/tes.jpg'), templateButtons: buttonsSewa, footer: `© Bot By ${setting.ownerName}`, mentions: [sender] })
 			    break
-case prefix+'groupizumi':
+case prefix+'groupnc':
   fakemsg(`Group ${setting.botName}\n${setting.grup}`)
   break
 			case prefix+'speed':
@@ -3360,7 +3382,7 @@ case prefix+'readmore':
     var retmor = `${read}${readmore}${morr}`
     conn.sendMessage(from, { text: retmor}, { quoted: fake })
     break
-case prefix+'izumi':
+case prefix+'ncbot':
   case prefix+'simi':
  var text = `${q}`
 var cimcimi = await fetchJson(`https://api.simsimi.net/v2/?text=${text}&lc=id`)

@@ -47,7 +47,7 @@ Balance : $${toCommas(getBalance(sender, balance))}
   ❑ ${prefix}daftarprem
   ❑ ${prefix}listban
   ❑ ${prefix}rules
-  ❑ ${prefix}izumi *text*
+  ❑ ${prefix}ncbot *text*
   ❑ ${prefix}simi *text*
   ❑ ${prefix}delete
   ❑ ${prefix}thanksto
