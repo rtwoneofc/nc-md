@@ -20,6 +20,7 @@ THANKS TO
 - Febri
 - Jojo
 - Christian ID
+- NC Store
 
 Terimakasih*/
 "use strict";
@@ -49,14 +50,14 @@ const { state, saveState } = useSingleFileAuthState(session)
 
 function title() {
       console.clear()
-	  console.log(chalk.bold.red(figlet.textSync('Izumi-Bot', {
+	  console.log(chalk.bold.red(figlet.textSync('NC-Bot', {
 		font: 'Standard',
 		horizontalLayout: 'default',
 		verticalLayout: 'default',
 		width: 80,
 		whitespaceBreak: false
 	})))
-	console.log(chalk.yellow(`\n                        ${chalk.green('[ Powered By Christian ]')}\n\n${chalk.yellow('Izumi-Bot')} : ${chalk.white('WhatsApp Bot Multi Device')}\n${chalk.yellow('Follow Insta Christian')} : ${chalk.white('@chris.tianid')}\n${chalk.yellow('Message Me On WhatsApp')} : ${chalk.white('+62 859-2116-5857')}\n${chalk.yellow('Rest Api')} : ${chalk.white('https://christian-id-api.herokuapp.com/docs')}\n${chalk.yellow('Youtube')} : ${chalk.white('https://youtube.com/channel/UCbetUssizXWLgZdDVEFp8Sg')}\n`))
+	console.log(chalk.yellow(`\n                        ${chalk.green('[ Powered By NC Store]')}\n\n${chalk.yellow('NC-Bot')} : ${chalk.white('WhatsApp Bot Multi Device')}\n${chalk.yellow('Follow Insta Bot')} : ${chalk.white('@ncbotwa')}\n${chalk.yellow('Message Me On WhatsApp')} : ${chalk.white('+62 856-5745-2524')}\n${chalk.yellow('Rest Api')} : ${chalk.white('https://christian-id-api.herokuapp.com/docs')}\n${chalk.yellow('Youtube')} : ${chalk.white('https://youtube.com/channel/UCUJGYCBCyh8WiVw2RUz_dPA')}\n`))
 }
 
 /**
@@ -97,7 +98,7 @@ const connectToWhatsApp = async () => {
             printQRInTerminal: true,
             logger: logg({ level: 'fatal' }),
             auth: state,
-            browser: ["Izumi-Multi-Device", "Safari", "3.0"]
+            browser: ["NC-Multi-Device", "Safari", "3.0"]
         })
 	title()
         store.bind(conn.ev)
