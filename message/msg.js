@@ -802,9 +802,7 @@ ${setting.premium}`
 case prefix+'sc': //By Christian ID
   var teks = `*── 「 SOURCE CODE 」 ──*
 
-*Base : *https://github.com/rtwone*
-*Created : https://youtube.com/channel/UCZzt-Qw0zTYc8UP-LL2G5fA*
-*Record : https://youtube.com/c/ChristianID99*`
+https://youtube.com/channel/UCUJGYCBCyh8WiVw2RUz_dPA`
 			    conn.sendMessage(from, { caption: teks, image: fs.readFileSync('media/chris2.jpg'), templateButtons: button5, footer: `${setting.footer}`, mentions: [sender] })
 			    break
 case prefix+'rules': //By Christian ID
@@ -949,6 +947,8 @@ var but = [{buttonId: `/owner`, buttonText: { displayText: "Owner" }, type: 1 }]
 *https://github.com/VallXc*
 *- Christian ID :*
 *https://github.com/TianBot1*
+*- ${ownerName} :*
+*https://youtube.com/channel/UCUJGYCBCyh8WiVw2RUz_dPA*
 *- Penyedia Apikey*`
 conn.sendMessage(from, { caption: teks, image: { url: `https://telegra.ph/file/690548b0ce1de0b305496.jpg` }, buttons: but, footer: 'Thanks You For Making This Bot' }, { quoted: fake })
 break
@@ -3391,10 +3391,11 @@ var cimcimi = await fetchJson(`https://api.simsimi.net/v2/?text=${text}&lc=id`)
 case prefix+'igstalk':
   case prefix+'stalkig':
     if (isLimit(sender, isPremium, isOwner, limitCount, limit)) return reply (`Limit kamu sudah habis silahkan kirim ${prefix}limit untuk mengecek limit`)
-    if (args.length < 2) return reply(`Kirim perintah ${command} Username\nContoh : ${command} chris.tianid`)
-    var data = await fetchJson(`https://hardianto.xyz/api/igstalk?username=${q}&apikey=hardianto`)
-    var caption = `*[ INSTAGRAM STALK ]*\n\n👤Username : ${data.username}\n📛 Full Name : ${data.fullname}\n✔️ Verified : ${data.verified}\n👥 Followers : ${data.followers}\n🫂 Following : ${data.follow}\n🗣️ Kategori ${data.category}\n\n${readmore} *� ${botName}*`
-    conn.sendMessage(from, {caption: caption, image: {url: data.thumbnail}}, {quoted: fake})
+    if (args.length < 2) return reply(`Kirim perintah ${command} Username\nContoh : ${command} ${setting.ownerName}`)
+    reply(mess.wait)
+    var data = await fetchJson(`https://api.lolhuman.xyz/api/stalkig/${q}?apikey=a2b11bccdd6d692abdf12a80`)
+    var caption = `*[ INSTAGRAM STALK ]*\n\n ${setting.sb} Username : ${data.result.username}\n ${setting.sb} Fullname : ${data.result.fullname}\n ${setting.sb} Total Post : ${data.result.posts}\n ${setting.sb} Followers : ${data.result.followers}\n ${setting.sb} Following : ${data.result.following}\n ${setting.sb} Bio : ${data.result.bio}\n\n${readmore} *By ${botName}*`
+    conn.sendMessage(from, {caption: caption, image: {url: data.result.photo_profile}}, {quoted: fgif})
     limitAdd(sender, limit)
     break
 case prefix+'ghstalk': //By Christian ID
